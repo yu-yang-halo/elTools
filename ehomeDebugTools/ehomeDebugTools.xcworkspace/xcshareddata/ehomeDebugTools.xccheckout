@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>639025D3-D501-419A-8092-3F694F5E89CD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ehomeDebugTools</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0AB82E2B25D07F6F48D3E8D751DF30DD7B39BCCC</key>
+		<string>https://github.com/yu-yang-halo/elTools</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ehomeDebugTools/ehomeDebugTools.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0AB82E2B25D07F6F48D3E8D751DF30DD7B39BCCC</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/yu-yang-halo/elTools</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0AB82E2B25D07F6F48D3E8D751DF30DD7B39BCCC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0AB82E2B25D07F6F48D3E8D751DF30DD7B39BCCC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>elTools</string>
+		</dict>
+	</array>
+</dict>
+</plist>
