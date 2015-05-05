@@ -1,0 +1,6 @@
+framework module ELNetworkService {
+  umbrella header "ELNetworkService.h"
+
+  export *
+  module * { export * }
+}
