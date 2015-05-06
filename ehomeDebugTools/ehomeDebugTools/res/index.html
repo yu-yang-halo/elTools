@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+		<meta name="misapplication-tap-highlight" content="no"/>
+		<meta name="HandheldFriendly" content="true"/>
+		<meta name="MobileOptimized" content="320"/>
+		<script type="text/javascript" src="js/elapi.js" ></script>
+		<script type="text/javascript" src="js/jquery-2.1.0.js" ></script>
+		<title>Hello H5+</title>
+		<link rel="stylesheet" href="css/button.css" type="text/css" charset="utf-8"/>
+		<style type="text/css">
+.logo{
+  text-align: center;
+  margin:0,auto;
+  margin-top: 20px;
+}
+.header{
+  align-self: center;
+  vertical-align: auto;
+}
+label{
+	width: 80px;
+	display: inline-block;
+}
+input{
+	background-repeat:round;
+    background-color: transparent;
+    padding-left: 38px;
+    border:none;
+    height: 35px;
+    width:180px;
+}
+div{
+	margin-top: 10px;
+}
+.username{
+	background-image: url(img/username_background.png);
+}
+
+.password{
+	background-image: url(img/password_background.png);
+}
+		</style>
+	</head>
+	<body onselectstart="return false;">
+		<center id="header" class="header">
+			<img class="logo" src="img/icon57.png" />
+			<div>
+				<input class="username" ></input>
+			</div>
+			<div>
+				<input class="password" type="password"></input>
+			</div>
+			<div>
+				<button class="button orange"  onclick="login($('.username').val(),$('.password').val())">登录</button>	
+			</div>
+			    
+		</center>
+	</body>
+	<script type="application/javascript">
+		
+
+	</script>
+</html>
