@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
@@ -14,28 +14,56 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EwQ-Av-Thd">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                                <color key="backgroundColor" red="0.36061724099999998" green="0.80995783730000004" blue="0.75924068519999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y4G-89-KyA">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="20" width="400" height="580"/>
+                                </variation>
                             </webView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.74102169866600631" blue="0.86939098531007042" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Y4G-89-KyA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="RCI-uG-m9C"/>
+                            <constraint firstItem="Y4G-89-KyA" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="h20-82-gVj"/>
+                            <constraint firstItem="Y4G-89-KyA" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="hs0-7L-TVo"/>
+                            <constraint firstAttribute="trailing" secondItem="Y4G-89-KyA" secondAttribute="trailing" id="ony-IW-iKG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Y4G-89-KyA"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="RCI-uG-m9C"/>
+                                <exclude reference="h20-82-gVj"/>
+                                <exclude reference="hs0-7L-TVo"/>
+                                <exclude reference="ony-IW-iKG"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Y4G-89-KyA"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="RCI-uG-m9C"/>
+                                <include reference="h20-82-gVj"/>
+                                <include reference="hs0-7L-TVo"/>
+                                <include reference="ony-IW-iKG"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="webView" destination="EwQ-Av-Thd" id="bLa-u1-1iH"/>
+                        <outlet property="webView" destination="Y4G-89-KyA" id="mDK-Z2-wHc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81" y="134"/>
+            <point key="canvasLocation" x="73.5" y="112.5"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

@@ -27,7 +27,7 @@
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView{
     hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText=@"加载中。。。";
+    //hud.labelText=@"加载中。。。";
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     [hud hide:YES];
