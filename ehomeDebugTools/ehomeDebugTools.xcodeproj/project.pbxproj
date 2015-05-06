@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5D162196B3A798A01678C2C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FBA32A01B45956F39F6449 /* libPods.a */; };
-		84C01D2B1AF73CA000FD74A6 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 84C01D291AF73CA000FD74A6 /* index.html */; };
-		84C01D2C1AF73CA000FD74A6 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 84C01D2A1AF73CA000FD74A6 /* index.js */; };
 		84C01D2E1AF73E2700FD74A6 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C01D2D1AF73E2700FD74A6 /* JavaScriptCore.framework */; };
 		84C14B121AF70AA300B11B46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C14B111AF70AA300B11B46 /* main.m */; };
 		84C14B151AF70AA300B11B46 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C14B141AF70AA300B11B46 /* AppDelegate.m */; };
@@ -49,8 +47,6 @@
 /* Begin PBXFileReference section */
 		72FBA32A01B45956F39F6449 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEA3C076871EC35663F8CA6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		84C01D291AF73CA000FD74A6 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		84C01D2A1AF73CA000FD74A6 /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
 		84C01D2D1AF73E2700FD74A6 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		84C14B0C1AF70AA300B11B46 /* ehomeDebugTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ehomeDebugTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C14B101AF70AA300B11B46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,8 +106,6 @@
 		84C01D281AF73C8600FD74A6 /* res */ = {
 			isa = PBXGroup;
 			children = (
-				84C01D291AF73CA000FD74A6 /* index.html */,
-				84C01D2A1AF73CA000FD74A6 /* index.js */,
 			);
 			path = res;
 			sourceTree = "<group>";
@@ -263,9 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84C01D2C1AF73CA000FD74A6 /* index.js in Resources */,
 				84C14B1B1AF70AA400B11B46 /* Main.storyboard in Resources */,
-				84C01D2B1AF73CA000FD74A6 /* index.html in Resources */,
 				84C14B201AF70AA400B11B46 /* LaunchScreen.xib in Resources */,
 				84C14B1D1AF70AA400B11B46 /* Images.xcassets in Resources */,
 			);
