@@ -52,26 +52,33 @@
     self.webView.dataDetectorTypes=UIDataDetectorTypeNone;
     
     JSContext *context=[self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    static int count=0;
-    context[@"sayHello"]=^(){
-        NSLog(@"begin....");
+    context[@"objc_login"]=^(){
+        NSLog(@"objc_login....");
         
         NSArray *args=[JSContext currentArguments];
         for (JSValue *jsVal in args) {
-            NSLog(@"argument : %@",jsVal);
+            NSLog(@"argument : %@",jsVal.toString);
         }
         JSValue *thiz=[JSContext currentThis];
         
         NSLog(@"end....%@",thiz);
-        count++;
         
-        [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"addWebData(%d)",count]];
-        
-        
-        
+        [self asynlogin:[args[0] toString] withPass:[args[1] toString]];
     };
 }
-
+-(void)asynlogin:(NSString *)name withPass:(NSString *)pass{
+    //hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //hud.labelText=@"登录中...";
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        BOOL isOK=[[ElApiService shareElApiService] loginByUsername:name andPassword:[WsqMD5Util getmd5WithString:pass]];
+         dispatch_async(dispatch_get_main_queue(), ^{
+            //[hud hide:YES];
+            
+             [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"loginIsOk(%d)",isOK]];
+            
+        });
+    });
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

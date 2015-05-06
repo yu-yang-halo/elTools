@@ -1,9 +1,3 @@
-
- 
-
-function login(username,password){
-     alert("username:"+username+" password:"+password);
-}
 //(function(doc,win){
 // 
 // var docEl=doc.documentElement,
@@ -24,3 +18,14 @@ function login(username,password){
 // 
 // 
 // })(document,window);
+function login(username,password){
+    //alert("username:"+username+" password:"+password);
+    objc_login(username,password);
+}
+function loginIsOk(isOK){
+    if(isOK){
+        alert('SUCCESS');
+    }else{
+        alert('FAIL');
+    }
+}
