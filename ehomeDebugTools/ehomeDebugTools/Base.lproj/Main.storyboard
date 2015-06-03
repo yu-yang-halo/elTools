@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Xs6-0T-CK3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -31,6 +33,8 @@
                             <constraint firstItem="Y4G-89-KyA" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="h20-82-gVj"/>
                             <constraint firstItem="Y4G-89-KyA" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="hs0-7L-TVo"/>
                             <constraint firstAttribute="trailing" secondItem="Y4G-89-KyA" secondAttribute="trailing" id="ony-IW-iKG"/>
+                            <constraint firstItem="Y4G-89-KyA" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="qHF-OZ-EYa"/>
+                            <constraint firstItem="Y4G-89-KyA" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="5" id="qva-in-Fcf"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -41,6 +45,8 @@
                                 <exclude reference="h20-82-gVj"/>
                                 <exclude reference="hs0-7L-TVo"/>
                                 <exclude reference="ony-IW-iKG"/>
+                                <exclude reference="qHF-OZ-EYa"/>
+                                <exclude reference="qva-in-Fcf"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -51,19 +57,38 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
                                 <include reference="RCI-uG-m9C"/>
-                                <include reference="h20-82-gVj"/>
+                                <exclude reference="h20-82-gVj"/>
                                 <include reference="hs0-7L-TVo"/>
                                 <include reference="ony-IW-iKG"/>
+                                <exclude reference="qHF-OZ-EYa"/>
+                                <include reference="qva-in-Fcf"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="445-YP-KfQ"/>
                     <connections>
                         <outlet property="webView" destination="Y4G-89-KyA" id="mDK-Z2-wHc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="73.5" y="112.5"/>
+            <point key="canvasLocation" x="-1828.5" y="-330.75"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pt2-v5-eFw">
+            <objects>
+                <navigationController id="Xs6-0T-CK3" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BVl-Od-hAf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="HPx-QL-GOx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="llJ-lV-NUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2778" y="-182.25"/>
         </scene>
     </scenes>
 </document>

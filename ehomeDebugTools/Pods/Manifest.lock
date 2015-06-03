@@ -1,10 +1,16 @@
 PODS:
   - MBProgressHUD (0.9.1)
+  - Reachability (3.2)
+  - Toast (2.4)
 
 DEPENDENCIES:
   - MBProgressHUD
+  - Reachability (~> 3.2)
+  - Toast (~> 2.4)
 
 SPEC CHECKSUMS:
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  Toast: 0773b8fc0e97352ca6054517bec7ebdd4110029d
 
 COCOAPODS: 0.36.0

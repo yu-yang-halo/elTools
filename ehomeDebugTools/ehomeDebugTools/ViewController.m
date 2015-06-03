@@ -10,10 +10,11 @@
 #import <ELNetworkService/ELNetworkService.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "MBProgressHUD.h"
+#import "Reachability.h"
+#import "UIView+Toast.h"
 @interface ViewController (){
     MBProgressHUD *hud;
 }
-
 @end
 
 @implementation ViewController
@@ -21,7 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view, typically from a nib.
+    self.title=@"E联开发者平台";
+    
     [self loadHtmlContent];
 
 }
@@ -46,8 +48,11 @@
     self.webView.delegate=self;
     self.webView.scrollView.scrollEnabled=NO;
     
+    NSString *htmlString=[[NSString alloc] initWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
     
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:htmlPath]]];
+    
+    
+    [self.webView loadHTMLString:htmlString baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
     
     self.webView.dataDetectorTypes=UIDataDetectorTypeNone;
     
@@ -63,19 +68,49 @@
         
         NSLog(@"end....%@",thiz);
         
-        [self asynlogin:[args[0] toString] withPass:[args[1] toString]];
+        
+                
+        
+        NSString *netstate=[[NSUserDefaults standardUserDefaults] objectForKey:deviceNetworkStateKey];
+        
+        if([netstate isEqualToString:@"1"]){
+            
+            [self asynlogin:[args[0] toString] withPass:[args[1] toString]];
+        
+        }else{
+            
+            [self.view makeToast:@"网络连接有问题，请检查"];
+        
+        }
+        
+        
+        
     };
 }
 -(void)asynlogin:(NSString *)name withPass:(NSString *)pass{
-    //hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    //hud.labelText=@"登录中...";
+    hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText=@"登录中...";
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         BOOL isOK=[[ElApiService shareElApiService] loginByUsername:name andPassword:[WsqMD5Util getmd5WithString:pass]];
          dispatch_async(dispatch_get_main_queue(), ^{
-            //[hud hide:YES];
-            
-             [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"loginIsOk(%d)",isOK]];
-            
+            [hud hide:YES];
+             NSString *message=nil;
+            if(isOK){
+                 message=@"登录成功！";
+            }else{
+                 message=@"登录失败！";
+            }
+             
+             [self.view makeToast:message];
+             
+//             UIAlertController *alertVc=[UIAlertController alertControllerWithTitle:@"提示" message:message preferredStyle:UIAlertControllerStyleAlert];
+//            
+//             [alertVc addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//                 
+//             }]];
+//             [self presentViewController:alertVc animated:YES completion:^{
+//                 
+//             }];
         });
     });
 }
