@@ -68,11 +68,67 @@
                     <navigationItem key="navigationItem" id="445-YP-KfQ"/>
                     <connections>
                         <outlet property="webView" destination="Y4G-89-KyA" id="mDK-Z2-wHc"/>
+                        <segue destination="E5Q-eo-W7E" kind="show" identifier="devicePages" id="DcA-sR-XPg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1828.5" y="-330.75"/>
+            <point key="canvasLocation" x="-5404.5" y="-759"/>
+        </scene>
+        <!--Devices Controller-->
+        <scene sceneID="EqD-X6-Siw">
+            <objects>
+                <viewController id="E5Q-eo-W7E" customClass="HYLDevicesController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OJ4-00-Ffn"/>
+                        <viewControllerLayoutGuide type="bottom" id="cTX-7D-2Mx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FhQ-nm-2LV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6W-CN-cbn">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="FhQ-nm-2LV" secondAttribute="top" id="OWF-2p-8Qa"/>
+                            <constraint firstItem="cTX-7D-2Mx" firstAttribute="top" secondItem="O6W-CN-cbn" secondAttribute="bottom" constant="5" id="elw-qW-aTz"/>
+                            <constraint firstAttribute="trailing" secondItem="O6W-CN-cbn" secondAttribute="trailing" id="oyV-e7-gSo"/>
+                            <constraint firstItem="O6W-CN-cbn" firstAttribute="leading" secondItem="FhQ-nm-2LV" secondAttribute="leading" id="tbv-2a-Nht"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="O6W-CN-cbn"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="OWF-2p-8Qa"/>
+                                <exclude reference="oyV-e7-gSo"/>
+                                <exclude reference="tbv-2a-Nht"/>
+                                <exclude reference="elw-qW-aTz"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="O6W-CN-cbn"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="OWF-2p-8Qa"/>
+                                <include reference="oyV-e7-gSo"/>
+                                <include reference="tbv-2a-Nht"/>
+                                <include reference="elw-qW-aTz"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="webVIew" destination="O6W-CN-cbn" id="UAW-0i-OuZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tmt-9v-KT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4675.5" y="-732.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pt2-v5-eFw">
@@ -88,7 +144,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llJ-lV-NUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2778" y="-182.25"/>
+            <point key="canvasLocation" x="-6241.5" y="-759"/>
         </scene>
     </scenes>
 </document>

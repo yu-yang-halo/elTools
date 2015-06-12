@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #define ELSERVICE_URL @"42.121.126.156"
-//42.121.126.156  api.elnet.cn
+#define DEVELOPER_URL @"121.199.40.249"
+//E联易家   42.121.126.156  api.elnet.cn
+//开发平台  121.199.40.249  api2.elnet.cn
 #define ELSERVICE_PORT 8080
 #define KEY_LOGINNAME @"elian_loginname_key"
 #define DEMO_ACCOUNT_NAME @"hyldemo"
@@ -23,14 +25,22 @@
 @class ELAlertAddress;
 @class ELAlertSchedule;
 @class ELUserInfo;
+@class ELClassField;
+@class ELClassObject;
 
-
+typedef NS_ENUM(NSInteger, HYLPLATFORM){
+   HYLPLATFORM_ELHOME,
+   HYLPLATFORM_DEVELOPER
+};
 
 static ElApiService* shareService=nil;
 @interface ElApiService : NSObject{
     
 }
+
 @property(nonatomic,retain) NSString* connect_header;
++(void)setPlatformType:(HYLPLATFORM) platform;
+
 +(ElApiService *) shareElApiService;
 #pragma mark appUserLogin
 -(BOOL)loginByUsername:(NSString *)username andPassword:(NSString *)password;
@@ -106,3 +116,8 @@ static ElApiService* shareService=nil;
 
 @end
 
+@interface ElApiService (ClassData)
+
+-(ELClassObject *)getClassById:(NSInteger)classId;
+
+@end

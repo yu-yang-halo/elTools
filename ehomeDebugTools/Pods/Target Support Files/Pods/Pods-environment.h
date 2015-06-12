@@ -6,6 +6,12 @@
 // project.
 
 
+// FDFullscreenPopGesture
+#define COCOAPODS_POD_AVAILABLE_FDFullscreenPopGesture
+#define COCOAPODS_VERSION_MAJOR_FDFullscreenPopGesture 1
+#define COCOAPODS_VERSION_MINOR_FDFullscreenPopGesture 1
+#define COCOAPODS_VERSION_PATCH_FDFullscreenPopGesture 0
+
 // MBProgressHUD
 #define COCOAPODS_POD_AVAILABLE_MBProgressHUD
 #define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
@@ -23,4 +29,10 @@
 #define COCOAPODS_VERSION_MAJOR_Toast 2
 #define COCOAPODS_VERSION_MINOR_Toast 4
 #define COCOAPODS_VERSION_PATCH_Toast 0
+
+// ZipArchive
+#define COCOAPODS_POD_AVAILABLE_ZipArchive
+#define COCOAPODS_VERSION_MAJOR_ZipArchive 1
+#define COCOAPODS_VERSION_MINOR_ZipArchive 4
+#define COCOAPODS_VERSION_PATCH_ZipArchive 0
 

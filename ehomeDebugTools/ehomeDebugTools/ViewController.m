@@ -12,47 +12,40 @@
 #import "MBProgressHUD.h"
 #import "Reachability.h"
 #import "UIView+Toast.h"
+
 @interface ViewController (){
     MBProgressHUD *hud;
 }
 @end
-
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title=@"E联开发者平台";
+    UIBarButtonItem *backButton=[[UIBarButtonItem alloc] init];
+    [backButton setTitle:@"返回"];
+    self.navigationItem.backBarButtonItem=backButton;
+    
     
     [self loadHtmlContent];
+}
 
-}
-- (void)webViewDidStartLoad:(UIWebView *)webView{
-    hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    //hud.labelText=@"加载中。。。";
-}
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
-    [hud hide:YES];
-    
-    [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
-    [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
-}
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    NSLog(@"%@",error);
-    [hud hide:YES];
-}
 -(void)loadHtmlContent{
-    NSString *htmlPath=[[NSBundle mainBundle] resourcePath];
-    htmlPath=[htmlPath stringByAppendingPathComponent:@"index.html"];
     
     self.webView.delegate=self;
     self.webView.scrollView.scrollEnabled=NO;
     
-    NSString *htmlString=[[NSString alloc] initWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
     
+    NSString *htmlString=[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"index.html" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
     
+    [self.webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
+    //NSString *path=[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"index.html"];
     
-    [self.webView loadHTMLString:htmlString baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
+    //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]]];
+    
+    NSLog(@"bundURL:%@\n ::: %@",[[NSBundle mainBundle] bundleURL],[NSURL URLWithString:[[NSBundle mainBundle] bundlePath]]);
+    
     
     self.webView.dataDetectorTypes=UIDataDetectorTypeNone;
     
@@ -92,7 +85,7 @@
     hud.labelText=@"登录中...";
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         BOOL isOK=[[ElApiService shareElApiService] loginByUsername:name andPassword:[WsqMD5Util getmd5WithString:pass]];
-         dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             [hud hide:YES];
              NSString *message=nil;
             if(isOK){
@@ -101,16 +94,9 @@
                  message=@"登录失败！";
             }
              
-             [self.view makeToast:message];
-             
-//             UIAlertController *alertVc=[UIAlertController alertControllerWithTitle:@"提示" message:message preferredStyle:UIAlertControllerStyleAlert];
-//            
-//             [alertVc addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//                 
-//             }]];
-//             [self presentViewController:alertVc animated:YES completion:^{
-//                 
-//             }];
+            [self.view makeToast:message];
+            
+            [self performSegueWithIdentifier:@"devicePages" sender:self];
         });
     });
 }
@@ -118,5 +104,29 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    UIViewController *send=segue.destinationViewController;
+    
+    if([send respondsToSelector:@selector(setData:)]){
+        [send performSelector:@selector(setData:) withObject:@"news"];
+    }
+}
+
+#pragma mark delegate
+
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //hud.labelText=@"加载中。。。";
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    [hud hide:YES];
+    [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
+    [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    NSLog(@"%@",error);
+    [hud hide:YES];
+}
+
 
 @end

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5D162196B3A798A01678C2C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FBA32A01B45956F39F6449 /* libPods.a */; };
+		846AE2121B2A8A6B004F3106 /* HYLDevicesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846AE2111B2A8A6B004F3106 /* HYLDevicesController.m */; };
+		846AE2171B2AA125004F3106 /* HYLResourceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 846AE2161B2AA125004F3106 /* HYLResourceUtil.m */; };
 		84734BF21AF9F69D0009D3C5 /* css in Resources */ = {isa = PBXBuildFile; fileRef = 84734BEE1AF9F69D0009D3C5 /* css */; };
 		84734BF31AF9F69D0009D3C5 /* img in Resources */ = {isa = PBXBuildFile; fileRef = 84734BEF1AF9F69D0009D3C5 /* img */; };
 		84734BF41AF9F69D0009D3C5 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 84734BF01AF9F69D0009D3C5 /* index.html */; };
@@ -51,6 +53,10 @@
 /* Begin PBXFileReference section */
 		72FBA32A01B45956F39F6449 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEA3C076871EC35663F8CA6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		846AE2101B2A8A6B004F3106 /* HYLDevicesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLDevicesController.h; sourceTree = "<group>"; };
+		846AE2111B2A8A6B004F3106 /* HYLDevicesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLDevicesController.m; sourceTree = "<group>"; };
+		846AE2151B2AA125004F3106 /* HYLResourceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLResourceUtil.h; sourceTree = "<group>"; };
+		846AE2161B2AA125004F3106 /* HYLResourceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLResourceUtil.m; sourceTree = "<group>"; };
 		84734BEE1AF9F69D0009D3C5 /* css */ = {isa = PBXFileReference; lastKnownFileType = folder; path = css; sourceTree = "<group>"; };
 		84734BEF1AF9F69D0009D3C5 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
 		84734BF01AF9F69D0009D3C5 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
@@ -112,6 +118,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		846AE2131B2A9725004F3106 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				84C14B161AF70AA300B11B46 /* ViewController.h */,
+				84C14B171AF70AA300B11B46 /* ViewController.m */,
+				846AE2101B2A8A6B004F3106 /* HYLDevicesController.h */,
+				846AE2111B2A8A6B004F3106 /* HYLDevicesController.m */,
+				84C14B191AF70AA400B11B46 /* Main.storyboard */,
+			);
+			name = viewController;
+			sourceTree = "<group>";
+		};
+		846AE2141B2AA0A4004F3106 /* download */ = {
+			isa = PBXGroup;
+			children = (
+				846AE2151B2AA125004F3106 /* HYLResourceUtil.h */,
+				846AE2161B2AA125004F3106 /* HYLResourceUtil.m */,
+			);
+			name = download;
+			sourceTree = "<group>";
+		};
 		84C01D281AF73C8600FD74A6 /* res */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,12 +176,11 @@
 		84C14B0E1AF70AA300B11B46 /* ehomeDebugTools */ = {
 			isa = PBXGroup;
 			children = (
+				846AE2141B2AA0A4004F3106 /* download */,
+				846AE2131B2A9725004F3106 /* viewController */,
 				84C01D281AF73C8600FD74A6 /* res */,
 				84C14B131AF70AA300B11B46 /* AppDelegate.h */,
 				84C14B141AF70AA300B11B46 /* AppDelegate.m */,
-				84C14B161AF70AA300B11B46 /* ViewController.h */,
-				84C14B171AF70AA300B11B46 /* ViewController.m */,
-				84C14B191AF70AA400B11B46 /* Main.storyboard */,
 				84C14B1C1AF70AA400B11B46 /* Images.xcassets */,
 				84C14B1E1AF70AA400B11B46 /* LaunchScreen.xib */,
 				84C14B0F1AF70AA300B11B46 /* Supporting Files */,
@@ -329,6 +355,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C14B181AF70AA300B11B46 /* ViewController.m in Sources */,
+				846AE2121B2A8A6B004F3106 /* HYLDevicesController.m in Sources */,
+				846AE2171B2AA125004F3106 /* HYLResourceUtil.m in Sources */,
 				84C14B151AF70AA300B11B46 /* AppDelegate.m in Sources */,
 				84C14B121AF70AA300B11B46 /* main.m in Sources */,
 			);

@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Reachability.h"
-
+#import <ELNetworkService/ELNetworkService.h>
 @interface AppDelegate ()
 
 @end
@@ -36,6 +36,11 @@
         
     };
     [reach startNotifier];
+    
+    
+    //ElApiService
+    [ElApiService setPlatformType:HYLPLATFORM_DEVELOPER];
+    
     
     return YES;
 }
