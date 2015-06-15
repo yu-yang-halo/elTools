@@ -22,20 +22,23 @@
      NSLog(@"...viewDidLoad  %@",self.data);
     
     self.webVIew.scrollView.scrollEnabled=YES;
+    NSString *htmlString=[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"devices.html" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
     
-    [HYLResourceUtil downloadWebResource:@"http://download.alipay.com/mobilecsprod/alipay.mobile/20130601021432806/xlarge/10000011.amr"  block:^(BOOL isfinished,id data) {
-        
-        if(isfinished){
-           
-            data=[data stringByAppendingPathComponent:@"www/demo/index-alipay-native.html"];
-             NSLog(@"finished %@",data);
-            [self.webVIew loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:data]]];
-            
-            
-        }
-        
-        
-    }];
+    [self.webVIew loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
+    
+//    [HYLResourceUtil downloadWebResource:@"http://download.alipay.com/mobilecsprod/alipay.mobile/20130601021432806/xlarge/10000011.amr"  block:^(BOOL isfinished,id data) {
+//        
+//        if(isfinished){
+//           
+//            data=[data stringByAppendingPathComponent:@"www/demo/index-alipay-native.html"];
+//             NSLog(@"finished %@",data);
+//            [self.webVIew loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:data]]];
+//            
+//            
+//        }
+//        
+//        
+//    }];
 
     
     

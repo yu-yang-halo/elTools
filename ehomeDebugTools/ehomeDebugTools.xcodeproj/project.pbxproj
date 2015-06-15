@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5D162196B3A798A01678C2C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FBA32A01B45956F39F6449 /* libPods.a */; };
+		8465F9E01B2E993E00DC29CA /* ELNetworkService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C14B3E1AF7318800B11B46 /* ELNetworkService.framework */; };
+		8465F9E11B2E993E00DC29CA /* ELNetworkService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84C14B3E1AF7318800B11B46 /* ELNetworkService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		846AE2121B2A8A6B004F3106 /* HYLDevicesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846AE2111B2A8A6B004F3106 /* HYLDevicesController.m */; };
 		846AE2171B2AA125004F3106 /* HYLResourceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 846AE2161B2AA125004F3106 /* HYLResourceUtil.m */; };
 		84734BF21AF9F69D0009D3C5 /* css in Resources */ = {isa = PBXBuildFile; fileRef = 84734BEE1AF9F69D0009D3C5 /* css */; };
@@ -22,8 +24,6 @@
 		84C14B1D1AF70AA400B11B46 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C14B1C1AF70AA400B11B46 /* Images.xcassets */; };
 		84C14B201AF70AA400B11B46 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C14B1E1AF70AA400B11B46 /* LaunchScreen.xib */; };
 		84C14B2C1AF70AA400B11B46 /* ehomeDebugToolsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C14B2B1AF70AA400B11B46 /* ehomeDebugToolsTests.m */; };
-		84C14B401AF7325400B11B46 /* ELNetworkService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C14B3E1AF7318800B11B46 /* ELNetworkService.framework */; };
-		84C14B411AF7325400B11B46 /* ELNetworkService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84C14B3E1AF7318800B11B46 /* ELNetworkService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,13 +37,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		84C14B391AF70AD100B11B46 /* Embed Frameworks */ = {
+		8465F9E21B2E993F00DC29CA /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				84C14B411AF7325400B11B46 /* ELNetworkService.framework in Embed Frameworks */,
+				8465F9E11B2E993E00DC29CA /* ELNetworkService.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,7 +86,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C01D2E1AF73E2700FD74A6 /* JavaScriptCore.framework in Frameworks */,
-				84C14B401AF7325400B11B46 /* ELNetworkService.framework in Frameworks */,
+				8465F9E01B2E993E00DC29CA /* ELNetworkService.framework in Frameworks */,
 				5D162196B3A798A01678C2C9 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,8 +225,8 @@
 				84C14B081AF70AA300B11B46 /* Sources */,
 				84C14B091AF70AA300B11B46 /* Frameworks */,
 				84C14B0A1AF70AA300B11B46 /* Resources */,
-				84C14B391AF70AD100B11B46 /* Embed Frameworks */,
 				92B44A218EBE5FD83F3B2488 /* Copy Pods Resources */,
+				8465F9E21B2E993F00DC29CA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
