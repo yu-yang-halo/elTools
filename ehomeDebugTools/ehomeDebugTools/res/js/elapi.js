@@ -63,16 +63,16 @@ function hyl_loadDevicesData(devices){
 		for(var i=0;i<devices.length;i++){
 			var obj=devices[i];
 			var trString="";
-			trString+="<tr objId="+obj.objectId+">";
-			trString+="<td><img src='img/device_gas.png'></img></td>";
+			trString+="<tr objid="+obj.objectId+">";
+			trString+="<td class='content'><img class='icon' src='img/device_gas.png'></img></td>";
 			
-			trString+="<td><div class='display'>"+
+			trString+="<td class='content'><div>"+
 			"<label class='name'>"+obj.name+"</label>"+
 			"<img class='onlineImg' src='img/icon_online.png'></img>"+
 			"<label class='onlineText'>在线</label>"+
 			"</div></td>";
 			
-			trString+="<td><input type='button' class='btn'></input></td></tr>";
+			trString+="<td class='command'><input class='switchButton' type='image'  value='0' src='img/bg_switch_off.png'></input></td></tr>";
 			
 			$("#deviceTable").append(trString);
 			

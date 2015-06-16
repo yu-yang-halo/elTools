@@ -10,17 +10,18 @@
 }
 #deviceTable td{
 	font: "微软雅黑";
-	font-size:25px;
+	font-size:20px;
 }
-#deviceTable td img{
+#deviceTable td .icon{
 	width: 50px;
 	height: 50px;
 	vertical-align:middle;
+	
 }
 #deviceTable td div .name{
   position: relative;
   top: -15px;
-  left: 0px;
+  left: -30px;
   float: left;
 }
 #deviceTable td div .onlineImg{
@@ -39,11 +40,18 @@
 	float:left;
 	font-size: 10px;
 }
-#deviceTable  td .btn{
+#deviceTable tr .command{
+	width: 60px;
+}
+#deviceTable tr td .switchButton{
 	height: 50px;
 	width: 50px;
-	background-image: url(../img/bg_switch_on.png);
-	background-repeat:round;
 	float: right;
 	right: 5px;
+
 }
+
+.on{
+	background-color:#DCDCDC;
+}
+
