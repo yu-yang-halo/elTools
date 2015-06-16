@@ -1,4 +1,4 @@
-#deviceTable{
+﻿#deviceTable{
 	width: 100%;
 	height: 100%;
 	border-collapse: collapse;
@@ -16,7 +16,12 @@
 	width: 50px;
 	height: 50px;
 	vertical-align:middle;
-	
+	font-size:25px;
+}
+#deviceTable td img{
+	width: 50px;
+	height: 50px;
+	vertical-align:middle;
 }
 #deviceTable td div .name{
   position: relative;
@@ -55,3 +60,11 @@
 	background-color:#DCDCDC;
 }
 
+#deviceTable  td .btn{
+	height: 50px;
+	width: 50px;
+	background-image: url(../img/bg_switch_on.png);
+	background-repeat:round;
+	float: right;
+	right: 5px;
+}

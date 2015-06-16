@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>F80EC821-6B2F-4067-A33E-471E2EF64CE2</string>
 	<key>IDESourceControlProjectName</key>
-	<string>ehomeDebugTools</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>0AB82E2B25D07F6F48D3E8D751DF30DD7B39BCCC</key>
 		<string>https://github.com/yu-yang-halo/elTools</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ehomeDebugTools/ehomeDebugTools.xcodeproj</string>
+	<string>ehomeDebugTools/ehomeDebugTools.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>0AB82E2B25D07F6F48D3E8D751DF30DD7B39BCCC</key>
