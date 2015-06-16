@@ -1,40 +1,23 @@
-//(function(doc,win){
-// 
-// var docEl=doc.documentElement,
-// resizeEvt='orientationchange' in window ? 'orientationchange':'resize',
-// 
-// recalc=function(){
-//     var clientWidth=docEl.clientWidth;
-//     if(!clientWidth) return;
-// 
-//     docEl.style.fontSize=100*(clientWidth/320)+'px';
-// 
-// };
-// 
-// if(!doc.addEventListener) return;
-// 
-// win.addEventListener(resizeEvt,recalc,false);
-// doc.addEventListener('DOMContentLoaded',recalc,false);
-// 
-// 
-// })(document,window);
+//  说明：
+//  mobile_  前缀代表移动端调用标识
+//  hyl_     前缀代表前端的js函数
+
 
 //登录模块
-function login(username,password){
-    objc_login(username,password);
+function hyl_login(username,password){
+    mobile_login(username,password);
 }
-function loginIsOk(isOK){
-    if(isOK){
-        alert('SUCCESS');
-    }else{
-        alert('FAIL');
-    }
+function hyl_setUsernamePassToView(username,password){
+    $(".username").val(username);
+    $(".password").val(password);
 }
+
 //设备列表模块
 function hyl_requestDevicesCmd(){
-	objc_requestDevices();
+	mobile_requestDevices();
 }
 function hyl_loadDevicesData(devices){
+   // alert(devices);
 	/*格式【｛objectId ｝，｛｝，｛｝  】
 	
 	[
@@ -59,12 +42,15 @@ function hyl_loadDevicesData(devices){
 	
 	
 	*/
+    
 	if(devices!=undefined&&devices.length>0){
 		for(var i=0;i<devices.length;i++){
 			var obj=devices[i];
 			var trString="";
 			trString+="<tr objid="+obj.objectId+">";
-			trString+="<td class='content'><img class='icon' src='img/device_gas.png'></img></td>";
+			trString+="<td class='content'><img class='icon' src='";
+            trString+="img/"+obj.classId+".png'></img></td>";
+            
 			
 			trString+="<td class='content'><div>"+
 			"<label class='name'>"+obj.name+"</label>"+

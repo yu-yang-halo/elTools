@@ -21,7 +21,7 @@
                     <input class="password" type="password"></input>
                 </div>
                 <div>
-                    <button class="button orange"  onclick="login($('.username').val(),$('.password').val())">登录</button>
+                    <button class="button orange"  onclick="hyl_login($('.username').val(),$('.password').val())">登录</button>
                 </div>
                 
             </center>
@@ -29,5 +29,10 @@
         </div>
         
 	</body>
+    <script type="text/javascript">
+        $(document).ready(function(){
+           mobile_loadDefaultUsernamePass();
+        })
+    </script>
 	
 </html>

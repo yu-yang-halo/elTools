@@ -95,7 +95,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="FhQ-nm-2LV" secondAttribute="top" id="OWF-2p-8Qa"/>
-                            <constraint firstItem="cTX-7D-2Mx" firstAttribute="top" secondItem="O6W-CN-cbn" secondAttribute="bottom" constant="5" id="elw-qW-aTz"/>
+                            <constraint firstItem="cTX-7D-2Mx" firstAttribute="top" secondItem="O6W-CN-cbn" secondAttribute="bottom" constant="5" id="elw-qW-aTz">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="O6W-CN-cbn" secondAttribute="trailing" id="oyV-e7-gSo"/>
                             <constraint firstItem="O6W-CN-cbn" firstAttribute="leading" secondItem="FhQ-nm-2LV" secondAttribute="leading" id="tbv-2a-Nht"/>
                         </constraints>
@@ -104,10 +106,10 @@
                                 <exclude reference="O6W-CN-cbn"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="elw-qW-aTz"/>
                                 <exclude reference="OWF-2p-8Qa"/>
                                 <exclude reference="oyV-e7-gSo"/>
                                 <exclude reference="tbv-2a-Nht"/>
-                                <exclude reference="elw-qW-aTz"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -115,10 +117,10 @@
                                 <include reference="O6W-CN-cbn"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="elw-qW-aTz"/>
                                 <include reference="OWF-2p-8Qa"/>
                                 <include reference="oyV-e7-gSo"/>
                                 <include reference="tbv-2a-Nht"/>
-                                <include reference="elw-qW-aTz"/>
                             </mask>
                         </variation>
                     </view>

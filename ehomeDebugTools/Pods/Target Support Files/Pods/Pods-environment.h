@@ -12,6 +12,13 @@
 #define COCOAPODS_VERSION_MINOR_FDFullscreenPopGesture 1
 #define COCOAPODS_VERSION_PATCH_FDFullscreenPopGesture 0
 
+// JSONKit
+#define COCOAPODS_POD_AVAILABLE_JSONKit
+// This library does not follow semantic-versioning,
+// so we were not able to define version macros.
+// Please contact the author.
+// Version: 1.5pre.
+
 // MBProgressHUD
 #define COCOAPODS_POD_AVAILABLE_MBProgressHUD
 #define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0

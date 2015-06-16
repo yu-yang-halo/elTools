@@ -17,11 +17,12 @@
 		
 	</body>
 	<script type="text/javascript">
-		hyl_loadDevicesData([{objectId:110,name:'E联设备'},{objectId:112,name:'E联设备'},
-		{objectId:113,name:'E联设备'},{objectId:110,name:'E联设备'},{objectId:110,name:'E联设备'},{objectId:110,name:'E联设备'},{objectId:110,name:'E联设备'},{objectId:110,name:'E联设备'}]);
+      $(document).ready(function(){
+           hyl_requestDevicesCmd();
+      })
   
        $(".switchButton").click(function(){
-         	//alert('On/Off');
+         	alert('On/Off');
   
          	if($(this).attr("value")==0){
          		$(this).attr("src",'img/bg_switch_on.png');
@@ -36,7 +37,7 @@
         $(".content").click(function(){
         	
         	$(this).parent().addClass("on").siblings("tr").removeClass("on");
-         	alert($(this).parent().attr('objid'));
+         	//alert($(this).parent().attr('objid'));
          	
         });
        

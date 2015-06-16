@@ -10,7 +10,7 @@
 }
 #deviceTable td{
 	font: "微软雅黑";
-	font-size:20px;
+	font-size:18px;
 }
 #deviceTable td .icon{
 	width: 50px;
@@ -23,16 +23,22 @@
 	height: 50px;
 	vertical-align:middle;
 }
+#deviceTable td div{
+    height:100%;
+    width:100%;
+}
+
 #deviceTable td div .name{
+  width:100%;
   position: relative;
-  top: -15px;
-  left: -30px;
+  top: 0px;
+  left: 0px;
   float: left;
 }
 #deviceTable td div .onlineImg{
 	position:relative;
-	top: 25px;
-	left: -100px;
+	top:16px;
+	left:0px;
 	float:left;
 	width: 15px;
 	height: 15px;
@@ -40,8 +46,8 @@
 }
 #deviceTable td div .onlineText{
 	position:relative;
-	top: 28px;
-	left: -100px;
+	top: 18px;
+	left: 0px;
 	float:left;
 	font-size: 10px;
 }

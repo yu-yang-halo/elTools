@@ -17,6 +17,9 @@
     MBProgressHUD *hud;
 }
 @end
+static NSString *kloginUserName=@"keyLoginUserName";
+static NSString *kloginPassword=@"keyLoginPassword";
+
 @implementation ViewController
 
 - (void)viewDidLoad {
@@ -50,7 +53,20 @@
     self.webView.dataDetectorTypes=UIDataDetectorTypeNone;
     
     JSContext *context=[self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    context[@"objc_login"]=^(){
+    context[@"mobile_loadDefaultUsernamePass"]=^(){
+    
+       NSString *username=[[NSUserDefaults standardUserDefaults] objectForKey:kloginUserName];
+        
+       NSString *password=[[NSUserDefaults standardUserDefaults] objectForKey:kloginPassword];
+        
+       if(username!=nil&&password!=nil){
+           [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_setUsernamePassToView('%@','%@')",username,password]];
+        }
+       
+        
+    };
+    
+    context[@"mobile_login"]=^(){
         NSLog(@"objc_login....");
         
         NSArray *args=[JSContext currentArguments];
@@ -90,13 +106,18 @@
              NSString *message=nil;
             if(isOK){
                  message=@"登录成功！";
+                
+                [[NSUserDefaults standardUserDefaults] setObject:name forKey:kloginUserName];
+                [[NSUserDefaults standardUserDefaults] setObject:pass forKey:kloginPassword];
+                
+                 [self performSegueWithIdentifier:@"devicePages" sender:self];
             }else{
-                 message=@"登录失败！";
+                 message=@"用户名或密码错误！";
+                 [self.view makeToast:message];
             }
-             
-            [self.view makeToast:message];
             
-            [self performSegueWithIdentifier:@"devicePages" sender:self];
+            
+           
         });
     });
 }
@@ -122,6 +143,8 @@
     [hud hide:YES];
     [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
     [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
+    
+    
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     NSLog(@"%@",error);

@@ -16,6 +16,7 @@
 		84734BF31AF9F69D0009D3C5 /* img in Resources */ = {isa = PBXBuildFile; fileRef = 84734BEF1AF9F69D0009D3C5 /* img */; };
 		84734BF41AF9F69D0009D3C5 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 84734BF01AF9F69D0009D3C5 /* index.html */; };
 		84734BF51AF9F69D0009D3C5 /* js in Resources */ = {isa = PBXBuildFile; fileRef = 84734BF11AF9F69D0009D3C5 /* js */; };
+		84B3F9B31B2FBBBC00486D21 /* devices.html in Resources */ = {isa = PBXBuildFile; fileRef = 84B3F9B21B2FBBBC00486D21 /* devices.html */; };
 		84C01D2E1AF73E2700FD74A6 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C01D2D1AF73E2700FD74A6 /* JavaScriptCore.framework */; };
 		84C14B121AF70AA300B11B46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C14B111AF70AA300B11B46 /* main.m */; };
 		84C14B151AF70AA300B11B46 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C14B141AF70AA300B11B46 /* AppDelegate.m */; };
@@ -61,6 +62,7 @@
 		84734BEF1AF9F69D0009D3C5 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
 		84734BF01AF9F69D0009D3C5 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		84734BF11AF9F69D0009D3C5 /* js */ = {isa = PBXFileReference; lastKnownFileType = folder; path = js; sourceTree = "<group>"; };
+		84B3F9B21B2FBBBC00486D21 /* devices.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = devices.html; sourceTree = "<group>"; };
 		84BD656F1B1C1EDF00F3CC67 /* EhomeDebugPrefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EhomeDebugPrefix.pch; sourceTree = "<group>"; };
 		84C01D2D1AF73E2700FD74A6 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		84C14B0C1AF70AA300B11B46 /* ehomeDebugTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ehomeDebugTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +147,7 @@
 				84734BEE1AF9F69D0009D3C5 /* css */,
 				84734BEF1AF9F69D0009D3C5 /* img */,
 				84734BF01AF9F69D0009D3C5 /* index.html */,
+				84B3F9B21B2FBBBC00486D21 /* devices.html */,
 				84734BF11AF9F69D0009D3C5 /* js */,
 			);
 			path = res;
@@ -299,6 +302,7 @@
 			files = (
 				84734BF31AF9F69D0009D3C5 /* img in Resources */,
 				84734BF21AF9F69D0009D3C5 /* css in Resources */,
+				84B3F9B31B2FBBBC00486D21 /* devices.html in Resources */,
 				84C14B1B1AF70AA400B11B46 /* Main.storyboard in Resources */,
 				84734BF51AF9F69D0009D3C5 /* js in Resources */,
 				84734BF41AF9F69D0009D3C5 /* index.html in Resources */,

@@ -8,6 +8,10 @@
 
 #import "HYLDevicesController.h"
 #import "HYLResourceUtil.h"
+#import <JavaScriptCore/JavaScriptCore.h>
+#import <ELNetworkService/ELNetworkService.h>
+#import <objc/runtime.h>
+#import <JSONKit/JSONKit.h>
 @interface HYLDevicesController ()
 @property (strong, nonatomic) IBOutlet UIWebView *webVIew;
 
@@ -25,20 +29,46 @@
     NSString *htmlString=[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"devices.html" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
     
     [self.webVIew loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
+    JSContext *context=[self.webVIew valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     
-//    [HYLResourceUtil downloadWebResource:@"http://download.alipay.com/mobilecsprod/alipay.mobile/20130601021432806/xlarge/10000011.amr"  block:^(BOOL isfinished,id data) {
-//        
-//        if(isfinished){
-//           
-//            data=[data stringByAppendingPathComponent:@"www/demo/index-alipay-native.html"];
-//             NSLog(@"finished %@",data);
-//            [self.webVIew loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:data]]];
-//            
-//            
-//        }
-//        
-//        
-//    }];
+    context[@"mobile_requestDevices"]=^(){
+      
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+           
+           NSDictionary *deviceDic=[[ElApiService shareElApiService] getObjectListAndFieldsByUser];
+            
+            NSMutableArray *allDeviceObj=[NSMutableArray new];
+          
+           [deviceDic enumerateKeysAndObjectsUsingBlock:^(id key, ELDeviceObject* obj, BOOL *stop) {
+               NSMutableDictionary *objectMap=[NSMutableDictionary new];
+               unsigned int outCount ,i;
+               objc_property_t *props= class_copyPropertyList([obj class],&outCount);
+               for (i=0; i<outCount; i++) {
+                   
+                   objc_property_t prop=*(props+i);
+                   NSString *propertyName=[[NSString alloc] initWithCString:property_getName(prop) encoding:NSUTF8StringEncoding];
+                   id propertyValue=[obj valueForKey:propertyName];
+                   
+                   [objectMap setValue:propertyValue forKey:propertyName];
+                   
+               }
+               
+               free(props);
+               
+               [allDeviceObj addObject:objectMap];
+               
+           }];
+            
+            NSLog(@"%@",[allDeviceObj JSONString]);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.webVIew stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_loadDevicesData(%@)",[allDeviceObj JSONString]]];
+            });
+        });
+        
+        
+    };
+    
+    
 
     
     
