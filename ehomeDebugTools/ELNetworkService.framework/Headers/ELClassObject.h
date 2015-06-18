@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ELClassObject : NSObject
+@interface ELClassObject : NSObject<NSCoding>
 
 @property(nonatomic,assign) NSInteger  classId;
 @property(nonatomic,retain) NSString  *clsName;

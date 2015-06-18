@@ -110,7 +110,7 @@ static NSString *kloginPassword=@"keyLoginPassword";
                 [[NSUserDefaults standardUserDefaults] setObject:name forKey:kloginUserName];
                 [[NSUserDefaults standardUserDefaults] setObject:pass forKey:kloginPassword];
                 
-                 [self performSegueWithIdentifier:@"devicePages" sender:self];
+                 [self performSegueWithIdentifier:@"deviceList" sender:self];
             }else{
                  message=@"用户名或密码错误！";
                  [self.view makeToast:message];

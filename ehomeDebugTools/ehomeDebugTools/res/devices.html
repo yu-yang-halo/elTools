@@ -21,31 +21,5 @@
            hyl_requestDevicesCmd();
       })
   
-       $(".switchButton").click(function(){
-         	alert('On/Off');
-  
-         	if($(this).attr("value")==0){
-         		$(this).attr("src",'img/bg_switch_on.png');
-         		$(this).attr("value",1);
-         	}else{
-         		$(this).attr("src",'img/bg_switch_off.png');
-         		$(this).attr("value",0);
-         	}
-         	
-         	
-        });
-        $(".content").click(function(){
-        	
-        	$(this).parent().addClass("on").siblings("tr").removeClass("on");
-         	//alert($(this).parent().attr('objid'));
-         	
-        });
-       
-       $("#deviceTable tr").click(function(){
-         
-         //$(this).addClass("on").siblings("tr").removeClass("on");
-         
-         
-       });
-	</script>
+    </script>
 </html>

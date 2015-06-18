@@ -68,12 +68,12 @@
                     <navigationItem key="navigationItem" id="445-YP-KfQ"/>
                     <connections>
                         <outlet property="webView" destination="Y4G-89-KyA" id="mDK-Z2-wHc"/>
-                        <segue destination="E5Q-eo-W7E" kind="show" identifier="devicePages" id="DcA-sR-XPg"/>
+                        <segue destination="E5Q-eo-W7E" kind="show" identifier="deviceList" id="DcA-sR-XPg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5404.5" y="-759"/>
+            <point key="canvasLocation" x="-5731.5" y="-1241.25"/>
         </scene>
         <!--Devices Controller-->
         <scene sceneID="EqD-X6-Siw">
@@ -126,11 +126,66 @@
                     </view>
                     <connections>
                         <outlet property="webVIew" destination="O6W-CN-cbn" id="UAW-0i-OuZ"/>
+                        <segue destination="z5b-C4-ReM" kind="show" identifier="deviceDetail" id="ydx-D0-VaQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmt-9v-KT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4675.5" y="-732.75"/>
+            <point key="canvasLocation" x="-4843.5" y="-979.5"/>
+        </scene>
+        <!--Device Detail Controller-->
+        <scene sceneID="Ns4-pa-sch">
+            <objects>
+                <viewController id="z5b-C4-ReM" customClass="HYLDeviceDetailController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uNE-UC-ltR"/>
+                        <viewControllerLayoutGuide type="bottom" id="J9t-aY-bHb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7DX-Ay-Jjg">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kei-tz-fs6">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="J9t-aY-bHb" firstAttribute="top" secondItem="Kei-tz-fs6" secondAttribute="bottom" id="B8J-ot-kYk"/>
+                            <constraint firstAttribute="trailing" secondItem="Kei-tz-fs6" secondAttribute="trailing" id="CEa-wH-WiX"/>
+                            <constraint firstItem="Kei-tz-fs6" firstAttribute="leading" secondItem="7DX-Ay-Jjg" secondAttribute="leading" id="OLc-zk-Ih1"/>
+                            <constraint firstItem="Kei-tz-fs6" firstAttribute="top" secondItem="7DX-Ay-Jjg" secondAttribute="topMargin" id="bqF-Is-i9N"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Kei-tz-fs6"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="CEa-wH-WiX"/>
+                                <exclude reference="OLc-zk-Ih1"/>
+                                <exclude reference="bqF-Is-i9N"/>
+                                <exclude reference="B8J-ot-kYk"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Kei-tz-fs6"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="CEa-wH-WiX"/>
+                                <include reference="OLc-zk-Ih1"/>
+                                <include reference="bqF-Is-i9N"/>
+                                <include reference="B8J-ot-kYk"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="Kei-tz-fs6" id="aAs-8X-wzF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ao-IA-xVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3747" y="-984"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pt2-v5-eFw">
@@ -146,7 +201,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llJ-lV-NUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6241.5" y="-759"/>
+            <point key="canvasLocation" x="-6601.5" y="-732"/>
         </scene>
     </scenes>
 </document>

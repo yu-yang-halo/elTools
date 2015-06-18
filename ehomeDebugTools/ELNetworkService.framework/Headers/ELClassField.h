@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ELClassField : NSObject
+@interface ELClassField : NSObject<NSCoding>
 
 @property(nonatomic,assign) NSInteger  fieldId;
 @property(nonatomic,retain) NSString  *fieldName;

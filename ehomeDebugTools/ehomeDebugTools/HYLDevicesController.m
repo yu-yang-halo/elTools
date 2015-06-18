@@ -8,12 +8,15 @@
 
 #import "HYLDevicesController.h"
 #import "HYLResourceUtil.h"
+#import "HYLDeviceDetailController.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import <ELNetworkService/ELNetworkService.h>
+#import "HYLClassUtils.h"
 #import <objc/runtime.h>
 #import <JSONKit/JSONKit.h>
 @interface HYLDevicesController ()
 @property (strong, nonatomic) IBOutlet UIWebView *webVIew;
+@property (nonatomic,retain) NSDictionary *deviceDic;
 
 @end
 
@@ -31,37 +34,79 @@
     [self.webVIew loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
     JSContext *context=[self.webVIew valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     
+    context[@"mobile_toDetailPage"]=^(){
+        NSArray *args=[JSContext currentArguments];
+        
+        NSLog(@"%@",[args[0] toString]);
+        
+        id device=[_deviceDic valueForKey:[args[0] toString]];
+        
+        
+        [self performSegueWithIdentifier:@"deviceDetail" sender:device];
+        
+    };
+    context[@"mobile_setFieldCmd"]=^(){
+        NSArray *args=[JSContext currentArguments];
+        for (JSValue *jsVal in args) {
+            NSLog(@"argument : %@",jsVal.toString);
+        }
+        JSValue *thiz=[JSContext currentThis];
+        
+        NSLog(@"end....%@",thiz);
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+           
+            [[ElApiService shareElApiService] setFieldValue:[args[0] toString] forFieldId:[args[1] toInt32] toDevice:[args[2] toInt32] withYN:YES];
+            
+            
+        });
+        
+    };
+    
     context[@"mobile_requestDevices"]=^(){
       
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
            
-           NSDictionary *deviceDic=[[ElApiService shareElApiService] getObjectListAndFieldsByUser];
+           self.deviceDic=[[ElApiService shareElApiService] getObjectListAndFieldsByUser];
+           //搜集对象object json数据
+           NSMutableArray *allDeviceObj=[NSMutableArray new];
+           //搜集类型class json数据  {classId：[fields{}] }
+           NSMutableDictionary *allClassObjs=[NSMutableDictionary new];
             
-            NSMutableArray *allDeviceObj=[NSMutableArray new];
-          
-           [deviceDic enumerateKeysAndObjectsUsingBlock:^(id key, ELDeviceObject* obj, BOOL *stop) {
-               NSMutableDictionary *objectMap=[NSMutableDictionary new];
-               unsigned int outCount ,i;
-               objc_property_t *props= class_copyPropertyList([obj class],&outCount);
-               for (i=0; i<outCount; i++) {
+           [self.deviceDic enumerateKeysAndObjectsUsingBlock:^(id key, ELDeviceObject* obj, BOOL *stop) {
+               
+               ELClassObject *classObj=[HYLClassUtils classObjectFromCache:obj.classId];
+               
+               
+               
+               NSMutableDictionary *objectMap=[HYLClassUtils canConvertJSONDataFromObjectInstance:obj];
+               
+               
+               
+               NSMutableArray *fields=[NSMutableArray new];
+               
+               for (ELClassField *classField in classObj.classFields){
+//                   [objectMap setValue:[HYLClassUtils canConvertJSONDataFromObjectInstance:classField] forKey:[NSString stringWithFormat:@"%d",classField.fieldId]];
+//                   
+                   [fields addObject:[HYLClassUtils canConvertJSONDataFromObjectInstance:classField]];
                    
-                   objc_property_t prop=*(props+i);
-                   NSString *propertyName=[[NSString alloc] initWithCString:property_getName(prop) encoding:NSUTF8StringEncoding];
-                   id propertyValue=[obj valueForKey:propertyName];
-                   
-                   [objectMap setValue:propertyValue forKey:propertyName];
                    
                }
-               
-               free(props);
+              
+               [allClassObjs setValue:fields forKey:[NSString stringWithFormat:@"%d",obj.classId]];
+              
+                //NSLog(@"allClassObjs json %@",[allClassObjs JSONString]);
+              
                
                [allDeviceObj addObject:objectMap];
                
            }];
             
-            NSLog(@"%@",[allDeviceObj JSONString]);
+           NSLog(@"%@",[allDeviceObj JSONString]);
+           NSLog(@"=====================");
+             NSLog(@"%@",[allClassObjs JSONString]);
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.webVIew stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_loadDevicesData(%@)",[allDeviceObj JSONString]]];
+                [self.webVIew stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_loadDevicesData(%@,%@)",[allDeviceObj JSONString],[allClassObjs JSONString]]];
             });
         });
         
@@ -84,9 +129,14 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    NSLog(@"...%@",sender);
+    UIViewController *desVC=[segue destinationViewController];
+    
+    if([desVC isKindOfClass:[HYLDeviceDetailController class]]){
+         NSLog(@"data: %@ ,viewController %@",sender,desVC);
+        
+        [(HYLDeviceDetailController *)desVC setDevice:sender];
+    }
+   
 }
 
 
