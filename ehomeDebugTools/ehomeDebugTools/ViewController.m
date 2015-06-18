@@ -22,15 +22,17 @@ static NSString *kloginPassword=@"keyLoginPassword";
 
 @implementation ViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title=@"E联开发者平台";
     UIBarButtonItem *backButton=[[UIBarButtonItem alloc] init];
     [backButton setTitle:@"返回"];
-    self.navigationItem.backBarButtonItem=backButton;
-    
-    
+    self.navigationItem.backBarButtonItem=backButton;    
     [self loadHtmlContent];
 }
 

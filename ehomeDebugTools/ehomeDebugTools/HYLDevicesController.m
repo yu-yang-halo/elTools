@@ -21,14 +21,23 @@
 @end
 
 @implementation HYLDevicesController
+-(void)viewDidAppear:(BOOL)animated{
+    NSLog(@"===================");
+    NSLog(@"%@",self.webVIew.contentMode);
+    NSLog(@"===================");
+    // <UIWebView: 0x13fd289d0; frame = (0 0; 240 128); autoresize = RM+BM; layer = <CALayer: 0x174227460>>
+    //<UIWebView: 0x13fd289d0; frame = (0 0; 320 480); autoresize = RM+BM; layer = <CALayer: 0x174227460>>
 
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"设备列表";
-    // Do any additional setup after loading the view.
-     NSLog(@"...viewDidLoad  %@",self.data);
+
+    [self.webVIew.scrollView setShowsHorizontalScrollIndicator:NO];
+    [self.webVIew.scrollView setShowsVerticalScrollIndicator:NO];
     
-    self.webVIew.scrollView.scrollEnabled=YES;
+    self.webVIew.delegate=self;
+    
     NSString *htmlString=[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"devices.html" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
     
     [self.webVIew loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
@@ -137,6 +146,20 @@
         [(HYLDeviceDetailController *)desVC setDevice:sender];
     }
    
+}
+#pragma mark delegate
+
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+   
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    [self.webVIew stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
+    [self.webVIew stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
+    
+    
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    NSLog(@"%@",error);
 }
 
 

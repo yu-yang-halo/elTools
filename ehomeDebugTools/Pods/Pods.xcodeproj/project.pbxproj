@@ -866,6 +866,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3CBF190BE745055F85EAA028 /* Pods-JSONKit-Private.xcconfig */;
 			buildSettings = {
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-JSONKit/Pods-JSONKit-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -937,6 +938,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3CBF190BE745055F85EAA028 /* Pods-JSONKit-Private.xcconfig */;
 			buildSettings = {
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/Pods-JSONKit/Pods-JSONKit-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

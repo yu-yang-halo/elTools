@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -20,50 +19,17 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y4G-89-KyA">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="20" width="400" height="580"/>
-                                </variation>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Y4G-89-KyA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="RCI-uG-m9C"/>
-                            <constraint firstItem="Y4G-89-KyA" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="h20-82-gVj"/>
-                            <constraint firstItem="Y4G-89-KyA" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="hs0-7L-TVo"/>
-                            <constraint firstAttribute="trailing" secondItem="Y4G-89-KyA" secondAttribute="trailing" id="ony-IW-iKG"/>
-                            <constraint firstItem="Y4G-89-KyA" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="qHF-OZ-EYa"/>
-                            <constraint firstItem="Y4G-89-KyA" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="5" id="qva-in-Fcf"/>
+                            <constraint firstItem="Y4G-89-KyA" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="Dz2-EE-0tV"/>
+                            <constraint firstAttribute="trailing" secondItem="Y4G-89-KyA" secondAttribute="trailing" id="kst-uW-HcM"/>
+                            <constraint firstItem="Y4G-89-KyA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="yxx-Gt-GXo"/>
+                            <constraint firstItem="Y4G-89-KyA" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="zGH-3Z-DyW"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Y4G-89-KyA"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="RCI-uG-m9C"/>
-                                <exclude reference="h20-82-gVj"/>
-                                <exclude reference="hs0-7L-TVo"/>
-                                <exclude reference="ony-IW-iKG"/>
-                                <exclude reference="qHF-OZ-EYa"/>
-                                <exclude reference="qva-in-Fcf"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="Y4G-89-KyA"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="constraints">
-                                <include reference="RCI-uG-m9C"/>
-                                <exclude reference="h20-82-gVj"/>
-                                <include reference="hs0-7L-TVo"/>
-                                <include reference="ony-IW-iKG"/>
-                                <exclude reference="qHF-OZ-EYa"/>
-                                <include reference="qva-in-Fcf"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="445-YP-KfQ"/>
                     <connections>
@@ -73,7 +39,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5731.5" y="-1241.25"/>
+            <point key="canvasLocation" x="-8236.5" y="-1818.7499999999998"/>
         </scene>
         <!--Devices Controller-->
         <scene sceneID="EqD-X6-Siw">
@@ -88,42 +54,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6W-CN-cbn">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="Smf-HV-dnS"/>
+                                </constraints>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="Smf-HV-dnS"/>
+                                    </mask>
+                                </variation>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="FhQ-nm-2LV" secondAttribute="top" id="OWF-2p-8Qa"/>
-                            <constraint firstItem="cTX-7D-2Mx" firstAttribute="top" secondItem="O6W-CN-cbn" secondAttribute="bottom" constant="5" id="elw-qW-aTz">
-                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
-                            </constraint>
-                            <constraint firstAttribute="trailing" secondItem="O6W-CN-cbn" secondAttribute="trailing" id="oyV-e7-gSo"/>
-                            <constraint firstItem="O6W-CN-cbn" firstAttribute="leading" secondItem="FhQ-nm-2LV" secondAttribute="leading" id="tbv-2a-Nht"/>
+                            <constraint firstAttribute="trailing" secondItem="O6W-CN-cbn" secondAttribute="trailing" id="9IZ-jg-Do2"/>
+                            <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="OJ4-00-Ffn" secondAttribute="bottom" constant="-64" id="cOQ-VP-Wph"/>
+                            <constraint firstItem="O6W-CN-cbn" firstAttribute="leading" secondItem="FhQ-nm-2LV" secondAttribute="leadingMargin" constant="-16" id="lIh-8D-2hc"/>
+                            <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="FhQ-nm-2LV" secondAttribute="topMargin" id="mxq-hr-s59"/>
+                            <constraint firstAttribute="width" secondItem="O6W-CN-cbn" secondAttribute="width" id="vhu-lk-eqY"/>
+                            <constraint firstItem="cTX-7D-2Mx" firstAttribute="top" secondItem="O6W-CN-cbn" secondAttribute="bottom" id="wBO-8E-NHw"/>
+                            <constraint firstAttribute="height" secondItem="O6W-CN-cbn" secondAttribute="height" id="xhd-hV-JVZ"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="O6W-CN-cbn"/>
-                            </mask>
                             <mask key="constraints">
-                                <exclude reference="elw-qW-aTz"/>
-                                <exclude reference="OWF-2p-8Qa"/>
-                                <exclude reference="oyV-e7-gSo"/>
-                                <exclude reference="tbv-2a-Nht"/>
+                                <exclude reference="9IZ-jg-Do2"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="O6W-CN-cbn"/>
-                            </mask>
                             <mask key="constraints">
-                                <include reference="elw-qW-aTz"/>
-                                <include reference="OWF-2p-8Qa"/>
-                                <include reference="oyV-e7-gSo"/>
-                                <include reference="tbv-2a-Nht"/>
+                                <include reference="9IZ-jg-Do2"/>
+                                <exclude reference="vhu-lk-eqY"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="2SP-8M-19g"/>
                     <connections>
                         <outlet property="webVIew" destination="O6W-CN-cbn" id="UAW-0i-OuZ"/>
                         <segue destination="z5b-C4-ReM" kind="show" identifier="deviceDetail" id="ydx-D0-VaQ"/>
@@ -131,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmt-9v-KT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4843.5" y="-979.5"/>
+            <point key="canvasLocation" x="-8130" y="-1963.5"/>
         </scene>
         <!--Device Detail Controller-->
         <scene sceneID="Ns4-pa-sch">
@@ -142,50 +107,30 @@
                         <viewControllerLayoutGuide type="bottom" id="J9t-aY-bHb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7DX-Ay-Jjg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kei-tz-fs6">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="J9t-aY-bHb" firstAttribute="top" secondItem="Kei-tz-fs6" secondAttribute="bottom" id="B8J-ot-kYk"/>
-                            <constraint firstAttribute="trailing" secondItem="Kei-tz-fs6" secondAttribute="trailing" id="CEa-wH-WiX"/>
-                            <constraint firstItem="Kei-tz-fs6" firstAttribute="leading" secondItem="7DX-Ay-Jjg" secondAttribute="leading" id="OLc-zk-Ih1"/>
-                            <constraint firstItem="Kei-tz-fs6" firstAttribute="top" secondItem="7DX-Ay-Jjg" secondAttribute="topMargin" id="bqF-Is-i9N"/>
+                            <constraint firstItem="Kei-tz-fs6" firstAttribute="bottom" secondItem="J9t-aY-bHb" secondAttribute="top" id="1m5-qy-reN"/>
+                            <constraint firstItem="Kei-tz-fs6" firstAttribute="leading" secondItem="7DX-Ay-Jjg" secondAttribute="leading" id="Js0-px-N06"/>
+                            <constraint firstItem="Kei-tz-fs6" firstAttribute="top" secondItem="7DX-Ay-Jjg" secondAttribute="top" id="O7r-9d-YGt"/>
+                            <constraint firstAttribute="trailing" secondItem="Kei-tz-fs6" secondAttribute="trailing" id="pBU-Y3-e4Z"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Kei-tz-fs6"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="CEa-wH-WiX"/>
-                                <exclude reference="OLc-zk-Ih1"/>
-                                <exclude reference="bqF-Is-i9N"/>
-                                <exclude reference="B8J-ot-kYk"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="Kei-tz-fs6"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="CEa-wH-WiX"/>
-                                <include reference="OLc-zk-Ih1"/>
-                                <include reference="bqF-Is-i9N"/>
-                                <include reference="B8J-ot-kYk"/>
-                            </mask>
-                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="BFD-oD-rvG"/>
                     <connections>
                         <outlet property="webView" destination="Kei-tz-fs6" id="aAs-8X-wzF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ao-IA-xVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3747" y="-984"/>
+            <point key="canvasLocation" x="-6634.5" y="-1818.7499999999998"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pt2-v5-eFw">
@@ -196,12 +141,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="HPx-QL-GOx"/>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="Spe-U9-i9b"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llJ-lV-NUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6601.5" y="-732"/>
+            <point key="canvasLocation" x="-9007.5" y="-1818.7499999999998"/>
         </scene>
     </scenes>
 </document>

@@ -107,8 +107,7 @@ typedef void (^_FDViewControllerWillAppearInjectBlock)(UIViewController *viewCon
     Method originalMethod = class_getInstanceMethod(self, @selector(pushViewController:animated:));
     Method swizzledMethod = class_getInstanceMethod(self, @selector(fd_pushViewController:animated:));
     method_exchangeImplementations(originalMethod, swizzledMethod);
-}
-
+} 
 - (void)fd_pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     if (![self.interactivePopGestureRecognizer.view.gestureRecognizers containsObject:self.fd_fullscreenPopGestureRecognizer]) {
