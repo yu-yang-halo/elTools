@@ -8,7 +8,11 @@
 
 #import "HYLDeviceDetailController.h"
 #import <ELNetworkService/ELNetworkService.h>
+#import <JavaScriptCore/JavaScriptCore.h>
+#import <JSONKit/JSONKit.h>
+#import "HYLClassUtils.h"
 @interface HYLDeviceDetailController ()
+
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 
 @end
@@ -20,11 +24,34 @@
     
     self.title=self.device.name;
     
+    [self.webView.scrollView setShowsHorizontalScrollIndicator:NO];
+    [self.webView.scrollView setShowsVerticalScrollIndicator:NO];
+    
+    NSString *htmlString=[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"device.html" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
+    
+    [self.webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
+    JSContext *context=[self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    
+    context[@"mobile_requestDeviceInfo"]=^(){
+      
+        NSDictionary *deviceMap=[HYLClassUtils canConvertJSONDataFromObjectInstance:_device];
+        NSLog(@"==========================");
+        NSLog(@"%@",[deviceMap JSONString]);
+         NSLog(@"==========================");
+        NSLog(@"%@",[HYLClassUtils classListData]);
+        NSLog(@"==========================");
+        
+        [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"loadDeviceInfoToHtml(%@,%@)",[deviceMap JSONString],[HYLClassUtils classListData]]];
+        
+        
+        
+        
+    };
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 

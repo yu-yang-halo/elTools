@@ -22,11 +22,6 @@
 
 @implementation HYLDevicesController
 -(void)viewDidAppear:(BOOL)animated{
-    NSLog(@"===================");
-    NSLog(@"%@",self.webVIew.contentMode);
-    NSLog(@"===================");
-    // <UIWebView: 0x13fd289d0; frame = (0 0; 240 128); autoresize = RM+BM; layer = <CALayer: 0x174227460>>
-    //<UIWebView: 0x13fd289d0; frame = (0 0; 320 480); autoresize = RM+BM; layer = <CALayer: 0x174227460>>
 
 }
 - (void)viewDidLoad {
@@ -102,7 +97,7 @@
                    
                }
               
-               [allClassObjs setValue:fields forKey:[NSString stringWithFormat:@"%d",obj.classId]];
+               [allClassObjs setValue:fields forKey:[NSString stringWithFormat:@"%ld",obj.classId]];
               
                 //NSLog(@"allClassObjs json %@",[allClassObjs JSONString]);
               
@@ -113,7 +108,9 @@
             
            NSLog(@"%@",[allDeviceObj JSONString]);
            NSLog(@"=====================");
-             NSLog(@"%@",[allClassObjs JSONString]);
+           NSLog(@"%@",[allClassObjs JSONString]);
+            [HYLClassUtils cacheClasslistData:[allClassObjs JSONString]];
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.webVIew stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_loadDevicesData(%@,%@)",[allDeviceObj JSONString],[allClassObjs JSONString]]];
             });

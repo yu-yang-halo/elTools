@@ -147,8 +147,12 @@ function load(){
 
 
 
+//详细设备界面
 
 
+function hyl_requestDeviceInfo(){
+    mobile_requestDeviceInfo();
+}
 
 
 

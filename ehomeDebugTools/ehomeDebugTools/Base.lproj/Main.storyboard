@@ -39,7 +39,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8236.5" y="-1818.7499999999998"/>
+            <point key="canvasLocation" x="-8182.5" y="-1827.75"/>
         </scene>
         <!--Devices Controller-->
         <scene sceneID="EqD-X6-Siw">
@@ -53,38 +53,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6W-CN-cbn">
+                            <webView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O6W-CN-cbn">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="Smf-HV-dnS"/>
-                                </constraints>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <exclude reference="Smf-HV-dnS"/>
-                                    </mask>
-                                </variation>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="O6W-CN-cbn" secondAttribute="trailing" id="9IZ-jg-Do2"/>
-                            <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="OJ4-00-Ffn" secondAttribute="bottom" constant="-64" id="cOQ-VP-Wph"/>
-                            <constraint firstItem="O6W-CN-cbn" firstAttribute="leading" secondItem="FhQ-nm-2LV" secondAttribute="leadingMargin" constant="-16" id="lIh-8D-2hc"/>
-                            <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="FhQ-nm-2LV" secondAttribute="topMargin" id="mxq-hr-s59"/>
-                            <constraint firstAttribute="width" secondItem="O6W-CN-cbn" secondAttribute="width" id="vhu-lk-eqY"/>
-                            <constraint firstItem="cTX-7D-2Mx" firstAttribute="top" secondItem="O6W-CN-cbn" secondAttribute="bottom" id="wBO-8E-NHw"/>
-                            <constraint firstAttribute="height" secondItem="O6W-CN-cbn" secondAttribute="height" id="xhd-hV-JVZ"/>
+                            <constraint firstAttribute="height" secondItem="O6W-CN-cbn" secondAttribute="height" id="JQN-8b-DSr"/>
+                            <constraint firstItem="cTX-7D-2Mx" firstAttribute="top" secondItem="O6W-CN-cbn" secondAttribute="bottom" id="Yva-ib-feb"/>
+                            <constraint firstItem="O6W-CN-cbn" firstAttribute="leading" secondItem="FhQ-nm-2LV" secondAttribute="leading" id="azt-fD-hs3"/>
+                            <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="FhQ-nm-2LV" secondAttribute="topMargin" id="nkz-W8-egq"/>
+                            <constraint firstAttribute="width" secondItem="O6W-CN-cbn" secondAttribute="width" id="zhp-Pg-Dgz"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="9IZ-jg-Do2"/>
+                                <exclude reference="JQN-8b-DSr"/>
+                                <exclude reference="azt-fD-hs3"/>
+                                <exclude reference="nkz-W8-egq"/>
+                                <exclude reference="zhp-Pg-Dgz"/>
+                                <exclude reference="Yva-ib-feb"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <include reference="9IZ-jg-Do2"/>
-                                <exclude reference="vhu-lk-eqY"/>
+                                <include reference="JQN-8b-DSr"/>
+                                <include reference="azt-fD-hs3"/>
+                                <include reference="nkz-W8-egq"/>
+                                <include reference="zhp-Pg-Dgz"/>
+                                <include reference="Yva-ib-feb"/>
                             </mask>
                         </variation>
                     </view>
@@ -96,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmt-9v-KT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8130" y="-1963.5"/>
+            <point key="canvasLocation" x="-7344" y="-1827.75"/>
         </scene>
         <!--Device Detail Controller-->
         <scene sceneID="Ns4-pa-sch">
@@ -125,12 +122,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="BFD-oD-rvG"/>
                     <connections>
-                        <outlet property="webView" destination="Kei-tz-fs6" id="aAs-8X-wzF"/>
+                        <outlet property="webView" destination="Kei-tz-fs6" id="55J-jA-Sll"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ao-IA-xVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6634.5" y="-1818.7499999999998"/>
+            <point key="canvasLocation" x="-6576" y="-1827.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pt2-v5-eFw">

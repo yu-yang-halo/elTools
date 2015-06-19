@@ -28,6 +28,7 @@
 		84C14B1D1AF70AA400B11B46 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C14B1C1AF70AA400B11B46 /* Images.xcassets */; };
 		84C14B201AF70AA400B11B46 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C14B1E1AF70AA400B11B46 /* LaunchScreen.xib */; };
 		84C14B2C1AF70AA400B11B46 /* ehomeDebugToolsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C14B2B1AF70AA400B11B46 /* ehomeDebugToolsTests.m */; };
+		84CEC51F1B33F7EB0015C348 /* device.html in Resources */ = {isa = PBXBuildFile; fileRef = 84CEC51E1B33F7EB0015C348 /* device.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		84C14B2A1AF70AA400B11B46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84C14B2B1AF70AA400B11B46 /* ehomeDebugToolsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ehomeDebugToolsTests.m; sourceTree = "<group>"; };
 		84C14B3E1AF7318800B11B46 /* ELNetworkService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ELNetworkService.framework; sourceTree = "<group>"; };
+		84CEC51E1B33F7EB0015C348 /* device.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = device.html; sourceTree = "<group>"; };
 		A768C975FFC0DADECA372E34 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +172,7 @@
 				84734BEF1AF9F69D0009D3C5 /* img */,
 				84734BF01AF9F69D0009D3C5 /* index.html */,
 				84B3F9B21B2FBBBC00486D21 /* devices.html */,
+				84CEC51E1B33F7EB0015C348 /* device.html */,
 				84734BF11AF9F69D0009D3C5 /* js */,
 			);
 			path = res;
@@ -330,6 +333,7 @@
 				84734BF51AF9F69D0009D3C5 /* js in Resources */,
 				84734BF41AF9F69D0009D3C5 /* index.html in Resources */,
 				84C14B201AF70AA400B11B46 /* LaunchScreen.xib in Resources */,
+				84CEC51F1B33F7EB0015C348 /* device.html in Resources */,
 				84C14B1D1AF70AA400B11B46 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

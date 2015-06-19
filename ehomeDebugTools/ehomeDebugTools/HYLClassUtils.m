@@ -10,7 +10,10 @@
 #import <objc/runtime.h>
 #import <ELNetworkService/ELNetworkService.h>
 
+static NSString *kCacheListDataKey=@"KEY_CACHELISTDATA";
+
 @implementation HYLClassUtils
+
 +(id)canConvertJSONDataFromObjectInstance:(id)objInstance{
     unsigned int outCount ,i;
     NSMutableDictionary *canConvertJSONInstance=[NSMutableDictionary new];
@@ -45,4 +48,15 @@
     }
     return classObj;
 }
+
++(void)cacheClasslistData:(id)classlistData{
+   
+    [[NSUserDefaults standardUserDefaults] setObject:classlistData forKey:kCacheListDataKey];
+    
+}
+
++(id)classListData{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kCacheListDataKey];
+}
+
 @end
