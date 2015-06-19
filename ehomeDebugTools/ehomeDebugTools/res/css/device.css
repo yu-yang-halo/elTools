@@ -7,11 +7,24 @@
 body{
     background-color:#ff0099;
 }
+
 .main{
     width:320px;
-    height:480px;
-    background-color:#dd000aa;
+    height:100%;
+    
 }
+
+.page1{
+    width:1200px;
+    height:100%;
+    background-color:#ff00aa;
+}
+.page2{
+    width:200%;
+    height:100%;
+    background-color:#fd100a;
+}
+
 #deviceInfo{
     width:320px;
     height:200px;

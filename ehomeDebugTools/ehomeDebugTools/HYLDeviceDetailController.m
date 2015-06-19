@@ -24,7 +24,7 @@
     
     self.title=self.device.name;
     
-    [self.webView.scrollView setShowsHorizontalScrollIndicator:NO];
+    [self.webView.scrollView setShowsHorizontalScrollIndicator:YES];
     [self.webView.scrollView setShowsVerticalScrollIndicator:NO];
     
     NSString *htmlString=[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"device.html" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
