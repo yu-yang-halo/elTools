@@ -9,23 +9,51 @@ body{
 }
 
 .main{
-    width:320px;
+    width:100%;
     height:100%;
     
 }
 
 .page1{
-    width:1200px;
+    width:100%;
     height:100%;
-    background-color:#ff00aa;
+    position:absolute;
+    left:0;
+    top:0;
+    
 }
 .page2{
-    width:200%;
+    width:100%;
     height:100%;
-    background-color:#fd100a;
+    position:absolute;
+    left:0;
+    top:0;
 }
+.rounds{
+    width:100%;
+    height:10%;
+    position:absolute;
+    left:0;
+    bottom:0;
+    text-align:center;
+}
+.round{
+    width:10px;
+    height:10px;
+    display: inline-block;
+    font-size:20px;
+    text-align:center;
+    color:#55ff00;
+    text-decoration:none;
+}
+.round:hover{
+/*    color:blue;*/
+  text-decoration:none;
 
-#deviceInfo{
-    width:320px;
-    height:200px;
+}
+#r1{
+    color:#55ff00;
+}
+#r2{
+    color:#009911;
 }

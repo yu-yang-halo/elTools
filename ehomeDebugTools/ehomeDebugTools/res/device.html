@@ -13,14 +13,19 @@
     <body>
         
         <div class="main">
+          
           <div class="page1">
-              <p id='deviceInfo'></p>
+              <p>第一页</p>
           </div>
-          <div class="page2">
-              
+          <div class="page2" style="display:none;">
+              <p>第二页</p>
           </div>
-        
-        
+          
+          <div class="rounds">
+              <a href="#" class="round" id="r1">●</a>
+              <a href="#" class="round" id="r2">●</a>
+           </div>
+          
         </div>
         
         
@@ -33,31 +38,53 @@
     function loadDeviceInfoToHtml(device,clazz){
        
         var field=findFieldByFieldId(114,clazz[device.classId])
-        //alert(field.displayName);
-        
-        $("#deviceInfo").append(device.clientSn);
     }
     function load (){
         
         document.addEventListener('touchstart',touch, false);
         document.addEventListener('touchmove',touch, false);
         document.addEventListener('touchend',touch, false);
-        
+        var startPoint;
+        var endPoint;
+        var sel="#55ff00";
+        var insel="#445566";
         function touch (event){
             var event = event || window.event;
             
-            var oInp = document.getElementById("deviceInfo");
-            
             switch(event.type){
                 case "touchstart":
-                oInp.innerHTML = "Touch started (" + event.touches[0].clientX + "," + event.touches[0].clientY + ")";
+                startPoint={x:event.touches[0].clientX,y:event.touches[0].clientY};
+                
                 break;
                 case "touchend":
-                oInp.innerHTML = "<br>Touch end (" + event.changedTouches[0].clientX + "," + event.changedTouches[0].clientY + ")";
+                
+                endPoint={x:event.changedTouches[0].clientX,y:event.changedTouches[0].clientY};
+                
+                
+                if(endPoint.x-startPoint.x>=50){
+                    $(".page1").show();
+                    $(".page2").hide();
+                    
+                    
+                    
+                    $("#r1").css("color",sel);
+                    $("#r2").css("color",insel);
+                    
+                    
+                    //alert('向右滑动');
+                }
+                if(endPoint.x-startPoint.x<=-50){
+                   // alert('向左滑动');
+                    $(".page1").hide();
+                    $(".page2").show();
+                    $("#r1").css("color",insel);
+                    $("#r2").css("color",sel);
+                }
+                
                 break;
                 case "touchmove":
                 event.preventDefault();
-                oInp.innerHTML = "<br>Touch moved (" + event.touches[0].clientX + "," + event.touches[0].clientY + ")";
+                
                 break;
             }
             
