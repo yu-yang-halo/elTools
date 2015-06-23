@@ -5,9 +5,12 @@
     /*iphone 6 plus*/
 }
 body{
-    background-color:#ff0099;
+    
 }
-
+.cmdStateBtn{
+	width: 60px;
+	height: 60px;
+}
 .main{
     width:100%;
     height:100%;
@@ -22,16 +25,113 @@ body{
     top:0;
     
 }
+
+.devstatus{
+	width: 100%;
+	height:40px;
+	background-color: #7DB72F;
+	line-height: 40px;
+	position: relative;
+}
+
+
+.devstatus .onlineImg{
+	height: 12px;
+	width: 15px;  
+}
+.devstatus  .onlineText{
+	font-size: 15px;
+	color: #FFFFFF;
+}
+
+.main{
+    width: 100%;
+	height:99%;
+	background-color: #0095CD;
+	text-align: center;
+	
+}
+.topshow{
+	background-color: #55FF00;
+	width: 100%;
+	height: 40%;
+}
+.topshow img{
+	width: 60px;
+	height: 60px;
+	margin-top: 5px;
+}
+
+.centershow{
+	background-color: #DA7C0C;
+	width: 100%;
+	height: 30%;
+}
+.centershow .cmdStateBtn{
+	margin-top: 50px;
+}
+
+.bottomshow{
+	background-color:#FF0099;
+	width: 100%;
+	height: 15%;
+}
+
+
+
+
+
+
 .page2{
     width:100%;
     height:100%;
+    background-color: #F06015;
     position:absolute;
     left:0;
     top:0;
 }
+.configHeader{
+	width: 100%;
+	height: 40px;
+	background-color: #0095CC;
+	line-height: 40px;
+}
+.configHeader label{
+	color: #FFFFFF;
+	font-size: 15px;
+	margin-left: 5px;
+}
+
+.configBody{
+	width: 100%;
+	height: 99%;
+	background-color: #538018;
+}
+.configRow{
+	width: 100%;
+	height: 50px;
+/*	background-color: #DA7C0C;*/
+	text-align: center;
+	line-height: 50px;
+}
+
+.configRow label{
+	width: 20%;
+	height: 50px;
+	display: inline-block;
+}
+.configRow input{
+	width: 50%;
+	height: 30px;
+}
+
+
+
+
+
 .rounds{
     width:100%;
-    height:10%;
+    height:4%;
     position:absolute;
     left:0;
     bottom:0;
