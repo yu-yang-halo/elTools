@@ -23,9 +23,11 @@
     [super viewDidLoad];
     
     self.title=self.device.name;
+    self.keyboardDelegate=self;
     
     [self.webView.scrollView setShowsHorizontalScrollIndicator:YES];
     [self.webView.scrollView setShowsVerticalScrollIndicator:NO];
+    self.webView.scrollView.delegate=self;
     
     NSString *htmlString=[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"device.html" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
     
@@ -61,5 +63,22 @@
     // Pass the selected object to the new view controller.
 }
 
+-(void)keyBoardShow{
+   // NSLog(@"keyBoardShow...");
 
+}
+/*
+ webview 中界面内容上移，最优的解决方案是使用webview调用html中的dom来解决
+ 
+ stringByEvaluatingJavaScriptFromString(document.body.scrollTop=0);
+ 
+ 
+ */
+-(void)keyBoardHide{
+     NSLog(@"keyBoardHide...");
+    [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.body.scrollTop=%d",0]];
+    
+    
+    
+}
 @end

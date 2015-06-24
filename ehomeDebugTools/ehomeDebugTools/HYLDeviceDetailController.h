@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewController+Notification.h"
 @class ELDeviceObject;
-@interface HYLDeviceDetailController : UIViewController
+@interface HYLDeviceDetailController : UIViewController<UIScrollViewDelegate,UIViewKeyBoardDelegate>
 @property(nonatomic,retain) ELDeviceObject *device;
 @end
