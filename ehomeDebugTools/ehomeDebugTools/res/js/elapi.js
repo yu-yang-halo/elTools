@@ -80,8 +80,8 @@ function hyl_loadDevicesData(devices,classTable){
             var fieldValues=obj.fieldMap;
             
             var fields=classTable[obj.classId];
-            for(var i=0;i<fields.length;i++){
-                var field=fields[i];
+            for(var j=0;j<fields.length;j++){
+                var field=fields[j];
                 var isExist=fieldIsExistInFieldMap(field,fieldValues);
                 if(isExist){
                     if(field.deviceCmdYN==1&&field.deviceStateYN==1){

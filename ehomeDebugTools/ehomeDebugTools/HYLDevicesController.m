@@ -104,9 +104,9 @@
                
            }];
             
-//           NSLog(@"%@",[allDeviceObj JSONString]);
-//           NSLog(@"=====================");
-//           NSLog(@"%@",[allClassObjs JSONString]);
+           NSLog(@"%@",[allDeviceObj JSONString]);
+           NSLog(@"=====================");
+           NSLog(@"%@",[allClassObjs JSONString]);
             [HYLClassUtils cacheClasslistData:[allClassObjs JSONString]];
             
             dispatch_async(dispatch_get_main_queue(), ^{

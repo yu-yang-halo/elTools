@@ -84,8 +84,8 @@
     	var fieldValues=device.fieldMap;
         
         var fields=clazz[device.classId];
-        for(var i=0;i<fields.length;i++){
-            var field=fields[i];
+        for(var j=0;j<fields.length;j++){
+            var field=fields[j];
             var isExist=fieldIsExistInFieldMap(field,fieldValues);
             var defaultVal;
             if(isExist){
