@@ -12,7 +12,7 @@
 #import "MBProgressHUD.h"
 #import "Reachability.h"
 #import "UIView+Toast.h"
-
+#import "HYLClassUtils.h"
 @interface ViewController (){
     MBProgressHUD *hud;
 }
@@ -108,6 +108,7 @@ static NSString *kloginPassword=@"keyLoginPassword";
              NSString *message=nil;
             if(isOK){
                  message=@"登录成功！";
+                [HYLClassUtils removeAllClassDataCaches];
                 
                 [[NSUserDefaults standardUserDefaults] setObject:name forKey:kloginUserName];
                 [[NSUserDefaults standardUserDefaults] setObject:pass forKey:kloginPassword];

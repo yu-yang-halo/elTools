@@ -14,6 +14,8 @@
 #import "HYLClassUtils.h"
 #import <objc/runtime.h>
 #import <JSONKit/JSONKit.h>
+#import "HYLCache.h"
+#import "HYLContextLibary.h"
 @interface HYLDevicesController ()
 @property (strong, nonatomic) IBOutlet UIWebView *webVIew;
 @property (nonatomic,retain) NSDictionary *deviceDic;
@@ -22,7 +24,10 @@
 
 @implementation HYLDevicesController
 -(void)viewDidAppear:(BOOL)animated{
-
+    NSLog(@"viewDidAppear..........");
+    //获取web数据
+    [_webVIew stringByEvaluatingJavaScriptFromString:@"hyl_requestDevicesCmd()"];
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,29 +48,25 @@
         
         NSLog(@"%@",[args[0] toString]);
         
-        id device=[_deviceDic valueForKey:[args[0] toString]];
-        
-        
-        [self performSegueWithIdentifier:@"deviceDetail" sender:device];
-        
-    };
-    context[@"mobile_setFieldCmd"]=^(){
-        NSArray *args=[JSContext currentArguments];
-        for (JSValue *jsVal in args) {
-            NSLog(@"argument : %@",jsVal.toString);
-        }
-        JSValue *thiz=[JSContext currentThis];
-        
-        NSLog(@"end....%@",thiz);
-        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-           
-            [[ElApiService shareElApiService] setFieldValue:[args[0] toString] forFieldId:[args[1] toInt32] toDevice:[args[2] toInt32] withYN:YES];
+            
+            ELDeviceObject *device=[[ElApiService shareElApiService] getObjectValue:[[args[0] toString] integerValue]];
             
             
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [[HYLCache shareHylCache] setCurrentELDevice:device];
+                [self performSegueWithIdentifier:@"deviceDetail" sender:device];
+
+            });
         });
         
+        
     };
+    [HYLContextLibary loadHylCmd:HYLCMDTYPE_SETFIELD_VALUE toContext:context handler:^(BOOL finished, NSArray *args) {
+        
+    }];
+    
     
     context[@"mobile_requestDevices"]=^(){
       
@@ -90,25 +91,22 @@
                NSMutableArray *fields=[NSMutableArray new];
                
                for (ELClassField *classField in classObj.classFields){
-//                   [objectMap setValue:[HYLClassUtils canConvertJSONDataFromObjectInstance:classField] forKey:[NSString stringWithFormat:@"%d",classField.fieldId]];
-//                   
                    [fields addObject:[HYLClassUtils canConvertJSONDataFromObjectInstance:classField]];
                    
                    
                }
               
-               [allClassObjs setValue:fields forKey:[NSString stringWithFormat:@"%ld",obj.classId]];
+               [allClassObjs setValue:fields forKey:[NSString stringWithFormat:@"%ld",(long)obj.classId]];
               
-                //NSLog(@"allClassObjs json %@",[allClassObjs JSONString]);
               
                
                [allDeviceObj addObject:objectMap];
                
            }];
             
-           NSLog(@"%@",[allDeviceObj JSONString]);
-           NSLog(@"=====================");
-           NSLog(@"%@",[allClassObjs JSONString]);
+//           NSLog(@"%@",[allDeviceObj JSONString]);
+//           NSLog(@"=====================");
+//           NSLog(@"%@",[allClassObjs JSONString]);
             [HYLClassUtils cacheClasslistData:[allClassObjs JSONString]];
             
             dispatch_async(dispatch_get_main_queue(), ^{

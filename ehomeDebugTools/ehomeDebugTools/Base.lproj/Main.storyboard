@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -60,28 +59,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" secondItem="O6W-CN-cbn" secondAttribute="height" id="JQN-8b-DSr"/>
-                            <constraint firstItem="cTX-7D-2Mx" firstAttribute="top" secondItem="O6W-CN-cbn" secondAttribute="bottom" id="Yva-ib-feb"/>
-                            <constraint firstItem="O6W-CN-cbn" firstAttribute="leading" secondItem="FhQ-nm-2LV" secondAttribute="leading" id="azt-fD-hs3"/>
-                            <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="FhQ-nm-2LV" secondAttribute="topMargin" id="nkz-W8-egq"/>
-                            <constraint firstAttribute="width" secondItem="O6W-CN-cbn" secondAttribute="width" id="zhp-Pg-Dgz"/>
+                            <constraint firstItem="O6W-CN-cbn" firstAttribute="bottom" secondItem="cTX-7D-2Mx" secondAttribute="top" id="Wfi-NY-Aiv"/>
+                            <constraint firstAttribute="trailing" secondItem="O6W-CN-cbn" secondAttribute="trailing" id="YIe-46-m3G"/>
+                            <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="FhQ-nm-2LV" secondAttribute="top" id="dD9-cw-CBc"/>
+                            <constraint firstItem="O6W-CN-cbn" firstAttribute="leading" secondItem="FhQ-nm-2LV" secondAttribute="leading" id="nU2-JW-uen"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="JQN-8b-DSr"/>
-                                <exclude reference="azt-fD-hs3"/>
-                                <exclude reference="nkz-W8-egq"/>
-                                <exclude reference="zhp-Pg-Dgz"/>
-                                <exclude reference="Yva-ib-feb"/>
+                                <exclude reference="Wfi-NY-Aiv"/>
+                                <exclude reference="YIe-46-m3G"/>
+                                <exclude reference="dD9-cw-CBc"/>
+                                <exclude reference="nU2-JW-uen"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <include reference="JQN-8b-DSr"/>
-                                <include reference="azt-fD-hs3"/>
-                                <include reference="nkz-W8-egq"/>
-                                <include reference="zhp-Pg-Dgz"/>
-                                <include reference="Yva-ib-feb"/>
+                                <include reference="Wfi-NY-Aiv"/>
+                                <include reference="YIe-46-m3G"/>
+                                <include reference="dD9-cw-CBc"/>
+                                <include reference="nU2-JW-uen"/>
                             </mask>
                         </variation>
                     </view>
@@ -93,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmt-9v-KT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7344" y="-1827.75"/>
+            <point key="canvasLocation" x="-7266" y="-1860"/>
         </scene>
         <!--Device Detail Controller-->
         <scene sceneID="Ns4-pa-sch">

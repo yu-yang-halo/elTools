@@ -20,11 +20,18 @@ function hyl_requestDevicesCmd(){
 function hyl_setFieldCmd(fieldValue,fieldId,objectId){
     mobile_setFieldCmd(fieldValue,fieldId,objectId);
 }
+
+function hyl_updateDeviceName(name,objectId){
+    mobile_updateDeviceName(name,objectId);
+}
+
+
 //跳转到设备详细界面
 function hyl_toDetailPage(objectId){
     mobile_toDetailPage(objectId);
 }
 function hyl_loadDevicesData(devices,classTable){
+    $("#deviceTable").empty();
 	/*
       device :
      
@@ -48,6 +55,7 @@ function hyl_loadDevicesData(devices,classTable){
     
 	if(devices!=undefined&&devices.length>0){
 		for(var i=0;i<devices.length;i++){
+            
 			var obj=devices[i];
 			var trString="";
 			trString+="<tr objectId="+obj.objectId+">";
@@ -69,20 +77,25 @@ function hyl_loadDevicesData(devices,classTable){
             "'></img><label class='onlineText'>"+tmp_online_content+"</label>"+
             "</div></td><td class='command'>";
             
-            for(var fid in obj.fieldMap){
-                
-                var field=findFieldByFieldId(fid,classTable[obj.classId]);
-                if(field.deviceCmdYN==1){
-                    var pngString;
-                    if(obj.fieldMap[fid]==11){
-                        pngString="img/bg_switch_off.png";
-                    }else{
-                        pngString="img/bg_switch_on.png";
+            var fieldValues=obj.fieldMap;
+            
+            var fields=classTable[obj.classId];
+            for(var i=0;i<fields.length;i++){
+                var field=fields[i];
+                var isExist=fieldIsExistInFieldMap(field,fieldValues);
+                if(isExist){
+                    if(field.deviceCmdYN==1&&field.deviceStateYN==1){
+                        var pngString;
+                        if(fieldValues[key]==0){
+                            pngString="img/bg_switch_off.png";
+                        }else{
+                            pngString="img/bg_switch_on.png";
+                        }
+                        var inputHtmlString="<input class='switchButton' type='image' fieldId='"+key+"'  value='"+fieldValues[key]+"' objectId='"+obj.objectId+"' src='"+pngString+"'></input>"
+                        
+                        trString+=inputHtmlString;
+                        break;
                     }
-                    var inputHtmlString="<input class='switchButton' type='image' fieldId='"+fid+"'  value='"+obj.fieldMap[fid]+"' objectId='"+obj.objectId+"' src='"+pngString+"'></input>"
-                    
-                    trString+=inputHtmlString;
-                    break;
                 }
                 
             }
@@ -98,13 +111,29 @@ function hyl_loadDevicesData(devices,classTable){
 		
 	}else{
 		
-		$("#deviceTable").append("数据为空");
+		$("#deviceTable").append("<center><span style='width:100%;height:100%;color:#ff0000'>数据为空<span></center>");
 		
 	}
 	
 	
 	
 }
+function fieldIsExistInFieldMap(field,fieldMap){
+    var isExist=false;
+    if(fieldMap==undefined){
+        isExist=false;
+    }else{
+        for(var value in fieldMap){
+            if(value==field.fieldId){
+                isExist=true;
+                break;
+            }
+        }
+    }
+    
+    return isExist;
+}
+
 //从属性列表中找到属性对象值
 function findFieldByFieldId(fieldId,fields){
   
@@ -119,23 +148,28 @@ function findFieldByFieldId(fieldId,fields){
 }
 function load(){
     $(".switchButton").click(function(){
-                             if($(this).attr("value")==11){
+                             
+                             if($(this).attr("value")==0){
                              $(this).attr("src",'img/bg_switch_on.png');
-                             $(this).attr("value",21);
+                             $(this).attr("value",1);
                              }else{
                              $(this).attr("src",'img/bg_switch_off.png');
-                             $(this).attr("value",11);
+                             $(this).attr("value",0);
                              }
                              
                              hyl_setFieldCmd($(this).attr("value"),$(this).attr("fieldId"),$(this).attr("objectId"));
                              
-                             });
-    $(".content").click(function(){
+                             
+                             event.cancelBubble=true;
+
+    });
+    
+    $("#deviceTable tr").click(function(){
                         
-                        $(this).parent().addClass("on").siblings("tr").removeClass("on");
+                        $(this).addClass("on").siblings("tr").removeClass("on");
                         
                         
-                        hyl_toDetailPage($(this).parent().attr('objectId'));
+                        hyl_toDetailPage($(this).attr('objectId'));
                         
                         });
     

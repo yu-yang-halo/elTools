@@ -11,6 +11,7 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 #import <JSONKit/JSONKit.h>
 #import "HYLClassUtils.h"
+#import "HYLContextLibary.h"
 @interface HYLDeviceDetailController ()
 
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
@@ -34,6 +35,20 @@
     [self.webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
     JSContext *context=[self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     
+    
+    [HYLContextLibary loadHylCmd:HYLCMDTYPE_SETFIELD_VALUE toContext:context handler:^(BOOL finished, NSArray *args) {
+        
+    }];
+    __unsafe_unretained UIViewController *vc=self;
+    [HYLContextLibary loadHylCmd:HYLCMDTYPE_UPDATE_DEVICE_NAME toContext:context handler:^(BOOL finished,NSArray *args) {
+       
+        if(finished){
+            vc.title=[args[0] toString];
+        }
+        
+    }];
+    
+    
     context[@"mobile_requestDeviceInfo"]=^(){
       
         NSDictionary *deviceMap=[HYLClassUtils canConvertJSONDataFromObjectInstance:_device];
@@ -44,9 +59,6 @@
         NSLog(@"==========================");
         
         [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"loadDeviceInfoToHtml(%@,%@)",[deviceMap JSONString],[HYLClassUtils classListData]]];
-        
-        
-        
         
     };
 }

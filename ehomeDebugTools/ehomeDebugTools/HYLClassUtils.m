@@ -42,6 +42,7 @@ static NSString *kCacheListDataKey=@"KEY_CACHELISTDATA";
         binaryclassObj=[NSKeyedArchiver archivedDataWithRootObject:classObj];
         [[NSUserDefaults standardUserDefaults] setObject:binaryclassObj forKey:classIdKey];
         
+        
     }else{
        classObj=[NSKeyedUnarchiver unarchiveObjectWithData:binaryclassObj];
         NSLog(@"缓存数据 %@",classObj);
@@ -57,6 +58,21 @@ static NSString *kCacheListDataKey=@"KEY_CACHELISTDATA";
 
 +(id)classListData{
     return [[NSUserDefaults standardUserDefaults] objectForKey:kCacheListDataKey];
+}
++(void)removeAllClassDataCaches{
+    NSUserDefaults *defs=[NSUserDefaults standardUserDefaults];
+    NSDictionary *dic=[defs dictionaryRepresentation];
+    NSNumberFormatter *numberFormatter=[[NSNumberFormatter alloc] init];
+    for (NSString* key in dic){
+        if([numberFormatter numberFromString:key]){
+            //NSLog(@"移除classId is %@",key);
+            [defs removeObjectForKey:key];
+        }
+    }
+    
+    [defs synchronize];
+    
+    
 }
 
 @end

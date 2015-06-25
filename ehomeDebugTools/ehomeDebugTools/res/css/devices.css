@@ -6,7 +6,6 @@
 }
 
 body{
-    background-color:#ff0099;
 }
 
 #deviceTable{
@@ -16,7 +15,6 @@ body{
 }
 #deviceTable tr{
 	height: 60px;
-	border:1px solid white;
 	border-bottom-color: #7DB72F;
 }
 #deviceTable td{

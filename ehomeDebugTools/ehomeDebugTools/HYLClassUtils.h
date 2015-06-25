@@ -19,4 +19,6 @@
 +(void)cacheClasslistData:(id)classlistData;
 +(id)classListData;
 
++(void)removeAllClassDataCaches;
+
 @end

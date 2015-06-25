@@ -36,7 +36,7 @@
           </div>
           <div class="page2" style="display:none;" >
              <div class="configHeader">
-              	<label>基本信息配置</label>
+              	<span><label>基本信息配置</label><span>
              </div>
              <div class="configBody">
              	
@@ -59,23 +59,8 @@
     </body>
     <script type="text/javascript">
         $(document).ready(function(){
-                          //hyl_requestDeviceInfo();
-var device={"bindVmId":0,"connType":0,"locId":0,"ccsClientId":5295,"gatewayId":0,"accessYN":false,"objectId":231,"clientSn":"0010002101816",
-"fieldMap":{"113":"0","111":"1","112":"0","114":"4","115":"$110"},"classId":11,"name":"开发板电源","netState":1};
-    	//var clazz={"3":[{"displayName":"剩余电量","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":false,"deviceStateYN":true,"fieldId":23,"presistYN":true,"fieldName":"battery"},{"displayName":"安装位置","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":false,"deviceStateYN":false,"fieldId":24,"presistYN":true,"fieldName":"location"},{"displayName":"警报","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":false,"deviceStateYN":true,"fieldId":21,"presistYN":false,"fieldName":"alert"},{"displayName":"开关状态","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":false,"deviceStateYN":true,"fieldId":22,"presistYN":false,"fieldName":"status"},{"displayName":"test","aggrMethod":0,"dataType":1,"tsYN":true,"deviceCmdYN":false,"deviceStateYN":false,"fieldId":260,"presistYN":true,"fieldName":"test"}],"1":[],"7":[{"displayName":"剩余电量","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":false,"deviceStateYN":true,"fieldId":72,"presistYN":true,"fieldName":"battery"},{"displayName":"警报","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":false,"deviceStateYN":true,"fieldId":71,"presistYN":false,"fieldName":"alert"},{"displayName":"温度","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":false,"deviceStateYN":true,"fieldId":73,"presistYN":false,"fieldName":"temp"},{"displayName":"安装位置","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":false,"deviceStateYN":false,"fieldId":74,"presistYN":true,"fieldName":"location"}],"100":[{"displayName":"按钮2","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":false,"deviceStateYN":true,"fieldId":122,"presistYN":false,"fieldName":"button2"},{"displayName":"Led开关","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":true,"deviceStateYN":false,"fieldId":123,"presistYN":false,"fieldName":"ledswitch"},{"displayName":"按钮1","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":false,"deviceStateYN":true,"fieldId":121,"presistYN":false,"fieldName":"button1"},{"displayName":"温度","aggrMethod":0,"dataType":1,"tsYN":true,"deviceCmdYN":false,"deviceStateYN":true,"fieldId":120,"presistYN":false,"fieldName":"temp"},{"displayName":"串口","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":true,"deviceStateYN":false,"fieldId":124,"presistYN":false,"fieldName":"serialport"}],"101":[{"displayName":"配置","aggrMethod":0,"dataType":4,"tsYN":false,"deviceCmdYN":false,"deviceStateYN":false,"fieldId":125,"presistYN":true,"fieldName":"位置"},{"displayName":"按钮1","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":false,"deviceStateYN":true,"fieldId":126,"presistYN":false,"fieldName":"bt1"},{"displayName":"串口","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":true,"deviceStateYN":false,"fieldId":138,"presistYN":false,"fieldName":"serialport"},{"displayName":"按钮2","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":false,"deviceStateYN":true,"fieldId":136,"presistYN":false,"fieldName":"bt2"},{"displayName":"开关控制","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":true,"deviceStateYN":false,"fieldId":127,"presistYN":false,"fieldName":"ledswitch"},{"displayName":"温度","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":false,"deviceStateYN":true,"fieldId":137,"presistYN":false,"fieldName":"temp"}],"11":[{"displayName":"定时开关","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":false,"deviceStateYN":false,"fieldId":114,"presistYN":true,"fieldName":"savemode"},{"displayName":"安装位置","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":true,"deviceStateYN":true,"fieldId":113,"presistYN":true,"fieldName":"location"},{"displayName":"开关","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":true,"deviceStateYN":false,"fieldId":112,"presistYN":false,"fieldName":"switch"},{"displayName":"价格","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":false,"deviceStateYN":false,"fieldId":115,"presistYN":true,"fieldName":"price"},{"displayName":"状态","aggrMethod":0,"dataType":1,"tsYN":false,"deviceCmdYN":false,"deviceStateYN":true,"fieldId":111,"presistYN":false,"fieldName":"status"}]};
-    	var clazz={"11":[{"displayName":"定时开关","aggrMethod":0,"dataType":1,
-    	"tsYN":false,"deviceCmdYN":true,"deviceStateYN":false,"fieldId":114,
-    	"presistYN":true,"fieldName":"savemode"},
-    	{"displayName":"安装位置","aggrMethod":0,"dataType":1,"tsYN":false,
-    	"deviceCmdYN":true,"deviceStateYN":true,"fieldId":113,"presistYN":false,
-    	"fieldName":"location"},{"displayName":"开关","aggrMethod":0,"dataType":1,
-    	"tsYN":false,"deviceCmdYN":true,"deviceStateYN":true,"fieldId":112,
-    	"presistYN":false,"fieldName":"switch"},{"displayName":"价格","aggrMethod":0,"dataType":1,
-    	"tsYN":false,"deviceCmdYN":false,"deviceStateYN":false,"fieldId":115,"presistYN":true,
-    	"fieldName":"price"},{"displayName":"状态","aggrMethod":0,"dataType":1,"tsYN":false,
-    	"deviceCmdYN":false,"deviceStateYN":true,"fieldId":111,"presistYN":true,"fieldName":"status"}]};
-    	
-                          loadDeviceInfoToHtml(device,clazz);
+                          hyl_requestDeviceInfo();
+                          //loadDeviceInfoToHtml(device,clazz);
                         })
     
     function loadDeviceInfoToHtml(device,clazz){
@@ -97,52 +82,64 @@ var device={"bindVmId":0,"connType":0,"locId":0,"ccsClientId":5295,"gatewayId":0
     	var configHtml="";
     	
     	var fieldValues=device.fieldMap;
-    	var count=0;
-    	for(var key in fieldValues){
-    		var field=findFieldByFieldId(key,clazz[device.classId]);
-    		
-    		if(field.deviceCmdYN&&field.deviceStateYN){
-    			//是button，发送命令且表状态
-    			var htmlString="<input type='image' class='cmdStateBtn'  ";
-    			
-    			if(fieldValues[key]==0){
-    				htmlString+=" src='img/bg_switch_off.png' ";
-    			}else{
-    				htmlString+=" src='img/bg_switch_on.png' ";
-    			}
-    			
-    			htmlString+=" value="+fieldValues[key]
-    			            +" fieldId="+key+" objectId="
-    			            +device.objectId+"></input>";
-    			
-    			
-    			
-    			
-    			
-    			$(".centershow").show();
-    			$(".centershow span").append(htmlString);
-    			
-    		}else if(field.deviceStateYN){
-    		     //是显示标签 表状态
-    		    var htmlString="<img alt='"+field.displayName+" : "+fieldValues[key]+"'></img>";
-    			$(".topshow").show();
-    			$(".topshow span").append(htmlString); 
-    		     
-    		}else if(field.deviceCmdYN){
-    			//是按钮，发送命令，不表状态
-    		    var htmlString="<button class='button blue'   value="+fieldValues[key]+" fieldId="+key+" objectid="+device.objectId+">"+field.displayName+"</button>";
-    			$(".bottomshow").show();
-    			$(".bottomshow span").append(htmlString); 
-    		
-    		}else if(field.presistYN){
-    		     //表配置存储，input框，放在第二界面
-    		     configHtml+="<div class='configRow'><label>"+field.displayName
-    		     +"</label><input value="+fieldValues[key]+" fieldId="+key+"></input> </div>";
-    		     
-    		}
-    		
-    		
-    	}
+        
+        var fields=clazz[device.classId];
+        for(var i=0;i<fields.length;i++){
+            var field=fields[i];
+            var isExist=fieldIsExistInFieldMap(field,fieldValues);
+            var defaultVal;
+            if(isExist){
+                defaultVal=fieldValues[key];
+            }else{
+                defaultVal=field.defaultValue;
+            }
+            
+            if(field.deviceCmdYN&&field.deviceStateYN){
+                    //是button，发送命令且表状态
+                    var htmlString="<input type='image' class='cmdStateBtn'  ";
+                    if(defaultVal==0){
+                        htmlString+=" src='img/bg_switch_off.png' ";
+                    }else{
+                        htmlString+=" src='img/bg_switch_on.png' ";
+                    }
+                    
+                
+                    
+                    htmlString+=" value="+(defaultVal)
+                    +" fieldId="+key+" objectId="
+                    +device.objectId+"></input>";
+                    
+                    
+                    
+                    
+                    
+                    $(".centershow").show();
+                    $(".centershow span").append(htmlString);
+                    
+                }else if(field.deviceStateYN){
+                    //是显示标签 表状态
+                    //var htmlString="<img alt='"+field.displayName+" : "+fieldValues[key]+"'></img>";
+                    
+                    var htmlString="<img alt='"+field.displayName+":"+(defaultVal)+"'></img>";
+                    
+                    $(".topshow").show();
+                    $(".topshow span").append(htmlString);
+                    
+                }else if(field.deviceCmdYN){
+                    //是按钮，发送命令，不表状态
+                    var htmlString="<button class='button blue'   value="+defaultVal+" fieldId="+key+" objectid="+device.objectId+">"+field.displayName+"</button>";
+                    $(".bottomshow").show();
+                    $(".bottomshow span").append(htmlString); 
+                    
+                }else if(field.presistYN){
+                    //表配置存储，input框，放在第二界面
+                    configHtml+="<div class='configRow'><label>"+field.displayName
+                    +"</label><input value="+defaultVal+" fieldId="+key+"></input> </div>";
+                    
+                }
+        
+        }
+        
         $(".configBody").append("<div class='configRow'><label>名称</label><input value="+device.name+"></input> </div>");
         $(".configBody").append(configHtml);   
     	$(".configBody").append(" <div class='configRow'><button class='button orange'  id='configBtn' objectid="+device.objectId+">保存</button></div>");
@@ -150,12 +147,14 @@ var device={"bindVmId":0,"connType":0,"locId":0,"ccsClientId":5295,"gatewayId":0
         $("#configBtn").click(function(){
          	var objectId=$(this).attr('objectid');
          	
-         	$(".button input").each(function(){
+         	$(".configRow input").each(function(){
          		if($(this).attr("fieldId")==undefined){
-         			alert($(this).attr("value"));
+         			//alert($(this).val());
+                    hyl_updateDeviceName($(this).val(),objectId);
+                  
          		}else{
-         			alert($(this).attr("fieldId")+":"+$(this).attr("value"));
-         		    //hyl_setFieldCmd($(this).attr("value"),$(this).attr("fieldId"),objectId);
+         			//alert($(this).attr("fieldId")+":"+$(this).val());
+                  hyl_setFieldCmd($(this).val(),$(this).attr("fieldId"),objectId);
          		}
          		
          		
@@ -167,16 +166,14 @@ var device={"bindVmId":0,"connType":0,"locId":0,"ccsClientId":5295,"gatewayId":0
          	$(this).click(function(){
          		
          		alert($(this).attr("value")+":"+$(this).attr("fieldId")+":"+$(this).attr("objectId"));
-         		//hyl_setFieldCmd($(this).attr("value"),$(this).attr("fieldId"),objectId);
+         		//hyl_setFieldCmd($(this).attr("value"),$(this).attr("fieldId"),$(this).attr("objectId"));
          		
          	});
          	
          });
           $(".centershow input").each(function(){
          	$(this).click(function(){
-         		
-         		//alert($(this).attr("value")+":"+$(this).attr("fieldId")+":"+$(this).attr("objectId"));
-         		//hyl_setFieldCmd($(this).attr("value"),$(this).attr("fieldId"),objectId);
+                          
          		if($(this).attr("value")==0){
          			$(this).attr("value","1");
          			$(this).attr("src","img/bg_switch_on.png");
@@ -184,8 +181,10 @@ var device={"bindVmId":0,"connType":0,"locId":0,"ccsClientId":5295,"gatewayId":0
          			$(this).attr("value","0");
          			$(this).attr("src","img/bg_switch_off.png");
          		}
-         		
-         	});
+                          
+                hyl_setFieldCmd($(this).attr("value"),$(this).attr("fieldId"),$(this).attr("objectId"));
+                          
+            });
          	
          });
        
@@ -213,8 +212,10 @@ var device={"bindVmId":0,"connType":0,"locId":0,"ccsClientId":5295,"gatewayId":0
                 
                 endPoint={x:event.changedTouches[0].clientX,y:event.changedTouches[0].clientY};
                 
-                
-                if(endPoint.x-startPoint.x>=50){
+               
+               var offsetY=Math.abs(endPoint.y-startPoint.y);
+              // alert("offsetY : "+offsetY);
+                if((endPoint.x-startPoint.x>=15)&&offsetY<10){
                     $(".page1").show();
                     $(".page2").hide();
                     
@@ -226,7 +227,7 @@ var device={"bindVmId":0,"connType":0,"locId":0,"ccsClientId":5295,"gatewayId":0
                     
                     //alert('向右滑动');
                 }
-                if(endPoint.x-startPoint.x<=-50){
+                if((endPoint.x-startPoint.x<=-20)&&offsetY<10){
                    // alert('向左滑动');
                     $(".page1").hide();
                     $(".page2").show();
