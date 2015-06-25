@@ -58,90 +58,93 @@
         
     </body>
     <script type="text/javascript">
-        $(document).ready(function(){
-                          hyl_requestDeviceInfo();
-                          //loadDeviceInfoToHtml(device,clazz);
-                        })
+    $(document).ready(function(){
+        //请求设备详细信息
+        hyl_requestDeviceInfo();
+    })
     
-    function loadDeviceInfoToHtml(device,clazz){
-    	//基本信息显示
-    	if(device.netState==0){
-    		
-    		$(".onlineImg").attr("src","img/icon_offline.png");
-    		$(".onlineText").html("离线");
-    		
-    	}else{
-    		
-    		$(".onlineImg").attr("src","img/icon_online.png");
-    		$(".onlineText").html("在线");
-    	
-    	}
-    	
-    	
-    	
-    	var configHtml="";
-    	
-    	var fieldValues=device.fieldMap;
+    function autoBuildHtml(device,clazz){
+        var configHtml="";
+        
+        var fieldValues=device.fieldMap;
         
         var fields=clazz[device.classId];
         for(var j=0;j<fields.length;j++){
             var field=fields[j];
             var isExist=fieldIsExistInFieldMap(field,fieldValues);
             var defaultVal;
+            var key=field.fieldId;
             if(isExist){
                 defaultVal=fieldValues[key];
             }else{
                 defaultVal=field.defaultValue;
             }
-            
             if(field.deviceCmdYN&&field.deviceStateYN){
-                    //是button，发送命令且表状态
-                    var htmlString="<input type='image' class='cmdStateBtn'  ";
-                    if(defaultVal==0){
-                        htmlString+=" src='img/bg_switch_off.png' ";
-                    }else{
-                        htmlString+=" src='img/bg_switch_on.png' ";
-                    }
-                    
-                
-                    
-                    htmlString+=" value="+(defaultVal)
-                    +" fieldId="+key+" objectId="
-                    +device.objectId+"></input>";
-                    
-                    
-                    
-                    
-                    
-                    $(".centershow").show();
-                    $(".centershow span").append(htmlString);
-                    
-                }else if(field.deviceStateYN){
-                    //是显示标签 表状态
-                    //var htmlString="<img alt='"+field.displayName+" : "+fieldValues[key]+"'></img>";
-                    
-                    var htmlString="<img alt='"+field.displayName+":"+(defaultVal)+"'></img>";
-                    
-                    $(".topshow").show();
-                    $(".topshow span").append(htmlString);
-                    
-                }else if(field.deviceCmdYN){
-                    //是按钮，发送命令，不表状态
-                    var htmlString="<button class='button blue'   value="+defaultVal+" fieldId="+key+" objectid="+device.objectId+">"+field.displayName+"</button>";
-                    $(".bottomshow").show();
-                    $(".bottomshow span").append(htmlString); 
-                    
-                }else if(field.presistYN){
-                    //表配置存储，input框，放在第二界面
-                    configHtml+="<div class='configRow'><label>"+field.displayName
-                    +"</label><input value="+defaultVal+" fieldId="+key+"></input> </div>";
-                    
+                //是button，发送命令且表状态
+                var htmlString="<input type='image' class='cmdStateBtn'  ";
+                if(defaultVal==0){
+                    htmlString+=" src='img/bg_switch_off.png' ";
+                }else{
+                    htmlString+=" src='img/bg_switch_on.png' ";
                 }
-        
+                
+                
+                
+                htmlString+=" value='"+(defaultVal)
+                +"' fieldId="+key+" objectId="
+                +device.objectId+"></input>";
+                
+                
+                
+                
+                
+                $(".centershow").show();
+                $(".centershow span").append(htmlString);
+                
+            }else if(field.deviceStateYN){
+                //是显示标签 表状态
+                //var htmlString="<img alt='"+field.displayName+" : "+fieldValues[key]+"'></img>";
+                
+                var htmlString="<img alt='"+field.displayName+":"+(defaultVal)+"'></img>";
+                
+                $(".topshow").show();
+                $(".topshow span").append(htmlString);
+                
+            }else if(field.deviceCmdYN){
+                //是按钮，发送命令，不表状态
+                var htmlString="<button class='button blue'   value='"+defaultVal+"' fieldId="+key+" objectid="+device.objectId+">"+field.displayName+"</button>";
+                $(".bottomshow").show();
+                $(".bottomshow span").append(htmlString);
+                
+            }
+            if(field.presistYN){
+                //表配置存储，input框，放在第二界面
+                configHtml+="<div class='configRow'><label>"+field.displayName
+                +"</label><input value='"+defaultVal+"' fieldId="+key+"></input> </div>";
+                
+            }
+            
+            
         }
+        return configHtml;
+    }
+    
+    function loadDeviceInfoToHtml(device,clazz){
+    	//基本信息显示
+    	if(device.netState==0){
+    		$(".onlineImg").attr("src","img/icon_offline.png");
+    		$(".onlineText").html("离线");
+    	}else{
+    		$(".onlineImg").attr("src","img/icon_online.png");
+    		$(".onlineText").html("在线");
+    	}
+        var configHtml=autoBuildHtml(device,clazz);
+    	
         
         $(".configBody").append("<div class='configRow'><label>名称</label><input value="+device.name+"></input> </div>");
-        $(".configBody").append(configHtml);   
+
+        $(".configBody").append(configHtml);
+        
     	$(".configBody").append(" <div class='configRow'><button class='button orange'  id='configBtn' objectid="+device.objectId+">保存</button></div>");
          
         $("#configBtn").click(function(){
@@ -149,12 +152,9 @@
          	
          	$(".configRow input").each(function(){
          		if($(this).attr("fieldId")==undefined){
-         			//alert($(this).val());
                     hyl_updateDeviceName($(this).val(),objectId);
-                  
          		}else{
-         			//alert($(this).attr("fieldId")+":"+$(this).val());
-                  hyl_setFieldCmd($(this).val(),$(this).attr("fieldId"),objectId);
+                    hyl_setFieldCmd($(this).val(),$(this).attr("fieldId"),objectId);
          		}
          		
          		
