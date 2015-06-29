@@ -13,6 +13,7 @@
 #import "Reachability.h"
 #import "UIView+Toast.h"
 #import "HYLClassUtils.h"
+#import "HYLCache.h"
 @interface ViewController (){
     MBProgressHUD *hud;
 }
@@ -29,7 +30,9 @@ static NSString *kloginPassword=@"keyLoginPassword";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title=@"E联开发者平台";
+    self.title=[[[HYLCache shareHylCache].configJSON valueForKey:@"title"] valueForKey:@"login"];
+    
+    
     UIBarButtonItem *backButton=[[UIBarButtonItem alloc] init];
     [backButton setTitle:@"返回"];
     self.navigationItem.backBarButtonItem=backButton;    

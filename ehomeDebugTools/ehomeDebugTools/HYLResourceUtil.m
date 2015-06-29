@@ -8,7 +8,8 @@
 
 #import "HYLResourceUtil.h"
 #import "ZipArchive.h"
-
+#import <JSONKit/JSONKit.h>
+#import "HYLCache.h"
 
 @implementation HYLResourceUtil
 
@@ -82,5 +83,69 @@
    
     
     
+}
++(void)loadConfigResource:(NSString *)configResPath{
+   /*
+    ','多余的逗号讲无法解析
+    第二种方式更优
+    
+    NSString *configJson=[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"config/config.json" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
+   NSDictionary *configDic=[configJson objectFromJSONString];
+    NSLog(@"%@,%@",configDic,[[configDic valueForKey:@"title"] valueForKey:@"login"]);
+    */
+
+    NSData *configData=[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"config/config.json" ofType:@""] options:NSUTF8StringEncoding error:nil];
+    
+    
+    NSMutableDictionary *configDic=[[NSJSONSerialization JSONObjectWithData:configData options:NSJSONReadingAllowFragments error:nil] mutableCopy];
+    
+    if (configDic==nil) {
+        configData=[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"configdefault.json" ofType:@""] options:NSUTF8StringEncoding error:nil];
+        configDic=[[NSJSONSerialization JSONObjectWithData:configData options:NSJSONReadingAllowFragments error:nil] mutableCopy];
+    }
+    
+    
+    NSArray *barColorRGBArr=[HYLResourceUtil reverseHtmlColorToRGBS:[configDic valueForKey:@"barColor"]];
+    
+    [configDic setValue:barColorRGBArr forKey:@"barColor"];
+
+    NSArray *fontColorRGBArr=[HYLResourceUtil reverseHtmlColorToRGBS:[configDic valueForKey:@"fontColor"]];
+    
+    
+    [configDic setValue:fontColorRGBArr forKey:@"fontColor"];
+    
+    
+    [[HYLCache shareHylCache] setConfigJSON:configDic];
+    
+    
+}
++(NSArray *)reverseHtmlColorToRGBS:(NSString *)colorString{
+    //#ff00aa
+    NSArray *defaultRGBArr= [NSArray arrayWithObjects:@0,@233,@0,nil];
+    
+    if([colorString hasPrefix:@"#"]&&[colorString length]==7)
+    {
+        NSString *tempColor=[colorString substringFromIndex:1];
+        if ([tempColor length]==6) {
+            NSString *redString=[NSString stringWithFormat:@"0x%@",[tempColor substringWithRange:NSMakeRange(0,2)]];
+            
+            
+            unsigned long red=strtoul([redString UTF8String],0,16);
+            NSString *greenString=[NSString stringWithFormat:@"0x%@",[tempColor substringWithRange:NSMakeRange(2,2)]];
+            unsigned long green=strtoul([greenString UTF8String],0,16);
+            NSString *blueString=[NSString stringWithFormat:@"0x%@",[tempColor substringWithRange:NSMakeRange(4,2)]];
+            unsigned long blue=strtoul([blueString UTF8String],0,16);
+            
+            NSLog(@"%@ ,%@ ,%@",redString,greenString,blueString);
+            NSLog(@"%ld ,%ld ,%ld",red,green,blue);
+            
+            return [NSArray arrayWithObjects:@(red),@(green),@(blue),nil];
+        }else{
+            return defaultRGBArr;
+        }
+        
+    }else{
+        return defaultRGBArr;
+    }
 }
 @end

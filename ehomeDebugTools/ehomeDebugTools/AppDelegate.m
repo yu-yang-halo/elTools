@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Reachability.h"
 #import <ELNetworkService/ELNetworkService.h>
+#import "HYLResourceUtil.h"
 @interface AppDelegate ()
 
 @end
@@ -18,6 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSLog(@"didFinishLaunchingWithOptions...");
+    
+    
     
     Reachability *reach=[Reachability reachabilityWithHostName:@"www.baidu.com"];
     //reach.reachableOnWWAN=NO;

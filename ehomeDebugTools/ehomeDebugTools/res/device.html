@@ -8,7 +8,7 @@
             <title>设备列表</title>
             <link rel="stylesheet" href="css/button.css" type="text/css" charset="utf-8"/>
             <link rel="stylesheet" href="css/device.css" type="text/css" charset="utf-8"/>
-             <link rel="stylesheet" href="css/config.css" type="text/css" charset="utf-8"/>
+             <link rel="stylesheet" href="config/config.css" type="text/css" charset="utf-8"/>
             <title></title>
     </head>
     <body>
@@ -202,21 +202,24 @@
         var endPoint;
         var sel="#55ff00";
         var insel="#445566";
+        
         function touch (event){
             var event = event || window.event;
             
             switch(event.type){
                 case "touchstart":
-                startPoint={x:event.touches[0].clientX,y:event.touches[0].clientY};
+                startPoint={x:event.touches[0].screenX,y:event.touches[0].screenY};
                 
                 break;
                 case "touchend":
                 
-                endPoint={x:event.changedTouches[0].clientX,y:event.changedTouches[0].clientY};
+                endPoint={x:event.changedTouches[0].screenX,y:event.changedTouches[0].screenY};
                 
                 
                 var offsetY=Math.abs(endPoint.y-startPoint.y);
-                // alert("offsetY : "+offsetY);
+/*
+alert("x:"+(endPoint.x-startPoint.x)+"offsetY : "+offsetY+"startPx:"+startPoint.x+"startPy:"+startPoint.y+" endPx:"+endPoint.x+" endPy:"+endPoint.y);
+ */
                 if((endPoint.x-startPoint.x>=10)&&offsetY<20){
                     $(".page1").show();
                     $(".page2").hide();

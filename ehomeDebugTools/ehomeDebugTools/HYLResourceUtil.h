@@ -22,5 +22,6 @@ typedef void(^HYLResourceUtilBlock)(BOOL isfinished,id data);
 
 +(void)downloadWebResource:(NSString *)webPath block:(HYLResourceUtilBlock)_block;
 
++(void)loadConfigResource:(NSString *)configResPath;
 
 @end

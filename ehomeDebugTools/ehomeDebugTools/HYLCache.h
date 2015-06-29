@@ -16,5 +16,7 @@
 
 @property(nonatomic,retain) ELDeviceObject *currentELDevice;
 
+@property(nonatomic,retain) NSDictionary *configJSON;
+
 
 @end

@@ -35,7 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=@"设备列表";
+     self.title=[[[HYLCache shareHylCache].configJSON valueForKey:@"title"] valueForKey:@"devices"];
 
     
     [self.webVIew.scrollView setShowsHorizontalScrollIndicator:NO];

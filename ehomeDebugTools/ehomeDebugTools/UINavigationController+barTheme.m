@@ -8,7 +8,8 @@
 
 #import "UINavigationController+barTheme.h"
 #import <objc/runtime.h>
-
+#import "HYLCache.h"
+#import "HYLResourceUtil.h"
 @implementation UIViewController (barTheme)
 
 +(void)load{
@@ -17,7 +18,7 @@
     Method originalMethod = class_getInstanceMethod(self, @selector(awakeFromNib));
     Method swizzledMethod = class_getInstanceMethod(self, @selector(hyl_awakeFromNib));
     method_exchangeImplementations(originalMethod, swizzledMethod);
-    
+    [HYLResourceUtil loadConfigResource:nil];
 }
 - (void)hyl_awakeFromNib{
     [self hyl_awakeFromNib];
@@ -26,16 +27,30 @@
          NSLog(@"UINavigationController hyl_awakeFromNib  init");
         
         
-        [((UINavigationController *)self).navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_navigation2"] forBarMetrics:UIBarMetricsDefault];
+//        [((UINavigationController *)self).navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_navigation2"] forBarMetrics:UIBarMetricsDefault];
+        NSArray *barColorRGBArr=[[HYLCache shareHylCache].configJSON valueForKey:@"barColor"];
+        ;
+        NSArray *fontColorRGBArr=[[HYLCache shareHylCache].configJSON valueForKey:@"fontColor"];
+        
+        float fontSize=[[[HYLCache shareHylCache].configJSON valueForKey:@"fontSize"] floatValue];
+        
+        [((UINavigationController *)self).navigationBar setBarTintColor:[UIColor colorWithRed:[[barColorRGBArr objectAtIndex:0] intValue] green:[[barColorRGBArr objectAtIndex:1] intValue] blue:[[barColorRGBArr objectAtIndex:2] intValue] alpha:1]];
+        
+        
         [((UINavigationController *)self).navigationBar setTintColor:[UIColor whiteColor]];
+        
+        UIColor *fontColor=[UIColor colorWithRed:[[fontColorRGBArr objectAtIndex:0] intValue] green:[[fontColorRGBArr objectAtIndex:1] intValue] blue:[[fontColorRGBArr objectAtIndex:2] intValue] alpha:1];
+        
+        
+        
         if([[[UIDevice currentDevice] systemVersion] floatValue]<7.0){
-            [((UINavigationController *)self).navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor, [UIFont systemFontOfSize:18],UITextAttributeFont,nil]];
+            [((UINavigationController *)self).navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:fontColor,UITextAttributeTextColor, [UIFont systemFontOfSize:fontSize],UITextAttributeFont,nil]];
             
         }else{
-            [((UINavigationController *)self).navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, [UIFont systemFontOfSize:18],NSFontAttributeName,nil]];
+            [((UINavigationController *)self).navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:fontColor,NSForegroundColorAttributeName, [UIFont systemFontOfSize:fontSize],NSFontAttributeName,nil]];
         }
     }else{
-         NSLog(@"UIViewController hyl_awakeFromNib  init");
+         //NSLog(@"UIViewController hyl_awakeFromNib  init");
     }
     
     

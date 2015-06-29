@@ -1,0 +1,20 @@
+body{
+ /*配置应用的背景*/
+ background-color:#ffffff;
+
+}
+label{
+    color:#000000;
+}
+
+.logo{
+
+ background: url(../img/icon57.png);
+ background-size:cover;
+ background-position:center;
+
+}
+
+
+
+
