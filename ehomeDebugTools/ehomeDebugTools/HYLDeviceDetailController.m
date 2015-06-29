@@ -24,6 +24,8 @@
     [super viewDidLoad];
     
     self.title=self.device.name;
+
+    
     self.keyboardDelegate=self;
     
     [self.webView.scrollView setShowsHorizontalScrollIndicator:YES];

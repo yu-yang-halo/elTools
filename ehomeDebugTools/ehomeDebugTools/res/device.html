@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
     <head>
         <meta charset="utf-8">
@@ -9,50 +9,50 @@
             <link rel="stylesheet" href="css/button.css" type="text/css" charset="utf-8"/>
             <link rel="stylesheet" href="css/device.css" type="text/css" charset="utf-8"/>
             <title></title>
-            </head>
+    </head>
     <body>
-
+        
         <div class="deviceDetail">
-          
-          <div class="page1" >
-
-              <div class="devstatus">
-              	<span>
-              	<img class="onlineImg" src="img/icon_online.png"></img>
-              	<label class="onlineText">在线</label></span>
-              	 
-              </div>
-              <div class="main">
-              		<div class="topshow"  style="display: none;">
-              			<span></span>
-              		</div>
-              	    <div class="centershow" style="display: none;">
-              	    	<span></span>
-              	    </div>
-              	    <div class="bottomshow" style="display: none;">
-              	    	<span></span>
-              	    </div>
-              </div>
-          </div>
-          <div class="page2" style="display:none;" >
-             <div class="configHeader">
-              	<span><label>基本信息配置</label><span>
-             </div>
-             <div class="configBody">
-             	
-             
-             	
-             	
-             </div>
             
-             
-          </div>
-          
-          <div class="rounds">
-              <a href="#" class="round" id="r1">●</a>
-              <a href="#" class="round" id="r2">●</a>
-           </div>
-          
+            <div class="page1" >
+                
+                <div class="devstatus">
+                    <span>
+                        <img class="onlineImg" src="img/icon_online.png"></img>
+                        <label class="onlineText">在线</label></span>
+                    
+                </div>
+                <div class="main">
+                    <div class="topshow"  style="display: none;">
+                        <span></span>
+                    </div>
+                    <div class="centershow" style="display: none;">
+                        <span></span>
+                    </div>
+                    <div class="bottomshow" style="display: none;">
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="page2" style="display:none;" >
+                <div class="configHeader">
+                    <span><label>基本信息配置</label><span>
+                </div>
+                <div class="configBody">
+                    
+                    
+                    
+                    
+                </div>
+                
+                
+            </div>
+            
+            <div class="rounds">
+                <a href="#" class="round" id="r1">●</a>
+                <a href="#" class="round" id="r2">●</a>
+            </div>
+            
         </div>
         
         
@@ -61,136 +61,137 @@
         $(document).ready(function(){
                           hyl_requestDeviceInfo();
                           //loadDeviceInfoToHtml(device,clazz);
-                        })
+                          })
+                          
+                          function autoBuildHtml(device,clazz){
+                              var configHtml="";
+                              
+                              var fieldValues=device.fieldMap;
+                              
+                              var fields=clazz[device.classId];
+                              for(var j=0;j<fields.length;j++){
+                                  var field=fields[j];
+                                  var isExist=fieldIsExistInFieldMap(field,fieldValues);
+                                  var defaultVal;
+                                  var key=field.fieldId;
+                                  if(isExist){
+                                      defaultVal=fieldValues[key];
+                                  }else{
+                                      defaultVal=field.defaultValue;
+                                  }
+                                  if(field.deviceCmdYN&&field.deviceStateYN){
+                                      //是button，发送命令且表状态
+                                      var htmlString="<input type='image' class='cmdStateBtn'  ";
+                                      if(defaultVal==0){
+                                          htmlString+=" src='img/bg_switch_off.png' ";
+                                      }else{
+                                          htmlString+=" src='img/bg_switch_on.png' ";
+                                      }
+                                      
+                                      
+                                      
+                                      htmlString+=" value='"+(defaultVal)
+                                      +"' fieldId="+key+" objectId="
+                                      +device.objectId+"></input>";
+                                      
+                                      
+                                      
+                                      
+                                      
+                                      $(".centershow").show();
+                                      $(".centershow span").append(htmlString);
+                                      
+                                  }else if(field.deviceStateYN){
+                                      //是显示标签 表状态
+                                      //var htmlString="<img alt='"+field.displayName+" : "+fieldValues[key]+"'></img>";
+                                      
+                                      var htmlString="<img alt='"+field.displayName+":"+(defaultVal)+"'></img>";
+                                      
+                                      $(".topshow").show();
+                                      $(".topshow span").append(htmlString);
+                                      
+                                  }else if(field.deviceCmdYN){
+                                      //是按钮，发送命令，不表状态
+                                      var htmlString="<button class='button blue'   value='"+defaultVal+"' fieldId="+key+" objectid="+device.objectId+">"+field.displayName+"</button>";
+                                      $(".bottomshow").show();
+                                      $(".bottomshow span").append(htmlString);
+                                      
+                                  }
+                                  if(field.presistYN){
+                                      //表配置存储，input框，放在第二界面
+                                      configHtml+="<div class='configRow'><label>"+field.displayName
+                                      +"</label><input value='"+defaultVal+"' fieldId="+key+"></input> </div>";
+                                      
+                                  }
+                                  
+                                  
+                              }
+                              return configHtml;
+                          }
     
     function loadDeviceInfoToHtml(device,clazz){
-    	//基本信息显示
-    	if(device.netState==0){
-    		
-    		$(".onlineImg").attr("src","img/icon_offline.png");
-    		$(".onlineText").html("离线");
-    		
-    	}else{
-    		
-    		$(".onlineImg").attr("src","img/icon_online.png");
-    		$(".onlineText").html("在线");
-    	
-    	}
-    	
-    	
-    	
-    	var configHtml="";
-    	
-    	var fieldValues=device.fieldMap;
-        
-        var fields=clazz[device.classId];
-        for(var j=0;j<fields.length;j++){
-            var field=fields[j];
-            var isExist=fieldIsExistInFieldMap(field,fieldValues);
-            var defaultVal;
-            if(isExist){
-                defaultVal=fieldValues[key];
-            }else{
-                defaultVal=field.defaultValue;
-            }
-            
-            if(field.deviceCmdYN&&field.deviceStateYN){
-                    //是button，发送命令且表状态
-                    var htmlString="<input type='image' class='cmdStateBtn'  ";
-                    if(defaultVal==0){
-                        htmlString+=" src='img/bg_switch_off.png' ";
-                    }else{
-                        htmlString+=" src='img/bg_switch_on.png' ";
-                    }
-                    
-                
-                    
-                    htmlString+=" value="+(defaultVal)
-                    +" fieldId="+key+" objectId="
-                    +device.objectId+"></input>";
-                    
-                    
-                    
-                    
-                    
-                    $(".centershow").show();
-                    $(".centershow span").append(htmlString);
-                    
-                }else if(field.deviceStateYN){
-                    //是显示标签 表状态
-                    //var htmlString="<img alt='"+field.displayName+" : "+fieldValues[key]+"'></img>";
-                    
-                    var htmlString="<img alt='"+field.displayName+":"+(defaultVal)+"'></img>";
-                    
-                    $(".topshow").show();
-                    $(".topshow span").append(htmlString);
-                    
-                }else if(field.deviceCmdYN){
-                    //是按钮，发送命令，不表状态
-                    var htmlString="<button class='button blue'   value="+defaultVal+" fieldId="+key+" objectid="+device.objectId+">"+field.displayName+"</button>";
-                    $(".bottomshow").show();
-                    $(".bottomshow span").append(htmlString); 
-                    
-                }else if(field.presistYN){
-                    //表配置存储，input框，放在第二界面
-                    configHtml+="<div class='configRow'><label>"+field.displayName
-                    +"</label><input value="+defaultVal+" fieldId="+key+"></input> </div>";
-                    
-                }
-        
+        //基本信息显示
+        if(device.netState==0){
+            $(".onlineImg").attr("src","img/icon_offline.png");
+            $(".onlineText").html("离线");
+        }else{
+            $(".onlineImg").attr("src","img/icon_online.png");
+            $(".onlineText").html("在线");
         }
+        var configHtml=autoBuildHtml(device,clazz);
         
-        $(".configBody").append("<div class='configRow'><label>名称</label><input value="+device.name+"></input> </div>");
-        $(".configBody").append(configHtml);   
-    	$(".configBody").append(" <div class='configRow'><button class='button orange'  id='configBtn' objectid="+device.objectId+">保存</button></div>");
-         
+        
+        $(".configBody").append("<div class='configRow'><label>名称</label><input value='"+device.name+"'></input> </div>");
+        $(".configBody").append("<div class='configRow'><label>序列号</label><input value='"+device.clientSn+"' disabled='disabled'></input> </div>");
+        
+        $(".configBody").append(configHtml);
+        
+        $(".configBody").append(" <div class='configRow'><button class='button orange'  id='configBtn' objectid="+device.objectId+">保存</button></div>");
+        
         $("#configBtn").click(function(){
-         	var objectId=$(this).attr('objectid');
-         	
-         	$(".configRow input").each(function(){
-         		if($(this).attr("fieldId")==undefined){
-         			//alert($(this).val());
-                    hyl_updateDeviceName($(this).val(),objectId);
-                  
-         		}else{
-         			//alert($(this).attr("fieldId")+":"+$(this).val());
-                  hyl_setFieldCmd($(this).val(),$(this).attr("fieldId"),objectId);
-         		}
-         		
-         		
-         	});
-         	
-         });
-         
-         $(".bottomshow button").each(function(){
-         	$(this).click(function(){
-         		
-         		alert($(this).attr("value")+":"+$(this).attr("fieldId")+":"+$(this).attr("objectId"));
-         		//hyl_setFieldCmd($(this).attr("value"),$(this).attr("fieldId"),$(this).attr("objectId"));
-         		
-         	});
-         	
-         });
-          $(".centershow input").each(function(){
-         	$(this).click(function(){
-                          
-         		if($(this).attr("value")==0){
-         			$(this).attr("value","1");
-         			$(this).attr("src","img/bg_switch_on.png");
-         		}else{
-         			$(this).attr("value","0");
-         			$(this).attr("src","img/bg_switch_off.png");
-         		}
-                          
-                hyl_setFieldCmd($(this).attr("value"),$(this).attr("fieldId"),$(this).attr("objectId"));
-                          
-            });
-         	
-         });
-       
+                              var objectId=$(this).attr('objectid');
+                              
+                              $(".configRow input").each(function(){
+                                                         if($(this).attr("fieldId")==undefined&&$(this).attr('disabled')==undefined){
+                                                         hyl_updateDeviceName($(this).val(),objectId);
+                                                         }else{
+                                                         hyl_setFieldCmd($(this).val(),$(this).attr("fieldId"),objectId);
+                                                         }
+                                                         
+                                                         
+                                                         });
+                              
+                              });
+                              
+                              $(".bottomshow button").each(function(){
+                                                           $(this).click(function(){
+                                                                         
+                                                                         alert($(this).attr("value")+":"+$(this).attr("fieldId")+":"+$(this).attr("objectId"));
+                                                                         //hyl_setFieldCmd($(this).attr("value"),$(this).attr("fieldId"),$(this).attr("objectId"));
+                                                                         
+                                                                         });
+                                                           
+                                                           });
+                                                           $(".centershow input").each(function(){
+                                                                                       $(this).click(function(){
+                                                                                                     
+                                                                                                     if($(this).attr("value")==0){
+                                                                                                     $(this).attr("value","1");
+                                                                                                     $(this).attr("src","img/bg_switch_on.png");
+                                                                                                     }else{
+                                                                                                     $(this).attr("value","0");
+                                                                                                     $(this).attr("src","img/bg_switch_off.png");
+                                                                                                     }
+                                                                                                     
+                                                                                                     hyl_setFieldCmd($(this).attr("value"),$(this).attr("fieldId"),$(this).attr("objectId"));
+                                                                                                     
+                                                                                                     });
+                                                                                       
+                                                                                       });
+                                                                                       
     }
     
-
+    
     function load (){
         
         document.addEventListener('touchstart',touch, false);
@@ -212,10 +213,10 @@
                 
                 endPoint={x:event.changedTouches[0].clientX,y:event.changedTouches[0].clientY};
                 
-               
-               var offsetY=Math.abs(endPoint.y-startPoint.y);
-              // alert("offsetY : "+offsetY);
-                if((endPoint.x-startPoint.x>=15)&&offsetY<10){
+                
+                var offsetY=Math.abs(endPoint.y-startPoint.y);
+                // alert("offsetY : "+offsetY);
+                if((endPoint.x-startPoint.x>=10)&&offsetY<20){
                     $(".page1").show();
                     $(".page2").hide();
                     
@@ -228,7 +229,7 @@
                     //alert('向右滑动');
                 }
                 if((endPoint.x-startPoint.x<=-20)&&offsetY<10){
-                   // alert('向左滑动');
+                    // alert('向左滑动');
                     $(".page1").hide();
                     $(".page2").show();
                     $("#r1").css("color",insel);
@@ -246,6 +247,6 @@
     }
     window.addEventListener('load',load, false);
     
-        
-    </script>
+    
+        </script>
 </html>

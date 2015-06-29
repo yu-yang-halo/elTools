@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5D162196B3A798A01678C2C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FBA32A01B45956F39F6449 /* libPods.a */; };
+		8407F7101B3D2AC50008C36F /* manager.html in Resources */ = {isa = PBXBuildFile; fileRef = 8407F70F1B3D2AC50008C36F /* manager.html */; };
+		8407F7131B3D47330008C36F /* HYLDeviceManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F7121B3D47330008C36F /* HYLDeviceManagerController.m */; };
 		8449B7481B3259F100B764D7 /* UINavigationController+barTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 8449B7471B3259F100B764D7 /* UINavigationController+barTheme.m */; };
 		8465F9E01B2E993E00DC29CA /* ELNetworkService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C14B3E1AF7318800B11B46 /* ELNetworkService.framework */; };
 		8465F9E11B2E993E00DC29CA /* ELNetworkService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84C14B3E1AF7318800B11B46 /* ELNetworkService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -61,6 +63,9 @@
 /* Begin PBXFileReference section */
 		72FBA32A01B45956F39F6449 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEA3C076871EC35663F8CA6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		8407F70F1B3D2AC50008C36F /* manager.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = manager.html; sourceTree = "<group>"; };
+		8407F7111B3D47330008C36F /* HYLDeviceManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLDeviceManagerController.h; sourceTree = "<group>"; };
+		8407F7121B3D47330008C36F /* HYLDeviceManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLDeviceManagerController.m; sourceTree = "<group>"; };
 		8449B7461B3259F100B764D7 /* UINavigationController+barTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+barTheme.h"; sourceTree = "<group>"; };
 		8449B7471B3259F100B764D7 /* UINavigationController+barTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+barTheme.m"; sourceTree = "<group>"; };
 		846AE2101B2A8A6B004F3106 /* HYLDevicesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLDevicesController.h; sourceTree = "<group>"; };
@@ -140,6 +145,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8407F7051B3D04CD0008C36F /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
 		846AE2131B2A9725004F3106 /* viewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +162,8 @@
 				84C14B191AF70AA400B11B46 /* Main.storyboard */,
 				84B3F9B81B315CC400486D21 /* HYLDeviceDetailController.h */,
 				84B3F9B91B315CC400486D21 /* HYLDeviceDetailController.m */,
+				8407F7111B3D47330008C36F /* HYLDeviceManagerController.h */,
+				8407F7121B3D47330008C36F /* HYLDeviceManagerController.m */,
 			);
 			name = viewController;
 			sourceTree = "<group>";
@@ -184,6 +198,7 @@
 				84734BF01AF9F69D0009D3C5 /* index.html */,
 				84B3F9B21B2FBBBC00486D21 /* devices.html */,
 				84CEC51E1B33F7EB0015C348 /* device.html */,
+				8407F70F1B3D2AC50008C36F /* manager.html */,
 				84734BF11AF9F69D0009D3C5 /* js */,
 			);
 			path = res;
@@ -215,6 +230,7 @@
 		84C14B0E1AF70AA300B11B46 /* ehomeDebugTools */ = {
 			isa = PBXGroup;
 			children = (
+				8407F7051B3D04CD0008C36F /* view */,
 				84CEC5201B3A3A4D0015C348 /* categary */,
 				84B3F9B41B301DA800486D21 /* classutils */,
 				846AE2141B2AA0A4004F3106 /* download */,
@@ -349,6 +365,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8407F7101B3D2AC50008C36F /* manager.html in Resources */,
 				84734BF31AF9F69D0009D3C5 /* img in Resources */,
 				84734BF21AF9F69D0009D3C5 /* css in Resources */,
 				84B3F9B31B2FBBBC00486D21 /* devices.html in Resources */,
@@ -411,6 +428,7 @@
 				84B3F9B71B301DD700486D21 /* HYLClassUtils.m in Sources */,
 				84CEC5291B3AB0840015C348 /* HYLCache.m in Sources */,
 				84C14B181AF70AA300B11B46 /* ViewController.m in Sources */,
+				8407F7131B3D47330008C36F /* HYLDeviceManagerController.m in Sources */,
 				846AE2121B2A8A6B004F3106 /* HYLDevicesController.m in Sources */,
 				846AE2171B2AA125004F3106 /* HYLResourceUtil.m in Sources */,
 				84B3F9BA1B315CC400486D21 /* HYLDeviceDetailController.m in Sources */,

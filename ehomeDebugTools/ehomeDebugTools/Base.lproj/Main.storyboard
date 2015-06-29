@@ -30,7 +30,9 @@
                             <constraint firstItem="Y4G-89-KyA" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="zGH-3Z-DyW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="445-YP-KfQ"/>
+                    <navigationItem key="navigationItem" id="445-YP-KfQ">
+                        <barButtonItem key="rightBarButtonItem" id="vwy-Fj-4wj"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="webView" destination="Y4G-89-KyA" id="mDK-Z2-wHc"/>
                         <segue destination="E5Q-eo-W7E" kind="show" identifier="deviceList" id="DcA-sR-XPg"/>
@@ -38,7 +40,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8182.5" y="-1827.75"/>
+            <point key="canvasLocation" x="-17785.5" y="-3534.75"/>
         </scene>
         <!--Devices Controller-->
         <scene sceneID="EqD-X6-Siw">
@@ -52,17 +54,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O6W-CN-cbn">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6W-CN-cbn">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="FhQ-nm-2LV" secondAttribute="top" id="OEb-61-Qb8"/>
+                            <constraint firstAttribute="trailing" secondItem="O6W-CN-cbn" secondAttribute="trailing" id="Tvl-Kh-12p"/>
                             <constraint firstItem="O6W-CN-cbn" firstAttribute="bottom" secondItem="cTX-7D-2Mx" secondAttribute="top" id="Wfi-NY-Aiv"/>
                             <constraint firstAttribute="trailing" secondItem="O6W-CN-cbn" secondAttribute="trailing" id="YIe-46-m3G"/>
                             <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="FhQ-nm-2LV" secondAttribute="top" id="dD9-cw-CBc"/>
+                            <constraint firstItem="O6W-CN-cbn" firstAttribute="bottom" secondItem="cTX-7D-2Mx" secondAttribute="top" id="nD8-qW-au3"/>
                             <constraint firstItem="O6W-CN-cbn" firstAttribute="leading" secondItem="FhQ-nm-2LV" secondAttribute="leading" id="nU2-JW-uen"/>
+                            <constraint firstItem="O6W-CN-cbn" firstAttribute="leading" secondItem="FhQ-nm-2LV" secondAttribute="leading" id="t06-HD-aIN"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -81,7 +87,13 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="2SP-8M-19g"/>
+                    <navigationItem key="navigationItem" id="2SP-8M-19g">
+                        <barButtonItem key="rightBarButtonItem" title="管理" id="ioI-Ok-RGE">
+                            <connections>
+                                <segue destination="uNf-Ly-X3y" kind="show" id="zt3-7G-fp3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="webVIew" destination="O6W-CN-cbn" id="UAW-0i-OuZ"/>
                         <segue destination="z5b-C4-ReM" kind="show" identifier="deviceDetail" id="ydx-D0-VaQ"/>
@@ -89,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmt-9v-KT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7266" y="-1860"/>
+            <point key="canvasLocation" x="-16429.5" y="-3624.75"/>
         </scene>
         <!--Device Detail Controller-->
         <scene sceneID="Ns4-pa-sch">
@@ -123,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ao-IA-xVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6576" y="-1827.75"/>
+            <point key="canvasLocation" x="-15237" y="-3459.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pt2-v5-eFw">
@@ -139,7 +151,54 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llJ-lV-NUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-9007.5" y="-1818.7499999999998"/>
+            <point key="canvasLocation" x="-19141.5" y="-3503.25"/>
+        </scene>
+        <!--Device Manager Controller-->
+        <scene sceneID="prE-Ac-PNn">
+            <objects>
+                <viewController id="uNf-Ly-X3y" customClass="HYLDeviceManagerController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X4s-bb-VAw"/>
+                        <viewControllerLayoutGuide type="bottom" id="NDg-56-Xsk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PXo-ee-Agp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Shg-xy-Lpt">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Shg-xy-Lpt" firstAttribute="leading" secondItem="PXo-ee-Agp" secondAttribute="leading" id="51j-ba-w8Z"/>
+                            <constraint firstItem="Shg-xy-Lpt" firstAttribute="bottom" secondItem="NDg-56-Xsk" secondAttribute="top" id="Lhy-qL-NYP"/>
+                            <constraint firstItem="Shg-xy-Lpt" firstAttribute="top" secondItem="PXo-ee-Agp" secondAttribute="top" id="XGG-HS-eD4"/>
+                            <constraint firstAttribute="trailing" secondItem="Shg-xy-Lpt" secondAttribute="trailing" id="geH-7V-Ufm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ud0-4O-dh9">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="iKJ-Fy-KLP">
+                            <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="添加设备"/>
+                                <segment title="删除设备"/>
+                            </segments>
+                            <connections>
+                                <action selector="switchPage:" destination="uNf-Ly-X3y" eventType="valueChanged" id="amL-S5-74i"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="webView" destination="Shg-xy-Lpt" id="dB2-E7-fGb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cTC-0o-bcT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-15838.5" y="-2974.5"/>
         </scene>
     </scenes>
 </document>

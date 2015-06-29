@@ -29,10 +29,15 @@
     [_webVIew stringByEvaluatingJavaScriptFromString:@"hyl_requestDevicesCmd()"];
     
 }
+-(void)toDeviceManager{
+    NSLog(@"%s",__func__);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"设备列表";
 
+    
     [self.webVIew.scrollView setShowsHorizontalScrollIndicator:NO];
     [self.webVIew.scrollView setShowsVerticalScrollIndicator:NO];
     
