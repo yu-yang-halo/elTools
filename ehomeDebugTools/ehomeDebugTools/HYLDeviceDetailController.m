@@ -12,7 +12,9 @@
 #import <JSONKit/JSONKit.h>
 #import "HYLClassUtils.h"
 #import "HYLContextLibary.h"
-@interface HYLDeviceDetailController ()
+@interface HYLDeviceDetailController (){
+   
+}
 
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 
@@ -31,6 +33,8 @@
     [self.webView.scrollView setShowsHorizontalScrollIndicator:YES];
     [self.webView.scrollView setShowsVerticalScrollIndicator:NO];
     self.webView.scrollView.delegate=self;
+    
+    
     
     NSString *htmlString=[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"device.html" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
     

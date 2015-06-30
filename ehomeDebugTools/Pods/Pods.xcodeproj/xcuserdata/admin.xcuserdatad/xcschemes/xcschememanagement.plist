@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-EGOTableViewPullRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-FDFullscreenPopGesture.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0363317BBFDCFE9E6B65E6BA</key>
+		<key>0204044D9440BDC8C1E47C78</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>238CC38709E0B388B9BB27BE</key>
+		<key>3114D0DD858350F3F80D5CDB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>70A094B6EA7B6B80BECED333</key>
+		<key>3449577A999FE4AB2CBF696D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BE1AC18B5F2762338E43A803</key>
+		<key>5ED7984AFD4ADAEC8B236024</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C7C09469FE55884421AEE41C</key>
+		<key>9A6235CA7E509161435BD684</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DAE058E322CE81C9FF46D861</key>
+		<key>9B8A3B83C52B317BB8614D4F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FC90AFB0646AC0FEEA6D077C</key>
+		<key>E23F0EFD1428C361B9B3DCAA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA1FA40B4B6FB4D2602834B7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

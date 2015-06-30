@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface HYLDevicesController : UIViewController<UIWebViewDelegate>
+#import "EGORefreshTableHeaderView.h"
+@interface HYLDevicesController : UIViewController<UIWebViewDelegate,EGORefreshTableHeaderDelegate,UIScrollViewDelegate>
 
 @property(nonatomic,retain) NSString *data;
 

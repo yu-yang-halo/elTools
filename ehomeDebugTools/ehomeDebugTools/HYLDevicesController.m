@@ -16,7 +16,12 @@
 #import <JSONKit/JSONKit.h>
 #import "HYLCache.h"
 #import "HYLContextLibary.h"
-@interface HYLDevicesController ()
+
+
+@interface HYLDevicesController (){
+    EGORefreshTableHeaderView *_refreshHeaderView;
+    BOOL _reloading;
+}
 @property (strong, nonatomic) IBOutlet UIWebView *webVIew;
 @property (nonatomic,retain) NSDictionary *deviceDic;
 
@@ -26,7 +31,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     NSLog(@"viewDidAppear..........");
     //获取web数据
-    [_webVIew stringByEvaluatingJavaScriptFromString:@"hyl_requestDevicesCmd()"];
+    [self loadWebViewData];
     
 }
 -(void)toDeviceManager{
@@ -41,7 +46,20 @@
     [self.webVIew.scrollView setShowsHorizontalScrollIndicator:NO];
     [self.webVIew.scrollView setShowsVerticalScrollIndicator:NO];
     
-    self.webVIew.delegate=self;
+    //self.webVIew.delegate=self;
+    self.webVIew.scrollView.delegate=self;
+    
+    if(_refreshHeaderView==nil){
+        _refreshHeaderView=[[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0,0-self.webVIew.scrollView.bounds.size.height,self.webVIew.scrollView.bounds.size.width,self.webVIew.bounds.size.height)];
+        _refreshHeaderView.delegate=self;
+        [self.webVIew.scrollView addSubview:_refreshHeaderView];
+      
+        
+        
+        
+    }
+    [_refreshHeaderView refreshLastUpdatedDate];
+    
     
     NSString *htmlString=[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"devices.html" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
     
@@ -74,7 +92,7 @@
     
     
     context[@"mobile_requestDevices"]=^(){
-      
+         _reloading=YES;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
            
            self.deviceDic=[[ElApiService shareElApiService] getObjectListAndFieldsByUser];
@@ -116,6 +134,8 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.webVIew stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_loadDevicesData(%@,%@)",[allDeviceObj JSONString],[allClassObjs JSONString]]];
+                 _reloading=NO;
+                [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.webVIew.scrollView];
             });
         });
         
@@ -148,19 +168,48 @@
    
 }
 #pragma mark delegate
+//
+//- (void)webViewDidStartLoad:(UIWebView *)webView{
+//    _reloading=YES;
+//}
+//- (void)webViewDidFinishLoad:(UIWebView *)webView{
+//    
+//    _reloading=NO;
+//    
+//    [_webVIew stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.body.scrollTop=%d",0]];
+//    
+//}
+//- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+//    NSLog(@"%@",[error description]);
+//    _reloading=NO;
+//    [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.webVIew.scrollView];
+//}
 
-- (void)webViewDidStartLoad:(UIWebView *)webView{
-   
-}
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
-    [self.webVIew stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
-    [self.webVIew stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
-    
+#pragma mark scrollviewdelegate
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
     
 }
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    NSLog(@"%@",error);
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+}
+-(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+    
+}
+-(void)loadWebViewData{
+     [_webVIew stringByEvaluatingJavaScriptFromString:@"hyl_requestDevicesCmd()"];
 }
 
+#pragma mark EGORefreshTableHeaderDelegate
+-(void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView *)view{
+     [self loadWebViewData];
+}
+-(BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView *)view{
+    return _reloading;
+}
+-(NSDate *)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView *)view{
+    return [NSDate date];
+}
 
 @end

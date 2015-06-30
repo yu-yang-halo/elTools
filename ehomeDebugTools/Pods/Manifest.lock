@@ -1,4 +1,5 @@
 PODS:
+  - EGOTableViewPullRefresh (0.1.0)
   - FDFullscreenPopGesture (1.1)
   - JSONKit (1.5pre)
   - MBProgressHUD (0.9.1)
@@ -7,6 +8,7 @@ PODS:
   - ZipArchive (1.4.0)
 
 DEPENDENCIES:
+  - EGOTableViewPullRefresh (~> 0.1.0)
   - FDFullscreenPopGesture (~> 1.0)
   - JSONKit (~> 1.5pre)
   - MBProgressHUD
@@ -15,6 +17,7 @@ DEPENDENCIES:
   - ZipArchive (~> 1.4.0)
 
 SPEC CHECKSUMS:
+  EGOTableViewPullRefresh: d4c15be51914f4168d6fd7529b6ad3a4ab01e5f4
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   JSONKit: bae313ce6a6c444f40489a6c0b023f399888871f
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad

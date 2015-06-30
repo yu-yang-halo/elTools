@@ -167,8 +167,8 @@
                               $(".bottomshow button").each(function(){
                                                            $(this).click(function(){
                                                                          
-                                                                         alert($(this).attr("value")+":"+$(this).attr("fieldId")+":"+$(this).attr("objectId"));
-                                                                         //hyl_setFieldCmd($(this).attr("value"),$(this).attr("fieldId"),$(this).attr("objectId"));
+ 
+        hyl_setFieldCmd($(this).attr("value"),$(this).attr("fieldId"),$(this).attr("objectId"));
                                                                          
                                                                          });
                                                            
@@ -220,7 +220,7 @@
 /*
 alert("x:"+(endPoint.x-startPoint.x)+"offsetY : "+offsetY+"startPx:"+startPoint.x+"startPy:"+startPoint.y+" endPx:"+endPoint.x+" endPy:"+endPoint.y);
  */
-                if((endPoint.x-startPoint.x>=10)&&offsetY<20){
+                if((endPoint.x-startPoint.x>=10)&&offsetY<30){
                     $(".page1").show();
                     $(".page2").hide();
                     
@@ -232,7 +232,7 @@ alert("x:"+(endPoint.x-startPoint.x)+"offsetY : "+offsetY+"startPx:"+startPoint.
                     
                     //alert('向右滑动');
                 }
-                if((endPoint.x-startPoint.x<=-20)&&offsetY<10){
+                if((endPoint.x-startPoint.x<=-10)&&offsetY<30){
                     // alert('向左滑动');
                     $(".page1").hide();
                     $(".page2").show();

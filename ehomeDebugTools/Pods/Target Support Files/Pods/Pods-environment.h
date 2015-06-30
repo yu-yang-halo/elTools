@@ -6,6 +6,12 @@
 // project.
 
 
+// EGOTableViewPullRefresh
+#define COCOAPODS_POD_AVAILABLE_EGOTableViewPullRefresh
+#define COCOAPODS_VERSION_MAJOR_EGOTableViewPullRefresh 0
+#define COCOAPODS_VERSION_MINOR_EGOTableViewPullRefresh 1
+#define COCOAPODS_VERSION_PATCH_EGOTableViewPullRefresh 0
+
 // FDFullscreenPopGesture
 #define COCOAPODS_POD_AVAILABLE_FDFullscreenPopGesture
 #define COCOAPODS_VERSION_MAJOR_FDFullscreenPopGesture 1

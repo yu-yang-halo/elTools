@@ -61,12 +61,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="FhQ-nm-2LV" secondAttribute="top" id="OEb-61-Qb8"/>
+                            <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="FhQ-nm-2LV" secondAttribute="top" id="OEb-61-Qb8">
+                                <variation key="heightClass=regular-widthClass=compact" constant="64"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="O6W-CN-cbn" secondAttribute="trailing" id="Tvl-Kh-12p"/>
-                            <constraint firstItem="O6W-CN-cbn" firstAttribute="bottom" secondItem="cTX-7D-2Mx" secondAttribute="top" id="Wfi-NY-Aiv"/>
+                            <constraint firstItem="O6W-CN-cbn" firstAttribute="bottom" secondItem="cTX-7D-2Mx" secondAttribute="top" id="Wfi-NY-Aiv">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="O6W-CN-cbn" secondAttribute="trailing" id="YIe-46-m3G"/>
-                            <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="FhQ-nm-2LV" secondAttribute="top" id="dD9-cw-CBc"/>
-                            <constraint firstItem="O6W-CN-cbn" firstAttribute="bottom" secondItem="cTX-7D-2Mx" secondAttribute="top" id="nD8-qW-au3"/>
+                            <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="FhQ-nm-2LV" secondAttribute="top" id="dD9-cw-CBc">
+                                <variation key="heightClass=regular-widthClass=compact" constant="64"/>
+                            </constraint>
+                            <constraint firstItem="O6W-CN-cbn" firstAttribute="bottom" secondItem="cTX-7D-2Mx" secondAttribute="top" id="nD8-qW-au3">
+                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                            </constraint>
                             <constraint firstItem="O6W-CN-cbn" firstAttribute="leading" secondItem="FhQ-nm-2LV" secondAttribute="leading" id="nU2-JW-uen"/>
                             <constraint firstItem="O6W-CN-cbn" firstAttribute="leading" secondItem="FhQ-nm-2LV" secondAttribute="leading" id="t06-HD-aIN"/>
                         </constraints>
@@ -101,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmt-9v-KT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-16429.5" y="-3624.75"/>
+            <point key="canvasLocation" x="-16678.5" y="-3645"/>
         </scene>
         <!--Device Detail Controller-->
         <scene sceneID="Ns4-pa-sch">

@@ -10,6 +10,7 @@
 		5D162196B3A798A01678C2C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FBA32A01B45956F39F6449 /* libPods.a */; };
 		8407F7101B3D2AC50008C36F /* manager.html in Resources */ = {isa = PBXBuildFile; fileRef = 8407F70F1B3D2AC50008C36F /* manager.html */; };
 		8407F7131B3D47330008C36F /* HYLDeviceManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F7121B3D47330008C36F /* HYLDeviceManagerController.m */; };
+		841FA2271B425B7D00E5CDE3 /* device.html in Resources */ = {isa = PBXBuildFile; fileRef = 841FA2261B425B7D00E5CDE3 /* device.html */; };
 		8449B7481B3259F100B764D7 /* UINavigationController+barTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 8449B7471B3259F100B764D7 /* UINavigationController+barTheme.m */; };
 		8465F9E01B2E993E00DC29CA /* ELNetworkService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C14B3E1AF7318800B11B46 /* ELNetworkService.framework */; };
 		8465F9E11B2E993E00DC29CA /* ELNetworkService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84C14B3E1AF7318800B11B46 /* ELNetworkService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -32,7 +33,6 @@
 		84C14B1D1AF70AA400B11B46 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C14B1C1AF70AA400B11B46 /* Images.xcassets */; };
 		84C14B201AF70AA400B11B46 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C14B1E1AF70AA400B11B46 /* LaunchScreen.xib */; };
 		84C14B2C1AF70AA400B11B46 /* ehomeDebugToolsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C14B2B1AF70AA400B11B46 /* ehomeDebugToolsTests.m */; };
-		84CEC51F1B33F7EB0015C348 /* device.html in Resources */ = {isa = PBXBuildFile; fileRef = 84CEC51E1B33F7EB0015C348 /* device.html */; };
 		84CEC5231B3A3B130015C348 /* UIViewController+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CEC5221B3A3B130015C348 /* UIViewController+Notification.m */; };
 		84CEC5261B3AAC5E0015C348 /* HYLContextLibary.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CEC5251B3AAC5D0015C348 /* HYLContextLibary.m */; };
 		84CEC5291B3AB0840015C348 /* HYLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CEC5281B3AB0840015C348 /* HYLCache.m */; };
@@ -68,6 +68,7 @@
 		8407F70F1B3D2AC50008C36F /* manager.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = manager.html; sourceTree = "<group>"; };
 		8407F7111B3D47330008C36F /* HYLDeviceManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLDeviceManagerController.h; sourceTree = "<group>"; };
 		8407F7121B3D47330008C36F /* HYLDeviceManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLDeviceManagerController.m; sourceTree = "<group>"; };
+		841FA2261B425B7D00E5CDE3 /* device.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = device.html; sourceTree = "<group>"; };
 		8449B7461B3259F100B764D7 /* UINavigationController+barTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+barTheme.h"; sourceTree = "<group>"; };
 		8449B7471B3259F100B764D7 /* UINavigationController+barTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+barTheme.m"; sourceTree = "<group>"; };
 		846AE2101B2A8A6B004F3106 /* HYLDevicesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLDevicesController.h; sourceTree = "<group>"; };
@@ -101,7 +102,6 @@
 		84C14B2A1AF70AA400B11B46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84C14B2B1AF70AA400B11B46 /* ehomeDebugToolsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ehomeDebugToolsTests.m; sourceTree = "<group>"; };
 		84C14B3E1AF7318800B11B46 /* ELNetworkService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ELNetworkService.framework; sourceTree = "<group>"; };
-		84CEC51E1B33F7EB0015C348 /* device.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = device.html; sourceTree = "<group>"; };
 		84CEC5211B3A3B130015C348 /* UIViewController+Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Notification.h"; sourceTree = "<group>"; };
 		84CEC5221B3A3B130015C348 /* UIViewController+Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Notification.m"; sourceTree = "<group>"; };
 		84CEC5241B3AAC5D0015C348 /* HYLContextLibary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLContextLibary.h; sourceTree = "<group>"; };
@@ -201,8 +201,8 @@
 				84734BEE1AF9F69D0009D3C5 /* css */,
 				84734BEF1AF9F69D0009D3C5 /* img */,
 				84734BF01AF9F69D0009D3C5 /* index.html */,
+				841FA2261B425B7D00E5CDE3 /* device.html */,
 				84B3F9B21B2FBBBC00486D21 /* devices.html */,
-				84CEC51E1B33F7EB0015C348 /* device.html */,
 				8407F70F1B3D2AC50008C36F /* manager.html */,
 				84734BF11AF9F69D0009D3C5 /* js */,
 			);
@@ -377,11 +377,11 @@
 				84734BF21AF9F69D0009D3C5 /* css in Resources */,
 				84B3F9B31B2FBBBC00486D21 /* devices.html in Resources */,
 				84C14B1B1AF70AA400B11B46 /* Main.storyboard in Resources */,
+				841FA2271B425B7D00E5CDE3 /* device.html in Resources */,
 				84734BF51AF9F69D0009D3C5 /* js in Resources */,
 				84C03C511B40F19200D2D5C5 /* config in Resources */,
 				84734BF41AF9F69D0009D3C5 /* index.html in Resources */,
 				84C14B201AF70AA400B11B46 /* LaunchScreen.xib in Resources */,
-				84CEC51F1B33F7EB0015C348 /* device.html in Resources */,
 				84C14B1D1AF70AA400B11B46 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
