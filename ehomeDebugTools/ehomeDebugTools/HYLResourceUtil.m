@@ -11,6 +11,12 @@
 #import <JSONKit/JSONKit.h>
 #import "HYLCache.h"
 
+@interface HYLResourceUtil()
+
++(void)downloadWebResource:(NSString *)webPath tofile:(NSString *)fileName block:(HYLResourceUtilBlock)_block;
+
+@end
+
 @implementation HYLResourceUtil
 
 + (BOOL)OpenZip:(NSString*)zipPath  unzipto:(NSString*)_unzipto
@@ -40,8 +46,8 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
        
-        NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,  NSUserDomainMask,YES);//使用C函数NSSearchPathForDirectoriesInDomains来获得沙盒中目录的全路径。
-        NSString *ourDocumentPath =documentPaths[0];
+        NSString *ourDocumentPath =[HYLResourceUtil documentPath];
+        
         //NSString *sandboxPath = NSHomeDirectory();
         NSString *saveFilePath=[ourDocumentPath stringByAppendingPathComponent:fileName];//fileName就是保存文件的文件名
         
@@ -75,7 +81,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
            
-            _block(isWriteToFile&&isUnZipSuc,unzipSaveFilePath);
+            _block(isWriteToFile&&isUnZipSuc,[fileName stringByDeletingPathExtension]);
             
         });
         
@@ -84,6 +90,12 @@
     
     
 }
++(NSString *)documentPath{
+    NSString *documentPath=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask,YES) objectAtIndex:0];
+    NSLog(@"documentPath %@",documentPath);
+    return documentPath;
+}
+
 +(void)loadConfigResource:(NSString *)configResPath{
    /*
     ','多余的逗号讲无法解析
@@ -93,14 +105,22 @@
    NSDictionary *configDic=[configJson objectFromJSONString];
     NSLog(@"%@,%@",configDic,[[configDic valueForKey:@"title"] valueForKey:@"login"]);
     */
-
-    NSData *configData=[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"config/config.json" ofType:@""] options:NSUTF8StringEncoding error:nil];
+   
+    
+    
+    
+    configResPath=[configResPath stringByAppendingPathComponent:@"config/config.json"];
+    
+    
+    NSData *configData=[[NSData alloc] initWithContentsOfFile:configResPath];
+    
     
     
     NSMutableDictionary *configDic=[[NSJSONSerialization JSONObjectWithData:configData options:NSJSONReadingAllowFragments error:nil] mutableCopy];
     
     if (configDic==nil) {
-        configData=[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"configdefault.json" ofType:@""] options:NSUTF8StringEncoding error:nil];
+        configResPath=[configResPath stringByAppendingPathComponent:@"configdefault.json"];
+        configData=[NSData dataWithContentsOfFile:configResPath options:NSUTF8StringEncoding error:nil];
         configDic=[[NSJSONSerialization JSONObjectWithData:configData options:NSJSONReadingAllowFragments error:nil] mutableCopy];
     }
     

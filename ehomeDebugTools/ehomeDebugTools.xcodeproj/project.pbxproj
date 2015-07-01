@@ -20,6 +20,7 @@
 		84734BF31AF9F69D0009D3C5 /* img in Resources */ = {isa = PBXBuildFile; fileRef = 84734BEF1AF9F69D0009D3C5 /* img */; };
 		84734BF41AF9F69D0009D3C5 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 84734BF01AF9F69D0009D3C5 /* index.html */; };
 		84734BF51AF9F69D0009D3C5 /* js in Resources */ = {isa = PBXBuildFile; fileRef = 84734BF11AF9F69D0009D3C5 /* js */; };
+		8473AE0B1B43EE750079578F /* HYLRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8473AE0A1B43EE750079578F /* HYLRoutes.m */; };
 		84B3F9B31B2FBBBC00486D21 /* devices.html in Resources */ = {isa = PBXBuildFile; fileRef = 84B3F9B21B2FBBBC00486D21 /* devices.html */; };
 		84B3F9B71B301DD700486D21 /* HYLClassUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B3F9B61B301DD700486D21 /* HYLClassUtils.m */; };
 		84B3F9BA1B315CC400486D21 /* HYLDeviceDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B3F9B91B315CC400486D21 /* HYLDeviceDetailController.m */; };
@@ -79,6 +80,8 @@
 		84734BEF1AF9F69D0009D3C5 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
 		84734BF01AF9F69D0009D3C5 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		84734BF11AF9F69D0009D3C5 /* js */ = {isa = PBXFileReference; lastKnownFileType = folder; path = js; sourceTree = "<group>"; };
+		8473AE091B43EE750079578F /* HYLRoutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLRoutes.h; sourceTree = "<group>"; };
+		8473AE0A1B43EE750079578F /* HYLRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLRoutes.m; sourceTree = "<group>"; };
 		84B3F9B21B2FBBBC00486D21 /* devices.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = devices.html; sourceTree = "<group>"; };
 		84B3F9B51B301DD700486D21 /* HYLClassUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLClassUtils.h; sourceTree = "<group>"; };
 		84B3F9B61B301DD700486D21 /* HYLClassUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLClassUtils.m; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 			children = (
 				846AE2151B2AA125004F3106 /* HYLResourceUtil.h */,
 				846AE2161B2AA125004F3106 /* HYLResourceUtil.m */,
+				8473AE091B43EE750079578F /* HYLRoutes.h */,
+				8473AE0A1B43EE750079578F /* HYLRoutes.m */,
 			);
 			name = download;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8473AE0B1B43EE750079578F /* HYLRoutes.m in Sources */,
 				84B3F9B71B301DD700486D21 /* HYLClassUtils.m in Sources */,
 				84CEC5291B3AB0840015C348 /* HYLCache.m in Sources */,
 				84C14B181AF70AA300B11B46 /* ViewController.m in Sources */,

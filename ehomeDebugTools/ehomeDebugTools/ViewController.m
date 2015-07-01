@@ -14,6 +14,7 @@
 #import "UIView+Toast.h"
 #import "HYLClassUtils.h"
 #import "HYLCache.h"
+#import "HYLResourceUtil.h"
 @interface ViewController (){
     MBProgressHUD *hud;
 }
@@ -37,6 +38,7 @@ static NSString *kloginPassword=@"keyLoginPassword";
     [backButton setTitle:@"返回"];
     self.navigationItem.backBarButtonItem=backButton;    
     [self loadHtmlContent];
+    
 }
 
 -(void)loadHtmlContent{
@@ -45,9 +47,20 @@ static NSString *kloginPassword=@"keyLoginPassword";
     self.webView.scrollView.scrollEnabled=NO;
     
     
-    NSString *htmlString=[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"index.html" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
+    //NSString *htmlString=[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"index.html" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
     
-    [self.webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
+    NSString *filePath=[[HYLResourceUtil documentPath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"FILEPATH"],@"index.html"]];
+
+    
+    
+    NSLog(@"filePath %@",filePath);
+    NSURL *url=[NSURL fileURLWithPath:filePath];
+    
+    
+    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+    
+    
+    //[self.webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
     //NSString *path=[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"index.html"];
     
     //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]]];
@@ -105,7 +118,7 @@ static NSString *kloginPassword=@"keyLoginPassword";
     hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText=@"登录中...";
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        BOOL isOK=[[ElApiService shareElApiService] loginByUsername:name andPassword:[WsqMD5Util getmd5WithString:pass]];
+        BOOL isOK=[[ElApiService shareElApiService] loginByUsername:name andPassword:pass];
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hide:YES];
              NSString *message=nil;

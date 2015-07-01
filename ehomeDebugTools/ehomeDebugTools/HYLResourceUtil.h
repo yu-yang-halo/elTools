@@ -18,10 +18,10 @@ typedef void(^HYLResourceUtilBlock)(BOOL isfinished,id data);
 @interface HYLResourceUtil : NSObject
 
 
-+(void)downloadWebResource:(NSString *)webPath tofile:(NSString *)fileName block:(HYLResourceUtilBlock)_block;
 
 +(void)downloadWebResource:(NSString *)webPath block:(HYLResourceUtilBlock)_block;
 
 +(void)loadConfigResource:(NSString *)configResPath;
 
++(NSString *)documentPath;
 @end

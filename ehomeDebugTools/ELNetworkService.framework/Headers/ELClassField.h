@@ -7,6 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+typedef NS_ENUM(NSInteger,HYLWidgetStyle){
+    HYLWidgetStyle_Control=1,
+    HYLWidgetStyle_ControlAndShow,
+    HYLWidgetStyle_InputValue,
+    HYLWidgetStyle_OutputValue,
+    HYLWidgetStyle_Percentage,
+};
 
 @interface ELClassField : NSObject<NSCoding>
 
@@ -21,5 +28,7 @@
 @property(nonatomic,retain) NSString  *defaultValue;
 @property(nonatomic,assign) NSInteger  aggrMethod;
 
+@property(nonatomic,retain) NSString*  icon;
+@property(nonatomic,assign) NSInteger  widget;
 
 @end

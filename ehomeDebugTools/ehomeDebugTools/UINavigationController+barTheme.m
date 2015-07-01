@@ -18,7 +18,16 @@
     Method originalMethod = class_getInstanceMethod(self, @selector(awakeFromNib));
     Method swizzledMethod = class_getInstanceMethod(self, @selector(hyl_awakeFromNib));
     method_exchangeImplementations(originalMethod, swizzledMethod);
-    [HYLResourceUtil loadConfigResource:nil];
+      
+  
+    
+//
+//    NSString *uiPath=[[NSUserDefaults standardUserDefaults] objectForKey:@"FILEPATH"];
+//    
+//    [HYLResourceUtil loadConfigResource:[[HYLResourceUtil documentPath] stringByAppendingPathComponent:uiPath]];
+    
+    
+   
 }
 - (void)hyl_awakeFromNib{
     [self hyl_awakeFromNib];

@@ -18,5 +18,7 @@
 @property(nonatomic,assign) NSInteger deviceMsgFormat;
 @property(nonatomic,assign) NSInteger access;
 @property(nonatomic,retain) NSArray   *classFields;
+@property(nonatomic,retain) NSString  *icon;
+
 
 @end

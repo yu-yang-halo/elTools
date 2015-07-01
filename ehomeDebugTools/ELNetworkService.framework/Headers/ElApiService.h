@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #define ELSERVICE_URL @"42.121.126.156"
 #define DEVELOPER_URL @"121.199.40.249"
+#define TEST_URL      @"192.168.2.111"
+
 //E联易家   42.121.126.156  api.elnet.cn
 //开发平台  121.199.40.249  api2.elnet.cn
 #define ELSERVICE_PORT 8080
 #define KEY_LOGINNAME @"elian_loginname_key"
+#define KEY_PASSWORD  @"elian_loginpass_key"
 #define DEMO_ACCOUNT_NAME @"hyldemo"
 #define SHORT_MESSAGE_TYPE_VCODE 0
 #define SHORT_MESSAGE_TYPE_PASS 1
@@ -30,7 +33,8 @@
 
 typedef NS_ENUM(NSInteger, HYLPLATFORM){
    HYLPLATFORM_ELHOME,
-   HYLPLATFORM_DEVELOPER
+   HYLPLATFORM_DEVELOPER,
+    HYLPLATFORM_TEST,
 };
 
 static ElApiService* shareService=nil;
