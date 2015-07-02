@@ -12,6 +12,7 @@
 #import <JSONKit/JSONKit.h>
 #import "HYLClassUtils.h"
 #import "HYLContextLibary.h"
+#import "HYLRoutes.h"
 @interface HYLDeviceDetailController (){
    
 }
@@ -35,10 +36,16 @@
     self.webView.scrollView.delegate=self;
     
     
+
+    NSString *filePath=[[HYLRoutes resourceRootPath] stringByAppendingPathComponent:@"device.html"];
+    NSLog(@"filePath %@",filePath);
+    NSURL *url=[NSURL fileURLWithPath:filePath];
     
-    NSString *htmlString=[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"device.html" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
     
-    [self.webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+
+    
+    
     JSContext *context=[self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     
     

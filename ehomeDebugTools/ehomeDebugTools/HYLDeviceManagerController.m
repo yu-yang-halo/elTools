@@ -8,6 +8,7 @@
 
 #import "HYLDeviceManagerController.h"
 #import <JavaScriptCore/JavaScriptCore.h>
+#import "HYLRoutes.h"
 @interface HYLDeviceManagerController ()
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 - (IBAction)switchPage:(id)sender;
@@ -22,10 +23,15 @@
     [self.webView.scrollView setShowsHorizontalScrollIndicator:NO];
     [self.webView.scrollView setShowsVerticalScrollIndicator:NO];
     self.webView.scrollView.delegate=self;
+   
+    NSString *filePath=[[HYLRoutes resourceRootPath] stringByAppendingPathComponent:@"manager.html"];
+    NSLog(@"filePath %@",filePath);
+    NSURL *url=[NSURL fileURLWithPath:filePath];
     
-    NSString *htmlString=[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"manager.html" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
     
-    [self.webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+    
+    
     JSContext *context=[self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     
 }

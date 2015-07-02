@@ -16,7 +16,7 @@
 #import <JSONKit/JSONKit.h>
 #import "HYLCache.h"
 #import "HYLContextLibary.h"
-
+#import "HYLRoutes.h"
 
 @interface HYLDevicesController (){
     EGORefreshTableHeaderView *_refreshHeaderView;
@@ -61,9 +61,15 @@
     [_refreshHeaderView refreshLastUpdatedDate];
     
     
-    NSString *htmlString=[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"devices.html" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
+    NSString *filePath=[[HYLRoutes resourceRootPath] stringByAppendingPathComponent:@"devices.html"];
+    NSLog(@"filePath %@",filePath);
+    NSURL *url=[NSURL fileURLWithPath:filePath];
     
-    [self.webVIew loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
+    
+    [self.webVIew loadRequest:[NSURLRequest requestWithURL:url]];
+    
+    
+    
     JSContext *context=[self.webVIew valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     
     context[@"mobile_toDetailPage"]=^(){

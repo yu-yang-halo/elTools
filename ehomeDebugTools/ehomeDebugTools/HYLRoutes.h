@@ -13,8 +13,13 @@
  
  */
 @interface HYLRoutes : NSObject
-+(BOOL)isNewVersion;
-+(void)startDownload;
++(BOOL)isHasCommonRes;
+
++(void)downloadCommonResources;
++(void)downloadUserResources:(NSString *)fileName;
+
+
 +(NSString *)resourceRootPath;
++(void)loadUserConfig;
 
 @end

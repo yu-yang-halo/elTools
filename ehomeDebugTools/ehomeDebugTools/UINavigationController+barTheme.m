@@ -9,7 +9,7 @@
 #import "UINavigationController+barTheme.h"
 #import <objc/runtime.h>
 #import "HYLCache.h"
-#import "HYLResourceUtil.h"
+#import "HYLRoutes.h"
 @implementation UIViewController (barTheme)
 
 +(void)load{
@@ -19,15 +19,13 @@
     Method swizzledMethod = class_getInstanceMethod(self, @selector(hyl_awakeFromNib));
     method_exchangeImplementations(originalMethod, swizzledMethod);
       
-  
+    [HYLRoutes loadUserConfig];
     
-//
-//    NSString *uiPath=[[NSUserDefaults standardUserDefaults] objectForKey:@"FILEPATH"];
-//    
-//    [HYLResourceUtil loadConfigResource:[[HYLResourceUtil documentPath] stringByAppendingPathComponent:uiPath]];
+    if(![HYLRoutes isHasCommonRes]){
+        
+        [HYLRoutes downloadCommonResources];
     
-    
-   
+    }
 }
 - (void)hyl_awakeFromNib{
     [self hyl_awakeFromNib];

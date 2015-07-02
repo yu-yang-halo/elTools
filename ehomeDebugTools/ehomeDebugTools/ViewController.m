@@ -14,7 +14,7 @@
 #import "UIView+Toast.h"
 #import "HYLClassUtils.h"
 #import "HYLCache.h"
-#import "HYLResourceUtil.h"
+#import "HYLRoutes.h"
 @interface ViewController (){
     MBProgressHUD *hud;
 }
@@ -47,25 +47,15 @@ static NSString *kloginPassword=@"keyLoginPassword";
     self.webView.scrollView.scrollEnabled=NO;
     
     
-    //NSString *htmlString=[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"index.html" ofType:@""] encoding:NSUTF8StringEncoding error:nil];
-    
-    NSString *filePath=[[HYLResourceUtil documentPath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"FILEPATH"],@"index.html"]];
-
-    
-    
+    NSString *filePath=[[HYLRoutes resourceRootPath] stringByAppendingPathComponent:@"index.html"];
     NSLog(@"filePath %@",filePath);
     NSURL *url=[NSURL fileURLWithPath:filePath];
     
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+
     
-    
-    //[self.webView loadHTMLString:htmlString baseURL:[[NSBundle mainBundle] bundleURL]];
-    //NSString *path=[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"index.html"];
-    
-    //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]]];
-    
-    NSLog(@"bundURL:%@\n ::: %@",[[NSBundle mainBundle] bundleURL],[NSURL URLWithString:[[NSBundle mainBundle] bundlePath]]);
+   // NSLog(@"bundURL:%@\n ::: %@",[[NSBundle mainBundle] bundleURL],[NSURL URLWithString:[[NSBundle mainBundle] bundlePath]]);
     
     
     self.webView.dataDetectorTypes=UIDataDetectorTypeNone;
@@ -124,6 +114,8 @@ static NSString *kloginPassword=@"keyLoginPassword";
              NSString *message=nil;
             if(isOK){
                  message=@"登录成功！";
+                [HYLRoutes downloadUserResources:name];
+                
                 [HYLClassUtils removeAllClassDataCaches];
                 
                 [[NSUserDefaults standardUserDefaults] setObject:name forKey:kloginUserName];
