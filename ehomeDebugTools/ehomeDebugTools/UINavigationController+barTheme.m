@@ -20,12 +20,6 @@
     method_exchangeImplementations(originalMethod, swizzledMethod);
       
     [HYLRoutes loadUserConfig];
-    
-    if(![HYLRoutes isHasCommonRes]){
-        
-        [HYLRoutes downloadCommonResources];
-    
-    }
 }
 - (void)hyl_awakeFromNib{
     [self hyl_awakeFromNib];

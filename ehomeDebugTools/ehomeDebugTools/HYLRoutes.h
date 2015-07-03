@@ -13,13 +13,39 @@
  
  */
 @interface HYLRoutes : NSObject
-+(BOOL)isHasCommonRes;
 
-+(void)downloadCommonResources;
+
 +(void)downloadUserResources:(NSString *)fileName;
 
 
+//用户资源根路径      /username     /cls
+//                                /field
+//                                /ui/...
+
+//bundle 资源根路径  /bundle        /同上
+
 +(NSString *)resourceRootPath;
+
++(NSString *)uiResourcePath;
+
+
+
+
 +(void)loadUserConfig;
 
+//lock update
+
+
+
+
 @end
+
+
+@interface HYLRoutes (downloadlock)
+
++(BOOL)isAllowDownload;
++(void)enableDownload;
++(void)disableDownload;
+
+@end
+

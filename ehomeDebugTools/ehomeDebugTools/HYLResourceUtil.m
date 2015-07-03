@@ -11,6 +11,7 @@
 #import <JSONKit/JSONKit.h>
 #import "HYLCache.h"
 
+NSString *uiPathName=@"ui";
 @interface HYLResourceUtil()
 
 +(void)downloadWebResource:(NSString *)webPath tofile:(NSString *)fileName block:(HYLResourceUtilBlock)_block;
@@ -70,6 +71,8 @@
         
 //        BOOL isWriteToFile=[data writeToFile:FileName atomically:NO];//将NSData类型对象data写入文件，文件名为FileName
         BOOL isUnZipSuc=NO;
+        
+        BOOL unzipUIFile=NO;
         NSString *unzipSaveFilePath=[saveFilePath stringByDeletingPathExtension];
         
         if(isWriteToFile){
@@ -77,11 +80,27 @@
             
             //解压文件后，去掉文件后缀 x.zip-->x
             isUnZipSuc=[self OpenZip:saveFilePath unzipto:unzipSaveFilePath];
+            
+            
+            
+            NSString *uiPathZipFile=[unzipSaveFilePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.zip",uiPathName]];
+            
+            if(isUnZipSuc&&[[NSFileManager defaultManager] fileExistsAtPath:uiPathZipFile]){
+                unzipUIFile=[self OpenZip:uiPathZipFile unzipto:[uiPathZipFile stringByDeletingPathExtension]];
+                
+                if(unzipUIFile){
+                    NSLog(@"%@解压成功",uiPathZipFile);
+                }else{
+                    NSLog(@"%@解压失败",uiPathZipFile);
+                }
+            }else{
+                NSLog(@"不存在文件%@",uiPathZipFile);
+            }
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
            
-            _block(isWriteToFile&&isUnZipSuc,[fileName stringByDeletingPathExtension]);
+            _block(isWriteToFile&&isUnZipSuc&&unzipUIFile,[fileName stringByDeletingPathExtension]);
             
         });
         

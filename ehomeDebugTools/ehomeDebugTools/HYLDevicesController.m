@@ -61,7 +61,7 @@
     [_refreshHeaderView refreshLastUpdatedDate];
     
     
-    NSString *filePath=[[HYLRoutes resourceRootPath] stringByAppendingPathComponent:@"devices.html"];
+    NSString *filePath=[[HYLRoutes uiResourcePath] stringByAppendingPathComponent:@"devices.html"];
     NSLog(@"filePath %@",filePath);
     NSURL *url=[NSURL fileURLWithPath:filePath];
     
@@ -98,7 +98,7 @@
     
     
     context[@"mobile_requestDevices"]=^(){
-         _reloading=YES;
+        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
            
            self.deviceDic=[[ElApiService shareElApiService] getObjectListAndFieldsByUser];
@@ -106,11 +106,18 @@
            NSMutableArray *allDeviceObj=[NSMutableArray new];
            //搜集类型class json数据  {classId：[fields{}] }
            NSMutableDictionary *allClassObjs=[NSMutableDictionary new];
+            //搜集class icon
+            NSMutableDictionary *classIcon=[NSMutableDictionary new];
+            
             
            [self.deviceDic enumerateKeysAndObjectsUsingBlock:^(id key, ELDeviceObject* obj, BOOL *stop) {
                
                ELClassObject *classObj=[HYLClassUtils classObjectFromCache:obj.classId];
                
+               if(classObj.icon!=nil){
+                  
+               }
+               [classIcon setValue:classObj.icon forKey:[NSString stringWithFormat:@"%ld",classObj.classId]];
                
                
                NSMutableDictionary *objectMap=[HYLClassUtils canConvertJSONDataFromObjectInstance:obj];
@@ -135,11 +142,13 @@
             
            NSLog(@"%@",[allDeviceObj JSONString]);
            NSLog(@"=====================");
-           NSLog(@"%@",[allClassObjs JSONString]);
+          // NSLog(@"%@",[allClassObjs JSONString]);
+             NSLog(@"%@",[classIcon JSONString]);
+            
             [HYLClassUtils cacheClasslistData:[allClassObjs JSONString]];
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.webVIew stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_loadDevicesData(%@,%@)",[allDeviceObj JSONString],[allClassObjs JSONString]]];
+                [self.webVIew stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_loadDevicesData(%@,%@,%@)",[allDeviceObj JSONString],[allClassObjs JSONString],[classIcon JSONString]]];
                  _reloading=NO;
                 [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.webVIew.scrollView];
             });
@@ -209,6 +218,7 @@
 
 #pragma mark EGORefreshTableHeaderDelegate
 -(void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView *)view{
+    _reloading=YES;
      [self loadWebViewData];
 }
 -(BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView *)view{

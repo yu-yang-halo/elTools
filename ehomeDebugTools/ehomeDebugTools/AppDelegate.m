@@ -42,7 +42,7 @@
     
     
     //ElApiService
-    [ElApiService setPlatformType:HYLPLATFORM_TEST];
+    [ElApiService setPlatformType:HYLPLATFORM_DEVELOPER];
     
     
     return YES;

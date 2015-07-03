@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  ehomeDebugTools
+
+  Created by admin on 15/7/2.
+  Copyright (c) 2015年 cn.lztech  &#21512;&#32933;&#32852;&#27491;&#30005;&#23376;&#31185;&#25216;&#26377;&#38480;&#20844;&#21496;. All rights reserved.
+*/
+"Release to refresh..." = "释放刷新...";
+"Updated %ld minutes ago"="%ld 分钟前更新";
+"Updated %ld minute ago"="%ld 分钟前更新";
+"Updated %ld hour ago"="%ld 小时前更新";
+"Updated %ld hours ago"="%ld 小时前更新";
+"Updated %ld days ago"="%ld 天前更新";
+"Updated %ld days ago"="%ld 天前更新";
+"Pull down to refresh..."="下拉刷新...";
+"Loading..."="加载更多...";

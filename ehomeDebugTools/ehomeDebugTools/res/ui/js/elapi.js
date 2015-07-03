@@ -30,7 +30,7 @@ function hyl_updateDeviceName(name,objectId){
 function hyl_toDetailPage(objectId){
     mobile_toDetailPage(objectId);
 }
-function hyl_loadDevicesData(devices,classTable){
+function hyl_loadDevicesData(devices,classTable,classIcon){
     $("#deviceTable").empty();
 	/*
       device :
@@ -60,7 +60,7 @@ function hyl_loadDevicesData(devices,classTable){
 			var trString="";
 			trString+="<tr objectId="+obj.objectId+">";
 			trString+="<td class='content'><img class='icon' src='";
-            trString+="img/"+obj.classId+".png'></img></td>";
+            trString+="../cls/"+classIcon[obj.classId]+"'></img></td>";
             
 			
 			trString+="<td class='content'><div>"+

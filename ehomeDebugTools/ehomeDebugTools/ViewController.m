@@ -47,7 +47,7 @@ static NSString *kloginPassword=@"keyLoginPassword";
     self.webView.scrollView.scrollEnabled=NO;
     
     
-    NSString *filePath=[[HYLRoutes resourceRootPath] stringByAppendingPathComponent:@"index.html"];
+    NSString *filePath=[[HYLRoutes uiResourcePath] stringByAppendingPathComponent:@"index.html"];
     NSLog(@"filePath %@",filePath);
     NSURL *url=[NSURL fileURLWithPath:filePath];
     

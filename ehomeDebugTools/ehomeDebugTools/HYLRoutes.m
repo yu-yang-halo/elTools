@@ -9,69 +9,81 @@
 #import "HYLRoutes.h"
 #import "HYLResourceUtil.h"
 static NSString *keyfilePath=@"key_file_path";
-static NSString *isHasCommonRes=@"key_is_has_common_res";
 
-static NSString *commonFileName=@"ui";
+
 
 @interface HYLRoutes()
-+(void)startDownload:(NSString *)fileName isCommon:(BOOL)isCommon;
++(void)startDownload:(NSString *)fileName;
 @end
 
 @implementation HYLRoutes
-+(BOOL)isHasCommonRes{
-    
-    return [[NSUserDefaults standardUserDefaults] boolForKey:isHasCommonRes];
-    
-}
-+(void)startDownload:(NSString *)fileName isCommon:(BOOL)isCommon{
++(void)startDownload:(NSString *)fileName{
     NSString *filePath=[NSString stringWithFormat:@"http://192.168.2.111/public_cloud/upload/%@.zip",fileName];
     
-    
-    [HYLResourceUtil downloadWebResource:filePath block:^(BOOL isfinished, id data) {
+    if([self isAllowDownload]){
         
-        if(isfinished){
-            NSLog(@"本地沙盒路径：：%@",data);
-            [[NSUserDefaults standardUserDefaults] setObject:data forKey:keyfilePath];
-            if(isCommon){
-                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:isHasCommonRes];
-            }
+        [HYLResourceUtil downloadWebResource:filePath block:^(BOOL isfinished, id data) {
             
-            
-        }else{
-            if(isCommon){
-                [[NSUserDefaults standardUserDefaults] setObject:nil forKey:keyfilePath];
-                 NSLog(@"common文件下载失败，切换到bundle路径读取");
+            if(isfinished){
+                NSLog(@"本地沙盒路径存储：：%@",data);
+                [[NSUserDefaults standardUserDefaults] setObject:data forKey:keyfilePath];
+                
+                [self disableDownload];
+                
             }else{
-                 NSLog(@"%@用户文件下载失败，切换到common路径读取",data);
+                NSLog(@"%@用户文件下载失败，切换到bundle路径读取",data);
+                
             }
-            
-        }
-    }];
+        }];
+    }
+    
+    
 
 }
-+(void)downloadCommonResources{
-     NSLog(@"开始下载公共资源 ui.zip ~~~");
-    [self startDownload:commonFileName isCommon:YES];
-}
+
 +(void)downloadUserResources:(NSString *)fileName{
     NSLog(@"开始下载用户资源 %@.zip ~~~",fileName);
-    [self startDownload:fileName isCommon:NO];
+    [self startDownload:fileName];
 }
 
 
 +(NSString *)resourceRootPath{
     
-   NSString *filePath=[[NSUserDefaults standardUserDefaults] objectForKey:keyfilePath];
+    NSString *filePath=[[NSUserDefaults standardUserDefaults] objectForKey:keyfilePath];
     if(filePath==nil||[filePath isEqualToString:@""]){
         return [[NSBundle mainBundle] bundlePath];
     }else{
         return [[HYLResourceUtil documentPath] stringByAppendingPathComponent:filePath];
     }
-    
+}
++(NSString *)uiResourcePath{
+    NSString *uifilePath=[[self resourceRootPath] stringByAppendingPathComponent:uiPathName];
+    if(![[NSFileManager defaultManager] fileExistsAtPath:uiPathName]){
+        NSLog(@"没有用户自定义的ui，切换到bundle ui");
+        uifilePath=[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:uiPathName];
+    }
+    return uifilePath;
 }
 +(void)loadUserConfig{
     NSLog(@"加载配置文件~~~");
-    [HYLResourceUtil loadConfigResource:[HYLRoutes resourceRootPath]];
+    [HYLResourceUtil loadConfigResource:[HYLRoutes uiResourcePath]];
 }
 
+@end
+static NSString * kAllowDownload=@"key_allow_download";
+@implementation HYLRoutes (downloadlock)
+
++(BOOL)isAllowDownload{
+    if([[NSUserDefaults standardUserDefaults] boolForKey:kAllowDownload]){
+        return NO;
+    }else{
+        return YES;
+    }
+}
++(void)enableDownload{
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kAllowDownload];
+}
++(void)disableDownload{
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kAllowDownload];
+}
 @end

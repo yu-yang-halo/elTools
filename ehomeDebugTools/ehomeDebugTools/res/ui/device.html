@@ -106,7 +106,7 @@
                                       //是显示标签 表状态
                                       //var htmlString="<img alt='"+field.displayName+" : "+fieldValues[key]+"'></img>";
                                       
-                                      var htmlString="<img alt='"+field.displayName+":"+(defaultVal)+"'></img>";
+                                      var htmlString="<img alt='"+field.displayName+":"+(defaultVal)+"'"+" src='../field/"+field.icon+"'></img>";
                                       
                                       $(".topshow").show();
                                       $(".topshow span").append(htmlString);
@@ -114,8 +114,18 @@
                                   }else if(field.deviceCmdYN){
                                       //是按钮，发送命令，不表状态
                                       var htmlString="<button class='button blue'   value='"+defaultVal+"' fieldId="+key+" objectid="+device.objectId+">"+field.displayName+"</button>";
+                                      
+                                      if(field.icon!=undefined){
+                            htmlString="<input class='button' type='image'   value='"+defaultVal+"' fieldId="+key+"  objectid="+device.objectId+" src='../field/"+field.icon+"'></input>";
+                                      }
+                                      
+                                      
+                                      
                                       $(".bottomshow").show();
                                       $(".bottomshow span").append(htmlString);
+                                      
+                                      
+                                      
                                       
                                   }
                                   if(field.presistYN){

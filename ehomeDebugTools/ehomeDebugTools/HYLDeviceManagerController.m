@@ -24,7 +24,7 @@
     [self.webView.scrollView setShowsVerticalScrollIndicator:NO];
     self.webView.scrollView.delegate=self;
    
-    NSString *filePath=[[HYLRoutes resourceRootPath] stringByAppendingPathComponent:@"manager.html"];
+    NSString *filePath=[[HYLRoutes uiResourcePath] stringByAppendingPathComponent:@"manager.html"];
     NSLog(@"filePath %@",filePath);
     NSURL *url=[NSURL fileURLWithPath:filePath];
     

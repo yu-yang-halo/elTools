@@ -37,7 +37,7 @@
     
     
 
-    NSString *filePath=[[HYLRoutes resourceRootPath] stringByAppendingPathComponent:@"device.html"];
+    NSString *filePath=[[HYLRoutes uiResourcePath] stringByAppendingPathComponent:@"device.html"];
     NSLog(@"filePath %@",filePath);
     NSURL *url=[NSURL fileURLWithPath:filePath];
     

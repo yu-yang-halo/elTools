@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *uiPathName;
 
 typedef void(^HYLResourceUtilBlock)(BOOL isfinished,id data);
 

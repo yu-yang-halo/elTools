@@ -8,24 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		5D162196B3A798A01678C2C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FBA32A01B45956F39F6449 /* libPods.a */; };
-		8407F7101B3D2AC50008C36F /* manager.html in Resources */ = {isa = PBXBuildFile; fileRef = 8407F70F1B3D2AC50008C36F /* manager.html */; };
 		8407F7131B3D47330008C36F /* HYLDeviceManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F7121B3D47330008C36F /* HYLDeviceManagerController.m */; };
-		841FA2271B425B7D00E5CDE3 /* device.html in Resources */ = {isa = PBXBuildFile; fileRef = 841FA2261B425B7D00E5CDE3 /* device.html */; };
+		842B3D281B4635BD00F219EF /* cls in Resources */ = {isa = PBXBuildFile; fileRef = 842B3D251B4635BD00F219EF /* cls */; };
+		842B3D291B4635BD00F219EF /* field in Resources */ = {isa = PBXBuildFile; fileRef = 842B3D261B4635BD00F219EF /* field */; };
+		842B3D2A1B4635BD00F219EF /* ui in Resources */ = {isa = PBXBuildFile; fileRef = 842B3D271B4635BD00F219EF /* ui */; };
 		8449B7481B3259F100B764D7 /* UINavigationController+barTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 8449B7471B3259F100B764D7 /* UINavigationController+barTheme.m */; };
 		8465F9E01B2E993E00DC29CA /* ELNetworkService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C14B3E1AF7318800B11B46 /* ELNetworkService.framework */; };
 		8465F9E11B2E993E00DC29CA /* ELNetworkService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84C14B3E1AF7318800B11B46 /* ELNetworkService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		846AE2121B2A8A6B004F3106 /* HYLDevicesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846AE2111B2A8A6B004F3106 /* HYLDevicesController.m */; };
 		846AE2171B2AA125004F3106 /* HYLResourceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 846AE2161B2AA125004F3106 /* HYLResourceUtil.m */; };
-		84734BF21AF9F69D0009D3C5 /* css in Resources */ = {isa = PBXBuildFile; fileRef = 84734BEE1AF9F69D0009D3C5 /* css */; };
-		84734BF31AF9F69D0009D3C5 /* img in Resources */ = {isa = PBXBuildFile; fileRef = 84734BEF1AF9F69D0009D3C5 /* img */; };
-		84734BF41AF9F69D0009D3C5 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 84734BF01AF9F69D0009D3C5 /* index.html */; };
-		84734BF51AF9F69D0009D3C5 /* js in Resources */ = {isa = PBXBuildFile; fileRef = 84734BF11AF9F69D0009D3C5 /* js */; };
 		8473AE0B1B43EE750079578F /* HYLRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8473AE0A1B43EE750079578F /* HYLRoutes.m */; };
-		84B3F9B31B2FBBBC00486D21 /* devices.html in Resources */ = {isa = PBXBuildFile; fileRef = 84B3F9B21B2FBBBC00486D21 /* devices.html */; };
+		8473AE131B4522C40079578F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8473AE121B4522C40079578F /* Localizable.strings */; };
 		84B3F9B71B301DD700486D21 /* HYLClassUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B3F9B61B301DD700486D21 /* HYLClassUtils.m */; };
 		84B3F9BA1B315CC400486D21 /* HYLDeviceDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B3F9B91B315CC400486D21 /* HYLDeviceDetailController.m */; };
 		84C01D2E1AF73E2700FD74A6 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C01D2D1AF73E2700FD74A6 /* JavaScriptCore.framework */; };
-		84C03C511B40F19200D2D5C5 /* config in Resources */ = {isa = PBXBuildFile; fileRef = 84C03C501B40F19100D2D5C5 /* config */; };
 		84C03C531B41282900D2D5C5 /* configdefault.json in Resources */ = {isa = PBXBuildFile; fileRef = 84C03C521B41282900D2D5C5 /* configdefault.json */; };
 		84C14B121AF70AA300B11B46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C14B111AF70AA300B11B46 /* main.m */; };
 		84C14B151AF70AA300B11B46 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C14B141AF70AA300B11B46 /* AppDelegate.m */; };
@@ -66,30 +62,26 @@
 /* Begin PBXFileReference section */
 		72FBA32A01B45956F39F6449 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CEA3C076871EC35663F8CA6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		8407F70F1B3D2AC50008C36F /* manager.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = manager.html; sourceTree = "<group>"; };
 		8407F7111B3D47330008C36F /* HYLDeviceManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLDeviceManagerController.h; sourceTree = "<group>"; };
 		8407F7121B3D47330008C36F /* HYLDeviceManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLDeviceManagerController.m; sourceTree = "<group>"; };
-		841FA2261B425B7D00E5CDE3 /* device.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = device.html; sourceTree = "<group>"; };
+		842B3D251B4635BD00F219EF /* cls */ = {isa = PBXFileReference; lastKnownFileType = folder; path = cls; sourceTree = "<group>"; };
+		842B3D261B4635BD00F219EF /* field */ = {isa = PBXFileReference; lastKnownFileType = folder; path = field; sourceTree = "<group>"; };
+		842B3D271B4635BD00F219EF /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
 		8449B7461B3259F100B764D7 /* UINavigationController+barTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+barTheme.h"; sourceTree = "<group>"; };
 		8449B7471B3259F100B764D7 /* UINavigationController+barTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+barTheme.m"; sourceTree = "<group>"; };
 		846AE2101B2A8A6B004F3106 /* HYLDevicesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLDevicesController.h; sourceTree = "<group>"; };
 		846AE2111B2A8A6B004F3106 /* HYLDevicesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLDevicesController.m; sourceTree = "<group>"; };
 		846AE2151B2AA125004F3106 /* HYLResourceUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLResourceUtil.h; sourceTree = "<group>"; };
 		846AE2161B2AA125004F3106 /* HYLResourceUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLResourceUtil.m; sourceTree = "<group>"; };
-		84734BEE1AF9F69D0009D3C5 /* css */ = {isa = PBXFileReference; lastKnownFileType = folder; path = css; sourceTree = "<group>"; };
-		84734BEF1AF9F69D0009D3C5 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
-		84734BF01AF9F69D0009D3C5 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		84734BF11AF9F69D0009D3C5 /* js */ = {isa = PBXFileReference; lastKnownFileType = folder; path = js; sourceTree = "<group>"; };
 		8473AE091B43EE750079578F /* HYLRoutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLRoutes.h; sourceTree = "<group>"; };
 		8473AE0A1B43EE750079578F /* HYLRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLRoutes.m; sourceTree = "<group>"; };
-		84B3F9B21B2FBBBC00486D21 /* devices.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = devices.html; sourceTree = "<group>"; };
+		8473AE121B4522C40079578F /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		84B3F9B51B301DD700486D21 /* HYLClassUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLClassUtils.h; sourceTree = "<group>"; };
 		84B3F9B61B301DD700486D21 /* HYLClassUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLClassUtils.m; sourceTree = "<group>"; };
 		84B3F9B81B315CC400486D21 /* HYLDeviceDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLDeviceDetailController.h; sourceTree = "<group>"; };
 		84B3F9B91B315CC400486D21 /* HYLDeviceDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLDeviceDetailController.m; sourceTree = "<group>"; };
 		84BD656F1B1C1EDF00F3CC67 /* EhomeDebugPrefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EhomeDebugPrefix.pch; sourceTree = "<group>"; };
 		84C01D2D1AF73E2700FD74A6 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		84C03C501B40F19100D2D5C5 /* config */ = {isa = PBXFileReference; lastKnownFileType = folder; path = config; sourceTree = "<group>"; };
 		84C03C521B41282900D2D5C5 /* configdefault.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = configdefault.json; sourceTree = "<group>"; };
 		84C14B0C1AF70AA300B11B46 /* ehomeDebugTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ehomeDebugTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C14B101AF70AA300B11B46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -202,14 +194,9 @@
 		84C01D281AF73C8600FD74A6 /* res */ = {
 			isa = PBXGroup;
 			children = (
-				84C03C501B40F19100D2D5C5 /* config */,
-				84734BEE1AF9F69D0009D3C5 /* css */,
-				84734BEF1AF9F69D0009D3C5 /* img */,
-				84734BF01AF9F69D0009D3C5 /* index.html */,
-				841FA2261B425B7D00E5CDE3 /* device.html */,
-				84B3F9B21B2FBBBC00486D21 /* devices.html */,
-				8407F70F1B3D2AC50008C36F /* manager.html */,
-				84734BF11AF9F69D0009D3C5 /* js */,
+				842B3D251B4635BD00F219EF /* cls */,
+				842B3D261B4635BD00F219EF /* field */,
+				842B3D271B4635BD00F219EF /* ui */,
 			);
 			path = res;
 			sourceTree = "<group>";
@@ -261,6 +248,7 @@
 				84C14B101AF70AA300B11B46 /* Info.plist */,
 				84C14B111AF70AA300B11B46 /* main.m */,
 				84C03C521B41282900D2D5C5 /* configdefault.json */,
+				8473AE121B4522C40079578F /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -376,16 +364,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8407F7101B3D2AC50008C36F /* manager.html in Resources */,
+				842B3D2A1B4635BD00F219EF /* ui in Resources */,
 				84C03C531B41282900D2D5C5 /* configdefault.json in Resources */,
-				84734BF31AF9F69D0009D3C5 /* img in Resources */,
-				84734BF21AF9F69D0009D3C5 /* css in Resources */,
-				84B3F9B31B2FBBBC00486D21 /* devices.html in Resources */,
+				842B3D281B4635BD00F219EF /* cls in Resources */,
+				842B3D291B4635BD00F219EF /* field in Resources */,
 				84C14B1B1AF70AA400B11B46 /* Main.storyboard in Resources */,
-				841FA2271B425B7D00E5CDE3 /* device.html in Resources */,
-				84734BF51AF9F69D0009D3C5 /* js in Resources */,
-				84C03C511B40F19200D2D5C5 /* config in Resources */,
-				84734BF41AF9F69D0009D3C5 /* index.html in Resources */,
+				8473AE131B4522C40079578F /* Localizable.strings in Resources */,
 				84C14B201AF70AA400B11B46 /* LaunchScreen.xib in Resources */,
 				84C14B1D1AF70AA400B11B46 /* Images.xcassets in Resources */,
 			);
