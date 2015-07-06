@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 #import "HYLCache.h"
 #import "HYLRoutes.h"
+#import "ViewController.h"
 @implementation UIViewController (barTheme)
 
 +(void)load{
@@ -26,7 +27,6 @@
    
     if([self isKindOfClass:[UINavigationController class]]){
          NSLog(@"UINavigationController hyl_awakeFromNib  init");
-        
         
 //        [((UINavigationController *)self).navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_navigation2"] forBarMetrics:UIBarMetricsDefault];
         NSArray *barColorRGBArr=[[HYLCache shareHylCache].configJSON valueForKey:@"barColor"];
@@ -56,5 +56,24 @@
     
     
 }
+
+@end
+@implementation UIViewController (Launch)
++(void)load{
+        Method originalMethod = class_getInstanceMethod(self, @selector(viewDidLoad));
+        Method swizzledMethod = class_getInstanceMethod(self, @selector(hyl_viewDidLoad));
+        method_exchangeImplementations(originalMethod, swizzledMethod);
+   
+}
+-(void)hyl_viewDidLoad{
+    if([self isMemberOfClass:[ViewController class]]){
+        NSLog(@"launchImage...");
+        [self performSegueWithIdentifier:@"launchImage" sender:self];
+        
+    }
+    [self hyl_viewDidLoad];
+
+}
+
 
 @end

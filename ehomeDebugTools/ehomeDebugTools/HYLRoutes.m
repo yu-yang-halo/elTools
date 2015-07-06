@@ -8,6 +8,7 @@
 
 #import "HYLRoutes.h"
 #import "HYLResourceUtil.h"
+#import "ViewController.h"
 static NSString *keyfilePath=@"key_file_path";
 
 
@@ -58,7 +59,13 @@ static NSString *keyfilePath=@"key_file_path";
 }
 +(NSString *)uiResourcePath{
     NSString *uifilePath=[[self resourceRootPath] stringByAppendingPathComponent:uiPathName];
-    if(![[NSFileManager defaultManager] fileExistsAtPath:uiPathName]){
+    NSArray *arr=[[NSFileManager defaultManager] contentsOfDirectoryAtPath:uifilePath error:nil];
+   
+    
+    
+    if(arr!=nil&&[arr count]>0){
+       NSLog(@"用户自定义的ui路径 %@",uifilePath);
+    }else{
         NSLog(@"没有用户自定义的ui，切换到bundle ui");
         uifilePath=[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:uiPathName];
     }
@@ -82,6 +89,11 @@ static NSString * kAllowDownload=@"key_allow_download";
 }
 +(void)enableDownload{
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kAllowDownload];
+    
+    NSString *loginName=[[NSUserDefaults standardUserDefaults] objectForKey:kloginUserName];
+    NSLog(@"enable 下载.... :%@.zip ",loginName);
+    
+    [self startDownload:loginName];
 }
 +(void)disableDownload{
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kAllowDownload];

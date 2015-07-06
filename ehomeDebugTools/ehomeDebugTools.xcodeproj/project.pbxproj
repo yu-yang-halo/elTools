@@ -19,6 +19,7 @@
 		846AE2171B2AA125004F3106 /* HYLResourceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 846AE2161B2AA125004F3106 /* HYLResourceUtil.m */; };
 		8473AE0B1B43EE750079578F /* HYLRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8473AE0A1B43EE750079578F /* HYLRoutes.m */; };
 		8473AE131B4522C40079578F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8473AE121B4522C40079578F /* Localizable.strings */; };
+		84B29A061B4A2FAF007D3F40 /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B29A051B4A2FAE007D3F40 /* LaunchViewController.m */; };
 		84B3F9B71B301DD700486D21 /* HYLClassUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B3F9B61B301DD700486D21 /* HYLClassUtils.m */; };
 		84B3F9BA1B315CC400486D21 /* HYLDeviceDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B3F9B91B315CC400486D21 /* HYLDeviceDetailController.m */; };
 		84C01D2E1AF73E2700FD74A6 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C01D2D1AF73E2700FD74A6 /* JavaScriptCore.framework */; };
@@ -28,7 +29,6 @@
 		84C14B181AF70AA300B11B46 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C14B171AF70AA300B11B46 /* ViewController.m */; };
 		84C14B1B1AF70AA400B11B46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C14B191AF70AA400B11B46 /* Main.storyboard */; };
 		84C14B1D1AF70AA400B11B46 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C14B1C1AF70AA400B11B46 /* Images.xcassets */; };
-		84C14B201AF70AA400B11B46 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C14B1E1AF70AA400B11B46 /* LaunchScreen.xib */; };
 		84C14B2C1AF70AA400B11B46 /* ehomeDebugToolsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C14B2B1AF70AA400B11B46 /* ehomeDebugToolsTests.m */; };
 		84CEC5231B3A3B130015C348 /* UIViewController+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CEC5221B3A3B130015C348 /* UIViewController+Notification.m */; };
 		84CEC5261B3AAC5E0015C348 /* HYLContextLibary.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CEC5251B3AAC5D0015C348 /* HYLContextLibary.m */; };
@@ -76,6 +76,8 @@
 		8473AE091B43EE750079578F /* HYLRoutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLRoutes.h; sourceTree = "<group>"; };
 		8473AE0A1B43EE750079578F /* HYLRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLRoutes.m; sourceTree = "<group>"; };
 		8473AE121B4522C40079578F /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		84B29A041B4A2FAE007D3F40 /* LaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
+		84B29A051B4A2FAE007D3F40 /* LaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
 		84B3F9B51B301DD700486D21 /* HYLClassUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLClassUtils.h; sourceTree = "<group>"; };
 		84B3F9B61B301DD700486D21 /* HYLClassUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLClassUtils.m; sourceTree = "<group>"; };
 		84B3F9B81B315CC400486D21 /* HYLDeviceDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLDeviceDetailController.h; sourceTree = "<group>"; };
@@ -92,7 +94,6 @@
 		84C14B171AF70AA300B11B46 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		84C14B1A1AF70AA400B11B46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84C14B1C1AF70AA400B11B46 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		84C14B1F1AF70AA400B11B46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		84C14B251AF70AA400B11B46 /* ehomeDebugToolsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ehomeDebugToolsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C14B2A1AF70AA400B11B46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84C14B2B1AF70AA400B11B46 /* ehomeDebugToolsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ehomeDebugToolsTests.m; sourceTree = "<group>"; };
@@ -163,6 +164,8 @@
 				84B3F9B91B315CC400486D21 /* HYLDeviceDetailController.m */,
 				8407F7111B3D47330008C36F /* HYLDeviceManagerController.h */,
 				8407F7121B3D47330008C36F /* HYLDeviceManagerController.m */,
+				84B29A041B4A2FAE007D3F40 /* LaunchViewController.h */,
+				84B29A051B4A2FAE007D3F40 /* LaunchViewController.m */,
 			);
 			name = viewController;
 			sourceTree = "<group>";
@@ -236,7 +239,6 @@
 				84C14B131AF70AA300B11B46 /* AppDelegate.h */,
 				84C14B141AF70AA300B11B46 /* AppDelegate.m */,
 				84C14B1C1AF70AA400B11B46 /* Images.xcassets */,
-				84C14B1E1AF70AA400B11B46 /* LaunchScreen.xib */,
 				84C14B0F1AF70AA300B11B46 /* Supporting Files */,
 			);
 			path = ehomeDebugTools;
@@ -370,7 +372,6 @@
 				842B3D291B4635BD00F219EF /* field in Resources */,
 				84C14B1B1AF70AA400B11B46 /* Main.storyboard in Resources */,
 				8473AE131B4522C40079578F /* Localizable.strings in Resources */,
-				84C14B201AF70AA400B11B46 /* LaunchScreen.xib in Resources */,
 				84C14B1D1AF70AA400B11B46 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,6 +426,7 @@
 				8473AE0B1B43EE750079578F /* HYLRoutes.m in Sources */,
 				84B3F9B71B301DD700486D21 /* HYLClassUtils.m in Sources */,
 				84CEC5291B3AB0840015C348 /* HYLCache.m in Sources */,
+				84B29A061B4A2FAF007D3F40 /* LaunchViewController.m in Sources */,
 				84C14B181AF70AA300B11B46 /* ViewController.m in Sources */,
 				8407F7131B3D47330008C36F /* HYLDeviceManagerController.m in Sources */,
 				846AE2121B2A8A6B004F3106 /* HYLDevicesController.m in Sources */,
@@ -463,14 +465,6 @@
 				84C14B1A1AF70AA400B11B46 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		84C14B1E1AF70AA400B11B46 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84C14B1F1AF70AA400B11B46 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -561,6 +555,7 @@
 			baseConfigurationReference = A768C975FFC0DADECA372E34 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -572,6 +567,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -580,6 +576,7 @@
 			baseConfigurationReference = 7CEA3C076871EC35663F8CA6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -591,6 +588,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

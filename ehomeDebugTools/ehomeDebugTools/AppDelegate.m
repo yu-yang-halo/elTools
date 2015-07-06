@@ -10,6 +10,7 @@
 #import "Reachability.h"
 #import <ELNetworkService/ELNetworkService.h>
 #import "HYLResourceUtil.h"
+#import "HYLRoutes.h"
 @interface AppDelegate ()
 
 @end
@@ -20,7 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSLog(@"didFinishLaunchingWithOptions...");
     
-    
+    [HYLRoutes enableDownload];
     
     Reachability *reach=[Reachability reachabilityWithHostName:@"www.baidu.com"];
     //reach.reachableOnWWAN=NO;
@@ -28,6 +29,7 @@
     reach.reachableBlock=^(Reachability *reach){
         dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@" REACHABLE! ");
+            
             [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:deviceNetworkStateKey];
             
         });
@@ -42,7 +44,7 @@
     
     
     //ElApiService
-    [ElApiService setPlatformType:HYLPLATFORM_DEVELOPER];
+    [ElApiService setPlatformType:HYLPLATFORM_TEST];
     
     
     return YES;

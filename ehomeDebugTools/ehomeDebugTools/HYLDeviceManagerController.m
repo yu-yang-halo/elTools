@@ -52,6 +52,9 @@
 */
 
 - (IBAction)switchPage:(id)sender {
+    UISegmentedControl *segmentControl=(UISegmentedControl *)sender;
+    
+    NSLog(@"%ld",[segmentControl selectedSegmentIndex]);
     
 }
 @end

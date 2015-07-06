@@ -19,7 +19,7 @@
     MBProgressHUD *hud;
 }
 @end
-static NSString *kloginUserName=@"keyLoginUserName";
+NSString *kloginUserName=@"keyLoginUserName";
 static NSString *kloginPassword=@"keyLoginPassword";
 
 @implementation ViewController
@@ -27,17 +27,19 @@ static NSString *kloginPassword=@"keyLoginPassword";
 -(void)viewWillAppear:(BOOL)animated{
 
 }
-
+-(void)viewDidAppear:(BOOL)animated{
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.title=[[[HYLCache shareHylCache].configJSON valueForKey:@"title"] valueForKey:@"login"];
     
     
     UIBarButtonItem *backButton=[[UIBarButtonItem alloc] init];
     [backButton setTitle:@"返回"];
-    self.navigationItem.backBarButtonItem=backButton;    
+    self.navigationItem.backBarButtonItem=backButton;
     [self loadHtmlContent];
+    
     
 }
 
