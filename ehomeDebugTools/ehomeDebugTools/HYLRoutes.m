@@ -63,7 +63,7 @@ static NSString *keyfilePath=@"key_file_path";
    
     
     
-    if(arr!=nil&&[arr count]>0){
+    if(arr!=nil&&[arr count]<0){
        NSLog(@"用户自定义的ui路径 %@",uifilePath);
     }else{
         NSLog(@"没有用户自定义的ui，切换到bundle ui");

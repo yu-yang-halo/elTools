@@ -10,6 +10,12 @@
             <link rel="stylesheet" href="css/device.css" type="text/css" charset="utf-8"/>
              <link rel="stylesheet" href="config/config.css" type="text/css" charset="utf-8"/>
             <title></title>
+            <style type="text/css">
+* html .stshow{display:inline};
+html>body .stshow{display:table;float:left;}
+html>body .stshow{display:inline-block;float:none;}
+                
+             </style>
     </head>
     <body>
         
@@ -104,10 +110,7 @@
                                       
                                   }else if(field.deviceStateYN){
                                       //是显示标签 表状态
-                                      //var htmlString="<img alt='"+field.displayName+" : "+fieldValues[key]+"'></img>";
-                                      
-                                      var htmlString="<img alt='"+field.displayName+":"+(defaultVal)+"'"+" src='../field/"+field.icon+"'></img>";
-                                      
+var htmlString="<div class='stshow'><div class='stname'>"+field.displayName+"</div><div class='stvalue'>"+(defaultVal==""?"---":defaultVal)+"</div></div>";
                                       $(".topshow").show();
                                       $(".topshow span").append(htmlString);
                                       
@@ -141,6 +144,12 @@
                           }
     
     function loadDeviceInfoToHtml(device,clazz){
+        
+        $(".configBody").empty();
+        
+        $(".topshow span").empty();
+        $(".centershow span").empty();
+        $(".bottomshow span").empty();
         //基本信息显示
         if(device.netState==0){
             $(".onlineImg").attr("src","img/icon_offline.png");
@@ -163,9 +172,9 @@
                               var objectId=$(this).attr('objectid');
                               
                               $(".configRow input").each(function(){
-                                                         if($(this).attr("fieldId")==undefined&&$(this).attr('disabled')==undefined){
+    if($(this).attr("fieldId")==undefined&&$(this).attr('disabled')==undefined){
                                                          hyl_updateDeviceName($(this).val(),objectId);
-                                                         }else{
+                                                         }else if($(this).attr('disabled')==undefined){
                                                          hyl_setFieldCmd($(this).val(),$(this).attr("fieldId"),objectId);
                                                          }
                                                          

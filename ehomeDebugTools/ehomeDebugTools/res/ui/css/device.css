@@ -18,8 +18,8 @@ body{
 }
 
 .cmdStateBtn{
-	width: 90px;
-	height: 90px;
+    width: 90px;
+    height: 90px;
 }
 .main{
     width:100%;
@@ -37,71 +37,71 @@ body{
 }
 
 .devstatus{
-	width: 100%;
-	height:10%;
-	background-color: #7DB72F;
-	display:table;
-	text-align: left;
+    width: 100%;
+    height:10%;
+    background-color: #7DB72F;
+    display:table;
+    text-align: left;
 }
 .main{
     width: 100%;
-	height:90%;
-	text-align: center;
-	
+    height:90%;
+    text-align: center;
+    
     
 }
 
 
 .devstatus .onlineImg{
-	height: 12px;
-	width: 15px; 
+    height: 12px;
+    width: 15px;
 }
 .devstatus  .onlineText{
-	font-size: 15px;
-	color: #FFFFFF;
+    font-size: 15px;
+    color: #FFFFFF;
 }
 
 
 .topshow{
-	width: 100%;
-	height: 35%;
-	display:table;
+    width: 100%;
+    height: 35%;
+    display:table;
     text-align:center;
 }
 .centershow{
-	width: 100%;
-	height: 40%;
-	display:table;
+    width: 100%;
+    height: 40%;
+    display:table;
     text-align:center;
 }
 
 .bottomshow{
-	width: 100%;
-	height:25%;
-	display:table;
+    width: 100%;
+    height:25%;
+    display:table;
     text-align:center;
 }
 
 
 .topshow img{
-	width: 100px;
-	height: 100px;
+    width: 100px;
+    height: 100px;
     font-size:12px;
 }
 
 
 span{
-	display:table-cell;
+    display:table-cell;
     vertical-align:middle;
 }
 .centershow .cmdStateBtn{
-
+    
 }
 
 
 
 .bottomshow button{
-	
+    
 }
 
 
@@ -115,31 +115,31 @@ span{
     top:0;
 }
 .configHeader{
-	width: 100%;
-	height: 10%;
-	background-color: #7DB72F;
-	display:table;
+    width: 100%;
+    height: 10%;
+    background-color: #7DB72F;
+    display:table;
 }
 .configHeader label{
-	color: #FFFFFF;
-	font-size: 15px;
+    color: #FFFFFF;
+    font-size: 15px;
 }
 
 .configBody{
-	width: 100%;
-	height: 90%;
+    width: 100%;
+    height: 90%;
 }
 .configRow{
-	width: 100%;
-	height: 50px;
+    width: 100%;
+    height: 50px;
     text-align: center;
-	line-height: 50px;
+    line-height: 50px;
 }
 
 .configRow label{
-	width: 20%;
-	height: 50px;
-	display: inline-block;
+    width: 20%;
+    height: 50px;
+    display: inline-block;
 }
 .configRow input{
     height:30px;
@@ -168,13 +168,34 @@ span{
     text-decoration:none;
 }
 .round:hover{
-/*    color:blue;*/
-  text-decoration:none;
-
+    /*    color:blue;*/
+    text-decoration:none;
+    
 }
 #r1{
     color:#55ff00;
 }
 #r2{
     color:#009911;
+}
+.stshow{
+    background-color:#a9c08c;
+    width: 60px;
+    height: 60px;
+    position: relative;
+    color: white;
+    font-size:8px;
+    border:1px solid #80bed6;
+    margin:1px;
+}
+.stname{
+    background-color:#ff6699;
+    width: 60px;
+    height: 25px;
+    line-height: 25px;
+}
+.stvalue{
+    width: 60px;
+    height: 35px;
+    line-height: 35px;
 }

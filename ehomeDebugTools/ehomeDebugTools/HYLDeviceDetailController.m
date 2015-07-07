@@ -13,6 +13,8 @@
 #import "HYLClassUtils.h"
 #import "HYLContextLibary.h"
 #import "HYLRoutes.h"
+#import "UIView+Toast.h"
+
 @interface HYLDeviceDetailController (){
    
 }
@@ -56,7 +58,10 @@
     [HYLContextLibary loadHylCmd:HYLCMDTYPE_UPDATE_DEVICE_NAME toContext:context handler:^(BOOL finished,NSArray *args) {
        
         if(finished){
-            vc.title=[args[0] toString];
+            ELDeviceObject *device=(ELDeviceObject *)args[0];
+            
+            vc.title=device.name;
+            [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"loadDeviceInfoToHtml(%@,%@)",[[HYLClassUtils canConvertJSONDataFromObjectInstance:device] JSONString],[HYLClassUtils classListData]]];
         }
         
     }];

@@ -63,9 +63,14 @@
                     }
                     BOOL isOK=[[ElApiService shareElApiService] updateObject:elDevice];
                     
+                    if(isOK){
+                        elDevice=[[ElApiService shareElApiService] getObjectValue:elDevice.objectId];
+                        
+                    }
+                    
                     dispatch_async(dispatch_get_main_queue(), ^{
                        
-                         _handler(isOK,args);
+                         _handler(isOK,[NSArray arrayWithObject:elDevice]);
                         
                     });
                 });

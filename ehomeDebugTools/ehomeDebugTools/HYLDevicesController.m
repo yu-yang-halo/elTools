@@ -40,10 +40,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    
-    self.title=[[[HYLCache shareHylCache].configJSON valueForKey:@"title"] valueForKey:@"devices"];
+     self.title=[[[HYLCache shareHylCache].configJSON valueForKey:@"title"] valueForKey:@"devices"];
 
     
     [self.webVIew.scrollView setShowsHorizontalScrollIndicator:NO];

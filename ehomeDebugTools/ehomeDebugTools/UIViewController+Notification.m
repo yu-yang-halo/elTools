@@ -8,16 +8,32 @@
 
 #import "UIViewController+Notification.h"
 #import <objc/runtime.h>
+#import <ELNetworkService/ELNetworkService.h>
+#import <UIView+Toast.h>
 @implementation UIViewController (Notification)
 
 -(void)viewWillAppear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errorWithELAPIService:) name:kErrorAlertNotification object:nil];
+    
 }
+
+
+-(void)errorWithELAPIService:(NSNotification *)notification{
+    NSString *errorMsg=[notification.userInfo objectForKey:kErrorCodeKey];
+    NSLog(@"Error message :%@",errorMsg);
+    [self.view makeToast:errorMsg];
+    
+}
+
 -(void)viewWillDisappear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kErrorAlertNotification object:nil];
+    
     
 }
 

@@ -22,9 +22,14 @@
       
     [HYLRoutes loadUserConfig];
 }
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 - (void)hyl_awakeFromNib{
     [self hyl_awakeFromNib];
-   
+    
+    
     if([self isKindOfClass:[UINavigationController class]]){
          NSLog(@"UINavigationController hyl_awakeFromNib  init");
         
@@ -66,14 +71,23 @@
    
 }
 -(void)hyl_viewDidLoad{
-    if([self isMemberOfClass:[ViewController class]]){
+    if([self class]==[ViewController class]){
         NSLog(@"launchImage...");
         [self performSegueWithIdentifier:@"launchImage" sender:self];
         
     }
+    NSLog(@"---%@---",[self class]);
+   
     [self hyl_viewDidLoad];
 
 }
 
+
+@end
+@implementation UINavigationController (statusBar)
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
 
 @end

@@ -15,3 +15,7 @@
 @interface UIViewController(Launch)
 
 @end
+
+@interface UINavigationController (statusBar)
+
+@end

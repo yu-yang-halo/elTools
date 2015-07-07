@@ -25,11 +25,11 @@ static NSString *kloginPassword=@"keyLoginPassword";
 @implementation ViewController
 
 -(void)viewWillAppear:(BOOL)animated{
-
 }
 -(void)viewDidAppear:(BOOL)animated{
     
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=[[[HYLCache shareHylCache].configJSON valueForKey:@"title"] valueForKey:@"login"];
@@ -90,17 +90,8 @@ static NSString *kloginPassword=@"keyLoginPassword";
         
                 
         
-        NSString *netstate=[[NSUserDefaults standardUserDefaults] objectForKey:deviceNetworkStateKey];
         
-        if([netstate isEqualToString:@"1"]){
-            
-            [self asynlogin:[args[0] toString] withPass:[args[1] toString]];
-        
-        }else{
-            
-            [self.view makeToast:@"网络连接有问题，请检查"];
-        
-        }
+        [self asynlogin:[args[0] toString] withPass:[args[1] toString]];
         
         
         
@@ -115,7 +106,7 @@ static NSString *kloginPassword=@"keyLoginPassword";
             [hud hide:YES];
              NSString *message=nil;
             if(isOK){
-                 message=@"登录成功！";
+                // message=@"登录成功！";
                 [HYLRoutes downloadUserResources:name];
                 
                 [HYLClassUtils removeAllClassDataCaches];
@@ -124,9 +115,11 @@ static NSString *kloginPassword=@"keyLoginPassword";
                 [[NSUserDefaults standardUserDefaults] setObject:pass forKey:kloginPassword];
                 
                  [self performSegueWithIdentifier:@"deviceList" sender:self];
+                
+                //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
             }else{
-                 message=@"用户名或密码错误！";
-                 [self.view makeToast:message];
+                 //message=@"用户名或密码错误！";
+                
             }
             
             
