@@ -19,6 +19,10 @@
 #define DEMO_ACCOUNT_NAME @"hyldemo"
 #define SHORT_MESSAGE_TYPE_VCODE 0
 #define SHORT_MESSAGE_TYPE_PASS 1
+//错误处理
+extern NSString *kErrorCodeKey;
+extern NSString *kErrorAlertNotification;
+
 @class ElApiService;
 @class ELDeviceObject;
 @class ELSimpleTask;
