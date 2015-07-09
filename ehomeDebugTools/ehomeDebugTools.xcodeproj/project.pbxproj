@@ -20,6 +20,8 @@
 		8473AE0B1B43EE750079578F /* HYLRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8473AE0A1B43EE750079578F /* HYLRoutes.m */; };
 		8473AE131B4522C40079578F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8473AE121B4522C40079578F /* Localizable.strings */; };
 		84AF6B161B4B6E3F004C86E6 /* HYLWifiUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF6B151B4B6E3F004C86E6 /* HYLWifiUtils.m */; };
+		84AF6B191B4CBE5F004C86E6 /* HYLWIFITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF6B181B4CBE5F004C86E6 /* HYLWIFITableViewController.m */; };
+		84AF6B1C1B4CFAE6004C86E6 /* HYLReachabilityUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF6B1B1B4CFAE6004C86E6 /* HYLReachabilityUtils.m */; };
 		84B29A061B4A2FAF007D3F40 /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B29A051B4A2FAE007D3F40 /* LaunchViewController.m */; };
 		84B3F9B71B301DD700486D21 /* HYLClassUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B3F9B61B301DD700486D21 /* HYLClassUtils.m */; };
 		84B3F9BA1B315CC400486D21 /* HYLDeviceDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B3F9B91B315CC400486D21 /* HYLDeviceDetailController.m */; };
@@ -34,6 +36,8 @@
 		84CEC5231B3A3B130015C348 /* UIViewController+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CEC5221B3A3B130015C348 /* UIViewController+Notification.m */; };
 		84CEC5261B3AAC5E0015C348 /* HYLContextLibary.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CEC5251B3AAC5D0015C348 /* HYLContextLibary.m */; };
 		84CEC5291B3AB0840015C348 /* HYLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CEC5281B3AB0840015C348 /* HYLCache.m */; };
+		84DD21AD1B4E6730008C461B /* HYLSysConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD21AC1B4E6730008C461B /* HYLSysConfigViewController.m */; };
+		84DD21B01B4E7909008C461B /* RegUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DD21AF1B4E7909008C461B /* RegUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +83,10 @@
 		8473AE121B4522C40079578F /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		84AF6B141B4B6E3F004C86E6 /* HYLWifiUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLWifiUtils.h; sourceTree = "<group>"; };
 		84AF6B151B4B6E3F004C86E6 /* HYLWifiUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLWifiUtils.m; sourceTree = "<group>"; };
+		84AF6B171B4CBE5F004C86E6 /* HYLWIFITableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLWIFITableViewController.h; sourceTree = "<group>"; };
+		84AF6B181B4CBE5F004C86E6 /* HYLWIFITableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLWIFITableViewController.m; sourceTree = "<group>"; };
+		84AF6B1A1B4CFAE6004C86E6 /* HYLReachabilityUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLReachabilityUtils.h; sourceTree = "<group>"; };
+		84AF6B1B1B4CFAE6004C86E6 /* HYLReachabilityUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLReachabilityUtils.m; sourceTree = "<group>"; };
 		84B29A041B4A2FAE007D3F40 /* LaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
 		84B29A051B4A2FAE007D3F40 /* LaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
 		84B3F9B51B301DD700486D21 /* HYLClassUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLClassUtils.h; sourceTree = "<group>"; };
@@ -107,6 +115,10 @@
 		84CEC5251B3AAC5D0015C348 /* HYLContextLibary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLContextLibary.m; sourceTree = "<group>"; };
 		84CEC5271B3AB0840015C348 /* HYLCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLCache.h; sourceTree = "<group>"; };
 		84CEC5281B3AB0840015C348 /* HYLCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLCache.m; sourceTree = "<group>"; };
+		84DD21AB1B4E6730008C461B /* HYLSysConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLSysConfigViewController.h; sourceTree = "<group>"; };
+		84DD21AC1B4E6730008C461B /* HYLSysConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLSysConfigViewController.m; sourceTree = "<group>"; };
+		84DD21AE1B4E7909008C461B /* RegUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegUtil.h; sourceTree = "<group>"; };
+		84DD21AF1B4E7909008C461B /* RegUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegUtil.m; sourceTree = "<group>"; };
 		A768C975FFC0DADECA372E34 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +170,7 @@
 		846AE2131B2A9725004F3106 /* viewController */ = {
 			isa = PBXGroup;
 			children = (
+				84DD21AA1B4E66E4008C461B /* config */,
 				84C14B161AF70AA300B11B46 /* ViewController.h */,
 				84C14B171AF70AA300B11B46 /* ViewController.m */,
 				846AE2101B2A8A6B004F3106 /* HYLDevicesController.h */,
@@ -189,6 +202,8 @@
 			children = (
 				84AF6B141B4B6E3F004C86E6 /* HYLWifiUtils.h */,
 				84AF6B151B4B6E3F004C86E6 /* HYLWifiUtils.m */,
+				84AF6B1A1B4CFAE6004C86E6 /* HYLReachabilityUtils.h */,
+				84AF6B1B1B4CFAE6004C86E6 /* HYLReachabilityUtils.m */,
 			);
 			name = wifi;
 			sourceTree = "<group>";
@@ -196,6 +211,8 @@
 		84B3F9B41B301DA800486D21 /* classutils */ = {
 			isa = PBXGroup;
 			children = (
+				84DD21AE1B4E7909008C461B /* RegUtil.h */,
+				84DD21AF1B4E7909008C461B /* RegUtil.m */,
 				84B3F9B51B301DD700486D21 /* HYLClassUtils.h */,
 				84B3F9B61B301DD700486D21 /* HYLClassUtils.m */,
 				84CEC5241B3AAC5D0015C348 /* HYLContextLibary.h */,
@@ -294,6 +311,17 @@
 				84CEC5221B3A3B130015C348 /* UIViewController+Notification.m */,
 			);
 			name = categary;
+			sourceTree = "<group>";
+		};
+		84DD21AA1B4E66E4008C461B /* config */ = {
+			isa = PBXGroup;
+			children = (
+				84AF6B171B4CBE5F004C86E6 /* HYLWIFITableViewController.h */,
+				84AF6B181B4CBE5F004C86E6 /* HYLWIFITableViewController.m */,
+				84DD21AB1B4E6730008C461B /* HYLSysConfigViewController.h */,
+				84DD21AC1B4E6730008C461B /* HYLSysConfigViewController.m */,
+			);
+			name = config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -444,12 +472,16 @@
 				84C14B181AF70AA300B11B46 /* ViewController.m in Sources */,
 				8407F7131B3D47330008C36F /* HYLDeviceManagerController.m in Sources */,
 				846AE2121B2A8A6B004F3106 /* HYLDevicesController.m in Sources */,
+				84DD21AD1B4E6730008C461B /* HYLSysConfigViewController.m in Sources */,
 				846AE2171B2AA125004F3106 /* HYLResourceUtil.m in Sources */,
 				84B3F9BA1B315CC400486D21 /* HYLDeviceDetailController.m in Sources */,
+				84AF6B191B4CBE5F004C86E6 /* HYLWIFITableViewController.m in Sources */,
 				84CEC5231B3A3B130015C348 /* UIViewController+Notification.m in Sources */,
 				84CEC5261B3AAC5E0015C348 /* HYLContextLibary.m in Sources */,
 				8449B7481B3259F100B764D7 /* UINavigationController+barTheme.m in Sources */,
+				84AF6B1C1B4CFAE6004C86E6 /* HYLReachabilityUtils.m in Sources */,
 				84C14B151AF70AA300B11B46 /* AppDelegate.m in Sources */,
+				84DD21B01B4E7909008C461B /* RegUtil.m in Sources */,
 				84C14B121AF70AA300B11B46 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

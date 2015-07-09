@@ -3,7 +3,7 @@
    "login":"E联调试工具",
    "devices":"我的设备",
 },
-   "barColor":"#ff00ff",
+   "barColor":"#000000",
     "fontColor":"#ffffff",
     "fontSize":20,
     "version":"1.0",

@@ -86,7 +86,7 @@ html>body .stshow{display:inline-block;float:none;}
                                   }else{
                                       defaultVal=field.defaultValue;
                                   }
-                                  if(field.deviceCmdYN&&field.deviceStateYN){
+                                  if(field.widget==1){
                                       //是button，发送命令且表状态
                                       var htmlString="<input type='image' class='cmdStateBtn'  ";
                                       if(defaultVal==0){
@@ -108,13 +108,13 @@ html>body .stshow{display:inline-block;float:none;}
                                       $(".centershow").show();
                                       $(".centershow span").append(htmlString);
                                       
-                                  }else if(field.deviceStateYN){
+                                  }else if(field.widget==4){
                                       //是显示标签 表状态
 var htmlString="<div class='stshow'><div class='stname'>"+field.displayName+"</div><div class='stvalue'>"+(defaultVal==""?"---":defaultVal)+"</div></div>";
                                       $(".topshow").show();
                                       $(".topshow span").append(htmlString);
                                       
-                                  }else if(field.deviceCmdYN){
+                                  }else if(field.widget==1){
                                       //是按钮，发送命令，不表状态
                                       var htmlString="<button class='button blue'   value='"+defaultVal+"' fieldId="+key+" objectid="+device.objectId+">"+field.displayName+"</button>";
                                       
@@ -131,7 +131,7 @@ var htmlString="<div class='stshow'><div class='stname'>"+field.displayName+"</d
                                       
                                       
                                   }
-                                  if(field.presistYN){
+                                  if(field.widget==3){
                                       //表配置存储，input框，放在第二界面
                                       configHtml+="<div class='configRow'><label>"+field.displayName
                                       +"</label><input value='"+defaultVal+"' fieldId="+key+"></input> </div>";

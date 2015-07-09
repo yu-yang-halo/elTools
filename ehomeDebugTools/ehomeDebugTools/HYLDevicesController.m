@@ -17,7 +17,8 @@
 #import "HYLCache.h"
 #import "HYLContextLibary.h"
 #import "HYLRoutes.h"
-
+#import "HYLReachabilityUtils.h"
+#import <UIView+Toast.h>
 @interface HYLDevicesController (){
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
@@ -148,9 +149,17 @@
             [HYLClassUtils cacheClasslistData:[allClassObjs JSONString]];
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.webVIew stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_loadDevicesData(%@,%@,%@)",[allDeviceObj JSONString],[allClassObjs JSONString],[classIcon JSONString]]];
-                 _reloading=NO;
+                
+                if(![HYLReachabilityUtils networkIsAvailable]){
+                    [self.view makeToast:@"当前没有可用的网络~"];
+                }else{
+                    
+                    [self.webVIew stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_loadDevicesData(%@,%@,%@)",[allDeviceObj JSONString],[allClassObjs JSONString],[classIcon JSONString]]];
+                   
+                }
+                _reloading=NO;
                 [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.webVIew.scrollView];
+               
             });
         });
         

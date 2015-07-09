@@ -7,11 +7,10 @@
 //
 
 #import "AppDelegate.h"
-#import "Reachability.h"
 #import <ELNetworkService/ELNetworkService.h>
 #import "HYLResourceUtil.h"
 #import "HYLRoutes.h"
-#import "HYLWifiUtils.h"
+#import "HYLReachabilityUtils.h"
 @interface AppDelegate ()
 
 @end
@@ -22,16 +21,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSLog(@"didFinishLaunchingWithOptions...");
     
-    [HYLRoutes enableDownload];    
+       
     
-    
-    //ElApiService
-    [ElApiService setPlatformType:HYLPLATFORM_DEVELOPER];
-    
-    //[HYLWifiUtils fetchSSIDInfo];
-    [HYLWifiUtils reqConfigWifiSSID:@"lztech-host" password:@"cell7894"];
-    [HYLWifiUtils reqConfigServer];
-    [HYLWifiUtils reqWIFIInformation];
+    [HYLReachabilityUtils startNetChecking];
     
     
     return YES;

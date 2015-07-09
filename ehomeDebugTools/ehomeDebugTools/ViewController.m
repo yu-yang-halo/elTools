@@ -15,6 +15,7 @@
 #import "HYLClassUtils.h"
 #import "HYLCache.h"
 #import "HYLRoutes.h"
+#import "HYLReachabilityUtils.h"
 @interface ViewController (){
     MBProgressHUD *hud;
 }
@@ -89,12 +90,11 @@ static NSString *kloginPassword=@"keyLoginPassword";
         
         
                 
-        
-        
-        [self asynlogin:[args[0] toString] withPass:[args[1] toString]];
-        
-        
-        
+        if(![HYLReachabilityUtils networkIsAvailable]){
+            [self.view makeToast:@"当前没有可用的网络~"];
+        }else{
+            [self asynlogin:[args[0] toString] withPass:[args[1] toString]];
+        }
     };
 }
 -(void)asynlogin:(NSString *)name withPass:(NSString *)pass{

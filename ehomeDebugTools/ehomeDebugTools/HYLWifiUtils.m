@@ -8,6 +8,7 @@
 
 #import "HYLWifiUtils.h"
 #import <SystemConfiguration/CaptiveNetwork.h>
+#import <UIView+Toast.h>
 @implementation HYLWifiUtils
 +(id)fetchSSIDInfo{
     NSArray *ifs=(__bridge_transfer id)CNCopySupportedInterfaces();
@@ -17,11 +18,15 @@
     for (NSString *ifnam in ifs) {
         info=(__bridge_transfer id)CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifnam);
         NSLog(@"%@==>%@",ifnam,info);
+        break;
         
     }
     
+    NSString *ssid=[info objectForKey:@"SSID"];
     
-    return info;
+    
+    
+    return ssid;
     
     
 }
@@ -76,9 +81,17 @@
         if(data){
             NSString *dataStr=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSLog(@"data  ### %@ ###\n",dataStr);
+            NSString *message=nil;
+            if([[dataStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]){
+                message=@"执行成功";
+            }else{
+                message=dataStr;
+            }
+            [[[UIApplication sharedApplication] keyWindow] makeToast:message];
             
         }else{
             NSLog(@"error ### %@ ###\n",connectionError);
+            [[[UIApplication sharedApplication] keyWindow] makeToast:[connectionError description]];
         }
         
     }];

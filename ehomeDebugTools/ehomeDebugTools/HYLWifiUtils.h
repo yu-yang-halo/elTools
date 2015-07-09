@@ -10,7 +10,7 @@
 //负责wifi列表的获取
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 @interface HYLWifiUtils : NSObject
 +(id)fetchSSIDInfo;
 

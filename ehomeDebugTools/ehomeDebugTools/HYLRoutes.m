@@ -9,9 +9,12 @@
 #import "HYLRoutes.h"
 #import "HYLResourceUtil.h"
 #import "ViewController.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <UIView+Toast.h>
 static NSString *keyfilePath=@"key_file_path";
-
-
+static NSString *testURL=@"192.168.2.111";
+static NSString *developerURL=@"121.199.40.249";
+static BOOL systemResYN=YES;
 
 @interface HYLRoutes()
 +(void)startDownload:(NSString *)fileName;
@@ -19,9 +22,12 @@ static NSString *keyfilePath=@"key_file_path";
 
 @implementation HYLRoutes
 +(void)startDownload:(NSString *)fileName{
-    NSString *filePath=[NSString stringWithFormat:@"http://192.168.2.111/public_cloud/upload/%@.zip",fileName];
+    NSString *filePath=[NSString stringWithFormat:@"http://%@/public_cloud/upload/%@.zip",developerURL,fileName];
     
     if([self isAllowDownload]){
+        
+        MBBarProgressView *progressView=[[MBBarProgressView alloc] init];
+        
         
         [HYLResourceUtil downloadWebResource:filePath block:^(BOOL isfinished, id data) {
             
@@ -30,6 +36,7 @@ static NSString *keyfilePath=@"key_file_path";
                 [[NSUserDefaults standardUserDefaults] setObject:data forKey:keyfilePath];
                 
                 [self disableDownload];
+                
                 
             }else{
                 NSLog(@"%@用户文件下载失败，切换到bundle路径读取",data);
@@ -57,15 +64,23 @@ static NSString *keyfilePath=@"key_file_path";
         return [[HYLResourceUtil documentPath] stringByAppendingPathComponent:filePath];
     }
 }
+
++(BOOL)isSystemResouces{
+    [self uiResourcePath];
+    
+    return systemResYN;
+}
 +(NSString *)uiResourcePath{
     NSString *uifilePath=[[self resourceRootPath] stringByAppendingPathComponent:uiPathName];
     NSArray *arr=[[NSFileManager defaultManager] contentsOfDirectoryAtPath:uifilePath error:nil];
    
     
     
-    if(arr!=nil&&[arr count]<0){
+    if(arr!=nil&&[arr count]>0){
        NSLog(@"用户自定义的ui路径 %@",uifilePath);
+        systemResYN=NO;
     }else{
+        systemResYN=YES;
         NSLog(@"没有用户自定义的ui，切换到bundle ui");
         uifilePath=[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:uiPathName];
     }

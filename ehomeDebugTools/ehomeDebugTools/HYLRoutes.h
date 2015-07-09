@@ -28,6 +28,7 @@
 
 +(NSString *)uiResourcePath;
 
++(BOOL)isSystemResouces;
 
 
 
