@@ -51,7 +51,7 @@
     self.webVIew.scrollView.delegate=self;
     
     if(_refreshHeaderView==nil){
-        _refreshHeaderView=[[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0,0-self.webVIew.scrollView.bounds.size.height,self.webVIew.scrollView.bounds.size.width,self.webVIew.bounds.size.height)];
+        _refreshHeaderView=[[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0,0-self.webVIew.bounds.size.height,self.webVIew.bounds.size.width,self.webVIew.bounds.size.height)];
         _refreshHeaderView.delegate=self;
         [self.webVIew.scrollView addSubview:_refreshHeaderView];
       

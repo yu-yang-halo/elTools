@@ -16,6 +16,7 @@
 #import "HYLCache.h"
 #import "HYLRoutes.h"
 #import "HYLReachabilityUtils.h"
+#import "UINavigationController+barTheme.h"
 @interface ViewController (){
     MBProgressHUD *hud;
 }
@@ -26,6 +27,7 @@ static NSString *kloginPassword=@"keyLoginPassword";
 @implementation ViewController
 
 -(void)viewWillAppear:(BOOL)animated{
+    self.title=[[[HYLCache shareHylCache].configJSON valueForKey:@"title"] valueForKey:@"login"];
 }
 -(void)viewDidAppear:(BOOL)animated{
     
@@ -33,15 +35,21 @@ static NSString *kloginPassword=@"keyLoginPassword";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=[[[HYLCache shareHylCache].configJSON valueForKey:@"title"] valueForKey:@"login"];
     
+    [self loadHtmlContent];
     
     UIBarButtonItem *backButton=[[UIBarButtonItem alloc] init];
     [backButton setTitle:@"返回"];
     self.navigationItem.backBarButtonItem=backButton;
-    [self loadHtmlContent];
+}
+
+-(void)requestIndexHtml{
+    NSString *filePath=[[HYLRoutes uiResourcePath] stringByAppendingPathComponent:@"index.html"];
+    NSLog(@"filePath %@",filePath);
+    NSURL *url=[NSURL fileURLWithPath:filePath];
     
     
+    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
 -(void)loadHtmlContent{
@@ -49,16 +57,7 @@ static NSString *kloginPassword=@"keyLoginPassword";
     self.webView.delegate=self;
     self.webView.scrollView.scrollEnabled=NO;
     
-    
-    NSString *filePath=[[HYLRoutes uiResourcePath] stringByAppendingPathComponent:@"index.html"];
-    NSLog(@"filePath %@",filePath);
-    NSURL *url=[NSURL fileURLWithPath:filePath];
-    
-    
-    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
-
-    
-   // NSLog(@"bundURL:%@\n ::: %@",[[NSBundle mainBundle] bundleURL],[NSURL URLWithString:[[NSBundle mainBundle] bundlePath]]);
+    [self requestIndexHtml];
     
     
     self.webView.dataDetectorTypes=UIDataDetectorTypeNone;
@@ -107,7 +106,6 @@ static NSString *kloginPassword=@"keyLoginPassword";
              NSString *message=nil;
             if(isOK){
                 // message=@"登录成功！";
-                [HYLRoutes downloadUserResources:name];
                 
                 [HYLClassUtils removeAllClassDataCaches];
                 
@@ -143,7 +141,6 @@ static NSString *kloginPassword=@"keyLoginPassword";
 
 - (void)webViewDidStartLoad:(UIWebView *)webView{
     hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    //hud.labelText=@"加载中。。。";
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     [hud hide:YES];

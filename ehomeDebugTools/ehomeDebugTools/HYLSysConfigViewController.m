@@ -11,13 +11,16 @@
 #import "RegUtil.h"
 #import <UIView+Toast.h>
 #import "HYLRoutes.h"
+#import "UINavigationController+barTheme.h"
+#import "HYLVersionInfoUtils.h"
+
 @interface HYLSysConfigViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *serverAddressTextField;
 @property (strong, nonatomic) IBOutlet UILabel *mineResourceStatusLabel;
-@property (strong, nonatomic) IBOutlet UILabel *mineResourceVersionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *sysVersionLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *systemResouceStatusLabel;
-@property (strong, nonatomic) IBOutlet UILabel *systemResouceVersionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *sysBuildVersionLabel;
 - (IBAction)manualUpdateMineResource:(id)sender;
 
 @end
@@ -27,11 +30,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateInfo) name:kNotificationUpdateUI object:nil];
+    
+    
     _serverAddressTextField.delegate=self;
     
     _serverAddressTextField.text=[ElApiService currentIPAddress];
     
+    _sysVersionLabel.text=[HYLVersionInfoUtils appVersion];
+    _sysBuildVersionLabel.text=[HYLVersionInfoUtils appBuildVersion];
     
+    
+    [self updateInfo];
+   
+    
+}
+-(void)updateInfo{
     if([HYLRoutes isSystemResouces]){
         _systemResouceStatusLabel.text=@"正在使用";
         _mineResourceStatusLabel.text=@"未使用";
@@ -39,13 +53,18 @@
         _systemResouceStatusLabel.text=@"未使用";
         _mineResourceStatusLabel.text=@"正在使用";
     }
-    
-    
 }
+
+
 - (IBAction)manualUpdateMineResource:(id)sender {
     [HYLRoutes enableDownload];
 }
 
+-(void)dealloc{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationUpdateUI object:nil];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -58,8 +77,9 @@
         //NSLog(@"是IP地址  %@",ipAddr);
         [ElApiService setCurrentIPAddress:ipAddr];
     }else{
-        [self.view  makeToast:[NSString stringWithFormat:@"不是IP地址  %@",ipAddr]];
+        [[[UIApplication sharedApplication] keyWindow] makeToast:[NSString stringWithFormat:@"不是IP地址  %@",ipAddr]];;
     }
+
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     return [textField resignFirstResponder];

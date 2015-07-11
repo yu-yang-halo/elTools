@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+extern NSString *const kNotificationWIFIPageLogic;
 
 @interface HYLWIFITableViewController : UITableViewController<UITextFieldDelegate>
 

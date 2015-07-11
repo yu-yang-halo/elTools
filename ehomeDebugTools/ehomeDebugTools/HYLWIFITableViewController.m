@@ -9,6 +9,9 @@
 #import "HYLWIFITableViewController.h"
 #import "HYLWifiUtils.h"
 #import "HYLCache.h"
+#import "HYLReachabilityUtils.h"
+
+NSString *const kNotificationWIFIPageLogic=@"kNotificationWIFIPageLogic";
 @interface HYLWIFITableViewController ()
 - (IBAction)toSystemSetting:(id)sender;
 @property (strong, nonatomic) IBOutlet UITextField *willConntectWifiSSID;
@@ -24,17 +27,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(wifiPageLogic) name:kNotificationWIFIPageLogic object:nil];
     
     self.tableView.tableFooterView=[[UIView alloc] initWithFrame:CGRectZero];
     self.willConntectWifiSSID.delegate=self;
     self.willConnectWifiPassword.delegate=self;
     
     self.willConntectWifiSSID.text=[HYLCache shareHylCache].availableWIFISSID;
+   
+    [self hideItemsYN:YES];
+    
+}
+-(void)wifiPageLogic{
+    
+    if(![[HYLCache shareHylCache].availableWIFISSID isEqual:[HYLWifiUtils fetchSSIDInfo]]){
+        self.willConntectWifiSSID.text=[HYLCache shareHylCache].availableWIFISSID;
+        [self hideItemsYN:NO];
+    }
+    
+}
+
+-(void)hideItemsYN:(BOOL)isYN{
+    
+    for (int i=1;i<=5;i++) {
+         [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0]] setHidden:isYN];
+    }
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -42,6 +60,9 @@
     return YES;
 }
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationWIFIPageLogic object:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

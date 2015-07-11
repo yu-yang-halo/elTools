@@ -16,14 +16,16 @@ static Reachability *reachability=nil;
 @implementation HYLReachabilityUtils
 
 +(BOOL)networkIsAvailable{
-    if(reachability==nil){
-        reachability=[Reachability reachabilityWithHostName:@"www.baidu.com"];
-    }
-    if(reachability.isReachable){
-         NSLog(@"已经连接上Internet。。。");
-    }
+    Reachability *reach=[Reachability reachabilityForInternetConnection];
+    NetworkStatus status=[reach currentReachabilityStatus];
    
-    return reachability.isReachable;
+    if(status==NotReachable){
+        NSLog(@"%s 网络连接已断开",__FUNCTION__);
+        return NO;
+    }else{
+        NSLog(@"%s 网络连接正常",__FUNCTION__);
+        return YES;
+    }
 }
 
 +(void)startNetChecking{

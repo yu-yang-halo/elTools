@@ -7,7 +7,7 @@
 //
 
 #import "LaunchViewController.h"
-
+#import "HYLRoutes.h"
 @interface LaunchViewController ()
 
 @end
@@ -17,9 +17,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UIImage *image=[UIImage imageNamed:@"launchLogo"];
-    self.view.layer.contents=(__bridge id)image.CGImage;
-    self.view.layer.contentsScale=image.scale;
+    //UIImage *image=[UIImage imageNamed:@"launchLogo"];
+    
+    UIImage *launchImage=[[UIImage alloc] initWithContentsOfFile:[[HYLRoutes uiResourcePath] stringByAppendingPathComponent:@"img/launchLogo.png"]];
+    
+    if(launchImage==nil){
+        launchImage=[UIImage imageNamed:@"launchLogo"];
+    }
+    
+    self.view.layer.contents=(__bridge id)launchImage.CGImage;
+    self.view.layer.contentsScale=launchImage.scale;
     self.view.layer.contentsGravity=kCAGravityResizeAspectFill;
     
     

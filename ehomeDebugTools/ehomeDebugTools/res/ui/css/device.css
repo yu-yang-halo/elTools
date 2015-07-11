@@ -4,8 +4,7 @@
 @media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
     /*iphone 6 plus*/
 }
-body{
-}
+
 .configRow input{
     background-repeat:no-repeat;
     background-color: transparent;
@@ -20,11 +19,6 @@ body{
 .cmdStateBtn{
     width: 90px;
     height: 90px;
-}
-.main{
-    width:100%;
-    height:100%;
-    
 }
 
 .page1{
@@ -45,10 +39,8 @@ body{
 }
 .main{
     width: 100%;
-    height:90%;
+    height:80%;
     text-align: center;
-    
-    
 }
 
 
@@ -62,12 +54,7 @@ body{
 }
 
 
-.topshow{
-    width: 100%;
-    height: 35%;
-    display:table;
-    text-align:center;
-}
+
 .centershow{
     width: 100%;
     height: 40%;
@@ -77,17 +64,12 @@ body{
 
 .bottomshow{
     width: 100%;
-    height:25%;
+    height:20%;
     display:table;
     text-align:center;
 }
 
 
-.topshow img{
-    width: 100px;
-    height: 100px;
-    font-size:12px;
-}
 
 
 span{
@@ -127,7 +109,7 @@ span{
 
 .configBody{
     width: 100%;
-    height: 90%;
+    height: 50%;
 }
 .configRow{
     width: 100%;
@@ -145,57 +127,26 @@ span{
     height:30px;
     width:180px;
 }
+.configRow button{
+    height:45px;
+    width:120px;
+}
 
-
-
-
-
-.rounds{
-    width:100%;
-    height:8%;
-    position:absolute;
-    left:0;
-    bottom:0;
+.topshow{
+    width: 100%;
+    display:table;
     text-align:center;
+    margin-top:20px;
 }
-.round{
-    width:10px;
-    height:10px;
-    display: inline-block;
-    font-size:20px;
-    text-align:center;
-    color:#55ff00;
-    text-decoration:none;
+.drow{
+    display:table-row;
+    height:50px;
 }
-.round:hover{
-    /*    color:blue;*/
-    text-decoration:none;
-    
-}
-#r1{
-    color:#55ff00;
-}
-#r2{
-    color:#009911;
-}
-.stshow{
-    background-color:#a9c08c;
-    width: 60px;
-    height: 60px;
-    position: relative;
-    color: white;
-    font-size:8px;
-    border:1px solid #80bed6;
-    margin:1px;
-}
-.stname{
-    background-color:#ff6699;
-    width: 60px;
-    height: 25px;
-    line-height: 25px;
-}
-.stvalue{
-    width: 60px;
-    height: 35px;
-    line-height: 35px;
+.dcell{
+    height:100%;
+    display:table-cell;
+    border:1px solid gray;
+    word-break:break-all;
+    width:160px;
+    overflow:auto;
 }

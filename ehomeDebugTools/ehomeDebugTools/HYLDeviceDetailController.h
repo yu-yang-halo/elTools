@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "UIViewController+Notification.h"
-
+#import "EGORefreshTableHeaderView.h"
 @class ELDeviceObject;
-@interface HYLDeviceDetailController : UIViewController<UIScrollViewDelegate,UIViewKeyBoardDelegate>
+@interface HYLDeviceDetailController : UIViewController<UIScrollViewDelegate,UIViewKeyBoardDelegate,EGORefreshTableHeaderDelegate>
 @property(nonatomic,retain) ELDeviceObject *device;
 @end

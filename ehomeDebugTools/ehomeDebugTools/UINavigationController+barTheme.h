@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+extern NSString *const kNotificationUpdateUI;
 @interface UIViewController (barTheme)
 
 @end

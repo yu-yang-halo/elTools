@@ -11,9 +11,6 @@
              <link rel="stylesheet" href="config/config.css" type="text/css" charset="utf-8"/>
             <title></title>
             <style type="text/css">
-* html .stshow{display:inline};
-html>body .stshow{display:table;float:left;}
-html>body .stshow{display:inline-block;float:none;}
                 
              </style>
     </head>
@@ -29,16 +26,14 @@ html>body .stshow{display:inline-block;float:none;}
                         <label class="onlineText">在线</label></span>
                     
                 </div>
-                <div class="main">
-                    <div class="topshow"  style="display: none;">
-                        <span></span>
-                    </div>
-                    <div class="centershow" style="display: none;">
-                        <span></span>
-                    </div>
-                    <div class="bottomshow" style="display: none;">
-                        <span></span>
-                    </div>
+                <div class="topshow"  style="display: none;">
+                    
+                </div>
+                <div class="centershow" style="display: none;">
+                    <span></span>
+                </div>
+                <div class="bottomshow" style="display: none;">
+                    <span></span>
                 </div>
             </div>
             <div class="page2" style="display:none;" >
@@ -54,12 +49,6 @@ html>body .stshow{display:inline-block;float:none;}
                 
                 
             </div>
-            
-            <div class="rounds">
-                <a href="#" class="round" id="r1">●</a>
-                <a href="#" class="round" id="r2">●</a>
-            </div>
-            
         </div>
         
         
@@ -67,8 +56,24 @@ html>body .stshow{display:inline-block;float:none;}
     <script type="text/javascript">
         $(document).ready(function(){
                           hyl_requestDeviceInfo();
-                          //loadDeviceInfoToHtml(device,clazz);
                           })
+                          
+                          function segmentToSelectedIndex(selectedIndex){
+                              
+                              switch(selectedIndex){
+                                  case 0:
+                                        $(".page1").show();
+                                        $(".page2").hide();
+
+                                        break;
+                                  case 1:
+                                        $(".page2").show();
+                                        $(".page1").hide();
+                                        break;
+                              }
+                              
+                          }
+                          
                           
                           function autoBuildHtml(device,clazz){
                               var configHtml="";
@@ -86,56 +91,60 @@ html>body .stshow{display:inline-block;float:none;}
                                   }else{
                                       defaultVal=field.defaultValue;
                                   }
-                                  if(field.widget==1){
-                                      //是button，发送命令且表状态
-                                      var htmlString="<input type='image' class='cmdStateBtn'  ";
-                                      if(defaultVal==0){
-                                          htmlString+=" src='img/bg_switch_off.png' ";
-                                      }else{
-                                          htmlString+=" src='img/bg_switch_on.png' ";
-                                      }
+                                  
+                                  switch(field.widget){
+                                       case 1://是按钮，发送命令，不表状态
+                                       var htmlString="<button class='button blue'   value='"+defaultVal+"' fieldId="+key+" objectid="+device.objectId+">"+field.displayName+"</button>";
+                                       
+                                       
+                                       if(field.icon!=undefined){
+                                           htmlString="<button class='button blue'   value='"+defaultVal+"' fieldId="+key+" objectid="+device.objectId+"  style='background-image:url(../field/"+field.icon+")'>"+field.displayName+"</button>";
+                                       }
+                                       
+                                       
+                                       
+                                       $(".bottomshow").show();
+                                       $(".bottomshow span").append(htmlString);
+                                       
+
+                                             break;
+                                       case 2://是button，发送命令且表状态
+                                       var htmlString="<input type='image' class='cmdStateBtn'  ";
+                                       if(defaultVal==0){
+                                           htmlString+=" src='img/bg_switch_off.png' ";
+                                       }else{
+                                           htmlString+=" src='img/bg_switch_on.png' ";
+                                       }
+                                       
+                                       
+                                       htmlString+=" value='"+(defaultVal)
+                                       +"' fieldId="+key+" objectId="
+                                       +device.objectId+"></input>";
+                                       
+                                       
+                                       
+                                       
+                                       
+                                       $(".centershow").show();
+                                       $(".centershow span").append(htmlString);
+
+                                             break;
+                                       case 3://表配置存储，input框，放在第二界面
+                                       configHtml+="<div class='configRow'><label>"+field.displayName
+                                       +"</label><input value='"+defaultVal+"' fieldId="+key+"></input> </div>";
                                       
-                                      
-                                      
-                                      htmlString+=" value='"+(defaultVal)
-                                      +"' fieldId="+key+" objectId="
-                                      +device.objectId+"></input>";
-                                      
-                                      
-                                      
-                                      
-                                      
-                                      $(".centershow").show();
-                                      $(".centershow span").append(htmlString);
-                                      
-                                  }else if(field.widget==4){
-                                      //是显示标签 表状态
-var htmlString="<div class='stshow'><div class='stname'>"+field.displayName+"</div><div class='stvalue'>"+(defaultVal==""?"---":defaultVal)+"</div></div>";
-                                      $(".topshow").show();
-                                      $(".topshow span").append(htmlString);
-                                      
-                                  }else if(field.widget==1){
-                                      //是按钮，发送命令，不表状态
-                                      var htmlString="<button class='button blue'   value='"+defaultVal+"' fieldId="+key+" objectid="+device.objectId+">"+field.displayName+"</button>";
-                                      
-                                      if(field.icon!=undefined){
-                            htmlString="<input class='button' type='image'   value='"+defaultVal+"' fieldId="+key+"  objectid="+device.objectId+" src='../field/"+field.icon+"'></input>";
-                                      }
-                                      
-                                      
-                                      
-                                      $(".bottomshow").show();
-                                      $(".bottomshow span").append(htmlString);
-                                      
-                                      
-                                      
-                                      
-                                  }
-                                  if(field.widget==3){
-                                      //表配置存储，input框，放在第二界面
-                                      configHtml+="<div class='configRow'><label>"+field.displayName
-                                      +"</label><input value='"+defaultVal+"' fieldId="+key+"></input> </div>";
-                                      
+
+                                             break;
+                                       case 4://是显示标签 表状态
+                                       var htmlString="<div class='drow'><div class='dcell'>"+field.displayName+"</div><div class='dcell'>"+(defaultVal==""?"---":defaultVal)+"</div></div>";
+                                       
+                                       
+                                       $(".topshow").show();
+                                       $(".topshow").append(htmlString);
+
+                                             break;
+                                       default:
+                                             break;
                                   }
                                   
                                   
@@ -145,11 +154,15 @@ var htmlString="<div class='stshow'><div class='stname'>"+field.displayName+"</d
     
     function loadDeviceInfoToHtml(device,clazz){
         
+        
+        
         $(".configBody").empty();
         
-        $(".topshow span").empty();
+        $(".topshow").empty();
         $(".centershow span").empty();
         $(".bottomshow span").empty();
+        
+        
         //基本信息显示
         if(device.netState==0){
             $(".onlineImg").attr("src","img/icon_offline.png");
@@ -166,7 +179,7 @@ var htmlString="<div class='stshow'><div class='stname'>"+field.displayName+"</d
         
         $(".configBody").append(configHtml);
         
-        $(".configBody").append(" <div class='configRow'><button class='button orange'  id='configBtn' objectid="+device.objectId+">保存</button></div>");
+        $(".configBody").append(" <div class='configRow'><button class='button blue'  id='configBtn' objectid="+device.objectId+">保存</button></div>");
         
         $("#configBtn").click(function(){
                               var objectId=$(this).attr('objectid');
@@ -212,64 +225,6 @@ var htmlString="<div class='stshow'><div class='stname'>"+field.displayName+"</d
     }
     
     
-    function load (){
-        
-        document.addEventListener('touchstart',touch, false);
-        document.addEventListener('touchmove',touch, false);
-        document.addEventListener('touchend',touch, false);
-        var startPoint;
-        var endPoint;
-        var sel="#55ff00";
-        var insel="#445566";
-        
-        function touch (event){
-            var event = event || window.event;
-            
-            switch(event.type){
-                case "touchstart":
-                startPoint={x:event.touches[0].screenX,y:event.touches[0].screenY};
-                
-                break;
-                case "touchend":
-                
-                endPoint={x:event.changedTouches[0].screenX,y:event.changedTouches[0].screenY};
-                
-                
-                var offsetY=Math.abs(endPoint.y-startPoint.y);
-/*
-alert("x:"+(endPoint.x-startPoint.x)+"offsetY : "+offsetY+"startPx:"+startPoint.x+"startPy:"+startPoint.y+" endPx:"+endPoint.x+" endPy:"+endPoint.y);
- */
-                if((endPoint.x-startPoint.x>=10)&&offsetY<30){
-                    $(".page1").show();
-                    $(".page2").hide();
-                    
-                    
-                    
-                    $("#r1").css("color",sel);
-                    $("#r2").css("color",insel);
-                    
-                    
-                    //alert('向右滑动');
-                }
-                if((endPoint.x-startPoint.x<=-10)&&offsetY<30){
-                    // alert('向左滑动');
-                    $(".page1").hide();
-                    $(".page2").show();
-                    $("#r1").css("color",insel);
-                    $("#r2").css("color",sel);
-                }
-                
-                break;
-                case "touchmove":
-                event.preventDefault();
-                
-                break;
-            }
-            
-        }
-    }
-    window.addEventListener('load',load, false);
-    
-    
+       
         </script>
 </html>
