@@ -72,7 +72,7 @@ NSString *uiPathName=@"ui";
 //        BOOL isWriteToFile=[data writeToFile:FileName atomically:NO];//将NSData类型对象data写入文件，文件名为FileName
         BOOL isUnZipSuc=NO;
         
-        BOOL unzipUIFile=NO;
+        BOOL isUnzipUIFile=NO;
         NSString *unzipSaveFilePath=[saveFilePath stringByDeletingPathExtension];
         
         if(isWriteToFile){
@@ -85,14 +85,22 @@ NSString *uiPathName=@"ui";
             
             NSString *uiPathZipFile=[unzipSaveFilePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.zip",uiPathName]];
             
+            NSString *unzipUIPathFile=[uiPathZipFile stringByDeletingPathExtension];
+            
             if(isUnZipSuc&&[[NSFileManager defaultManager] fileExistsAtPath:uiPathZipFile]){
-                unzipUIFile=[self OpenZip:uiPathZipFile unzipto:[uiPathZipFile stringByDeletingPathExtension]];
+                isUnzipUIFile=[self OpenZip:uiPathZipFile unzipto:unzipUIPathFile];
                 
-                if(unzipUIFile){
+                if(isUnzipUIFile){
                     NSLog(@"%@解压成功",uiPathZipFile);
+                    
+                    [self movefile:[unzipSaveFilePath stringByAppendingPathComponent:@"config.json"] toTarget:[unzipUIPathFile stringByAppendingPathComponent:@"config/config.json"]];
+                    [self movefile:[unzipSaveFilePath stringByAppendingPathComponent:@"launchLogo.png"] toTarget:[unzipUIPathFile stringByAppendingPathComponent:@"img/launchLogo.png"]];
+                    
+                    
                 }else{
                     NSLog(@"%@解压失败",uiPathZipFile);
                 }
+                
             }else{
                 NSLog(@"不存在文件%@",uiPathZipFile);
             }
@@ -100,7 +108,7 @@ NSString *uiPathName=@"ui";
         
         dispatch_async(dispatch_get_main_queue(), ^{
            
-            _block(isWriteToFile&&isUnZipSuc&&unzipUIFile,[fileName stringByDeletingPathExtension]);
+            _block(isWriteToFile&&isUnZipSuc&&isUnZipSuc,[fileName stringByDeletingPathExtension]);
             
         });
         
@@ -109,6 +117,32 @@ NSString *uiPathName=@"ui";
     
     
 }
++(void)movefile:(NSString *)srcfile toTarget:(NSString *)dstfile{
+    NSFileManager *manager=[NSFileManager defaultManager];
+    NSError *err;
+    
+    if([manager fileExistsAtPath:srcfile]){
+        BOOL isDeleteDstFile=YES;
+        if([manager fileExistsAtPath:dstfile]){
+            
+            isDeleteDstFile=[manager removeItemAtPath:dstfile error:nil];
+            
+        }
+        if(isDeleteDstFile){
+            BOOL moveSuc=[manager moveItemAtPath:srcfile toPath:dstfile error:&err];
+            if(moveSuc){
+                NSLog(@"移动成功");
+            }else{
+                NSLog(@"移动失败%@",err);
+            }
+        }
+       
+    }else{
+        NSLog(@"%@文件不存在",srcfile);
+    }
+    
+}
+
 +(NSString *)documentPath{
     NSString *documentPath=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask,YES) objectAtIndex:0];
     NSLog(@"documentPath %@",documentPath);
@@ -128,18 +162,19 @@ NSString *uiPathName=@"ui";
     
     
     
-    configResPath=[configResPath stringByAppendingPathComponent:@"config/config.json"];
+    
+    NSString *configJSONResPath=[configResPath stringByAppendingPathComponent:@"config/config.json"];
     
     
-    NSData *configData=[[NSData alloc] initWithContentsOfFile:configResPath];
+    NSData *configData=[[NSData alloc] initWithContentsOfFile:configJSONResPath];
     
     
     
     NSMutableDictionary *configDic=[[NSJSONSerialization JSONObjectWithData:configData options:NSJSONReadingAllowFragments error:nil] mutableCopy];
     
     if (configDic==nil) {
-        configResPath=[configResPath stringByAppendingPathComponent:@"configdefault.json"];
-        configData=[NSData dataWithContentsOfFile:configResPath options:NSUTF8StringEncoding error:nil];
+       NSString* configDefaultJSONResPath=[configResPath stringByAppendingPathComponent:@"config/configdefault.json"];
+        configData=[NSData dataWithContentsOfFile:configDefaultJSONResPath options:NSUTF8StringEncoding error:nil];
         configDic=[[NSJSONSerialization JSONObjectWithData:configData options:NSJSONReadingAllowFragments error:nil] mutableCopy];
     }
     

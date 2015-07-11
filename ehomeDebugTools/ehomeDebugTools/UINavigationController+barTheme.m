@@ -77,27 +77,6 @@ NSString *const keyAsso=@"keyAsso";
 }
 
 @end
-@implementation UIViewController (Launch)
-+(void)load{
-        Method originalMethod = class_getInstanceMethod(self, @selector(viewDidLoad));
-        Method swizzledMethod = class_getInstanceMethod(self, @selector(hyl_viewDidLoad));
-        method_exchangeImplementations(originalMethod, swizzledMethod);
-   
-}
--(void)hyl_viewDidLoad{
-    if([self class]==[ViewController class]){
-        NSLog(@"launchImage...");
-        [self performSegueWithIdentifier:@"launchImage" sender:self];
-        
-    }
-    NSLog(@"---%@---",[self class]);
-   
-    [self hyl_viewDidLoad];
-
-}
-
-
-@end
 @implementation UINavigationController (statusBar)
 
 -(UIStatusBarStyle)preferredStatusBarStyle{

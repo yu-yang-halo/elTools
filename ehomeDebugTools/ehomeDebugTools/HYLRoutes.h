@@ -30,7 +30,7 @@
 
 +(BOOL)isSystemResouces;
 
-
++(void)resetToSystemResource;
 
 +(void)loadUserConfig;
 

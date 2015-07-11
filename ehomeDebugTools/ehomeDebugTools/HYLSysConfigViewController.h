@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+extern NSString *const key_storeIPAddress;
 
 @interface HYLSysConfigViewController : UITableViewController<UITextFieldDelegate>
 

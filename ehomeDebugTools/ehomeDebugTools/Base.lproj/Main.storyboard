@@ -259,6 +259,46 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dAV-zW-zpJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dAV-zW-zpJ" id="MH9-Ax-mIr">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcD-mx-Re1">
+                                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                    <state key="normal" title="还原出厂设置">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="reset:" destination="rI7-Ei-DAA" eventType="touchUpInside" id="tXL-by-hkc"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="hcD-mx-Re1" secondAttribute="centerX" id="ZlQ-On-XfN"/>
+                                                <constraint firstAttribute="centerY" secondItem="hcD-mx-Re1" secondAttribute="centerY" id="rIO-cy-aA6"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="hcD-mx-Re1"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="ZlQ-On-XfN"/>
+                                                    <exclude reference="rIO-cy-aA6"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="hcD-mx-Re1"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="ZlQ-On-XfN"/>
+                                                    <include reference="rIO-cy-aA6"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="应用版本" id="R2p-D8-k7H">
@@ -328,6 +368,7 @@
                     <navigationItem key="navigationItem" title="我的设置" id="pXJ-a0-8Ou"/>
                     <connections>
                         <outlet property="mineResourceStatusLabel" destination="DB7-mJ-XbW" id="LhH-zb-5fO"/>
+                        <outlet property="resetBtn" destination="hcD-mx-Re1" id="Bbb-PU-HdU"/>
                         <outlet property="serverAddressTextField" destination="dCL-JF-vx8" id="bG3-0X-idL"/>
                         <outlet property="sysBuildVersionLabel" destination="m3y-J0-aoh" id="GFr-rg-f2W"/>
                         <outlet property="sysVersionLabel" destination="MQS-PC-0rR" id="kPP-Ia-UP9"/>

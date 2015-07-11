@@ -43,7 +43,7 @@ static BOOL systemResYN=YES;
                     [[NSUserDefaults standardUserDefaults] setObject:data forKey:keyfilePath];
                     
                     [self disableDownload];
-                    [[[UIApplication sharedApplication] keyWindow] makeToast:@"下载完成"];
+                    [[[UIApplication sharedApplication] keyWindow] makeToast:@"更新完成"];
                     
                     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdateUI object:nil];
                     
@@ -77,7 +77,7 @@ static BOOL systemResYN=YES;
          systemResYN=YES;
         return [[NSBundle mainBundle] bundlePath];
     }else{
-        systemResYN=NO;
+         systemResYN=NO;
 
         return [[HYLResourceUtil documentPath] stringByAppendingPathComponent:filePath];
     }
@@ -88,6 +88,11 @@ static BOOL systemResYN=YES;
     
     return systemResYN;
 }
++(void)resetToSystemResource{
+     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:keyfilePath];
+    
+}
+
 +(NSString *)uiResourcePath{
     NSString *uifilePath=[[self resourceRootPath] stringByAppendingPathComponent:uiPathName];
     NSArray *arr=[[NSFileManager defaultManager] contentsOfDirectoryAtPath:uifilePath error:nil];

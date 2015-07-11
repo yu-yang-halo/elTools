@@ -49,7 +49,7 @@ NSString *const kNotificationWIFIPageLogic=@"kNotificationWIFIPageLogic";
 
 -(void)hideItemsYN:(BOOL)isYN{
     
-    for (int i=1;i<=5;i++) {
+    for (int i=2;i<=3;i++) {
          [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0]] setHidden:isYN];
     }
     

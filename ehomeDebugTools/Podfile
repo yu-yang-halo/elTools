@@ -6,4 +6,5 @@ pod 'ZipArchive', '~> 1.4.0'
 pod 'FDFullscreenPopGesture', '~> 1.0'
 pod 'JSONKit', '~> 1.5pre'
 pod 'EGOTableViewPullRefresh', '~> 0.1.0'
+pod 'SDWebImage', '~> 3.7.2'
 

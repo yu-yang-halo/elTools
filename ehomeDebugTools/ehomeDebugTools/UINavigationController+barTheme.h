@@ -12,9 +12,6 @@ extern NSString *const kNotificationUpdateUI;
 
 @end
 
-@interface UIViewController(Launch)
-
-@end
 
 @interface UINavigationController (statusBar)
 

@@ -28,6 +28,7 @@ static NSString *kloginPassword=@"keyLoginPassword";
 
 -(void)viewWillAppear:(BOOL)animated{
     self.title=[[[HYLCache shareHylCache].configJSON valueForKey:@"title"] valueForKey:@"login"];
+   
 }
 -(void)viewDidAppear:(BOOL)animated{
     
@@ -35,12 +36,14 @@ static NSString *kloginPassword=@"keyLoginPassword";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     
     [self loadHtmlContent];
     
     UIBarButtonItem *backButton=[[UIBarButtonItem alloc] init];
     [backButton setTitle:@"返回"];
     self.navigationItem.backBarButtonItem=backButton;
+    
 }
 
 -(void)requestIndexHtml{

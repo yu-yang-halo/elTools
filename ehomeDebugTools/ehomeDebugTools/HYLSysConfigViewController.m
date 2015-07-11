@@ -14,6 +14,8 @@
 #import "UINavigationController+barTheme.h"
 #import "HYLVersionInfoUtils.h"
 
+NSString *const key_storeIPAddress=@"ip_address_store_key";
+
 @interface HYLSysConfigViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *serverAddressTextField;
 @property (strong, nonatomic) IBOutlet UILabel *mineResourceStatusLabel;
@@ -22,6 +24,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *systemResouceStatusLabel;
 @property (strong, nonatomic) IBOutlet UILabel *sysBuildVersionLabel;
 - (IBAction)manualUpdateMineResource:(id)sender;
+- (IBAction)reset:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UIButton *resetBtn;
 
 @end
 
@@ -49,15 +54,23 @@
     if([HYLRoutes isSystemResouces]){
         _systemResouceStatusLabel.text=@"正在使用";
         _mineResourceStatusLabel.text=@"未使用";
+        [_resetBtn setEnabled:NO];
     }else{
         _systemResouceStatusLabel.text=@"未使用";
         _mineResourceStatusLabel.text=@"正在使用";
+        [_resetBtn setEnabled:YES];
     }
 }
 
 
 - (IBAction)manualUpdateMineResource:(id)sender {
     [HYLRoutes enableDownload];
+}
+
+- (IBAction)reset:(id)sender {
+    [HYLRoutes resetToSystemResource];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUpdateUI object:nil];
+     [[[UIApplication sharedApplication] keyWindow] makeToast:@"已还原"];
 }
 
 -(void)dealloc{
@@ -75,6 +88,10 @@
     NSString* ipAddr=textField.text;
     if([RegUtil isIPAddress:ipAddr]){
         //NSLog(@"是IP地址  %@",ipAddr);
+        
+        [[NSUserDefaults standardUserDefaults] setObject:ipAddr forKey:key_storeIPAddress];
+        
+        
         [ElApiService setCurrentIPAddress:ipAddr];
     }else{
         [[[UIApplication sharedApplication] keyWindow] makeToast:[NSString stringWithFormat:@"不是IP地址  %@",ipAddr]];;

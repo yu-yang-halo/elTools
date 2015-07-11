@@ -4,6 +4,9 @@ PODS:
   - JSONKit (1.5pre)
   - MBProgressHUD (0.9.1)
   - Reachability (3.2)
+  - SDWebImage (3.7.2):
+    - SDWebImage/Core (= 3.7.2)
+  - SDWebImage/Core (3.7.2)
   - Toast (2.4)
   - ZipArchive (1.4.0)
 
@@ -13,6 +16,7 @@ DEPENDENCIES:
   - JSONKit (~> 1.5pre)
   - MBProgressHUD
   - Reachability (~> 3.2)
+  - SDWebImage (~> 3.7.2)
   - Toast (~> 2.4)
   - ZipArchive (~> 1.4.0)
 
@@ -22,6 +26,7 @@ SPEC CHECKSUMS:
   JSONKit: bae313ce6a6c444f40489a6c0b023f399888871f
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   Toast: 0773b8fc0e97352ca6054517bec7ebdd4110029d
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
