@@ -7,10 +7,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Launch View Controller-->
+        <!--Device Config Controller-->
         <scene sceneID="Vha-Sm-MKb">
             <objects>
-                <viewController id="ZGB-53-lfe" customClass="LaunchViewController" sceneMemberID="viewController">
+                <viewController id="ZGB-53-lfe" customClass="HYLDeviceConfigController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NaX-4v-yMt"/>
                         <viewControllerLayoutGuide type="bottom" id="BPK-sx-6cw"/>
@@ -18,12 +18,39 @@
                     <view key="view" contentMode="scaleToFill" id="S6g-cy-hLd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.099032543880000004" green="0.62991553030000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Y3-8s-wan">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6Y3-8s-wan" firstAttribute="leading" secondItem="S6g-cy-hLd" secondAttribute="leading" id="0Tj-Ig-p0H"/>
+                            <constraint firstAttribute="trailing" secondItem="6Y3-8s-wan" secondAttribute="trailing" id="49I-uT-W9Q"/>
+                            <constraint firstItem="6Y3-8s-wan" firstAttribute="top" secondItem="S6g-cy-hLd" secondAttribute="top" id="9Be-Db-PvL">
+                                <variation key="heightClass=regular-widthClass=compact" constant="64"/>
+                            </constraint>
+                            <constraint firstItem="6Y3-8s-wan" firstAttribute="bottom" secondItem="BPK-sx-6cw" secondAttribute="top" id="zNv-pl-gm5"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="6Y3-8s-wan"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="6Y3-8s-wan"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="6Y3-8s-wan" id="pwV-iO-6VX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="67O-RP-hVr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28728" y="-4021.5"/>
+            <point key="canvasLocation" x="-25747.5" y="-4209"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -60,12 +87,11 @@
                     <connections>
                         <outlet property="webView" destination="Y4G-89-KyA" id="mDK-Z2-wHc"/>
                         <segue destination="E5Q-eo-W7E" kind="show" identifier="deviceList" id="DcA-sR-XPg"/>
-                        <segue destination="ZGB-53-lfe" kind="presentation" identifier="launchImage" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="dH8-yu-KA4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-27244.5" y="-4965.75"/>
+            <point key="canvasLocation" x="-28264.5" y="-5139.75"/>
         </scene>
         <!--我的设置-->
         <scene sceneID="X9x-Wx-07A">
@@ -377,7 +403,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cX-vZ-mbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-26446.5" y="-5031.75"/>
+            <point key="canvasLocation" x="-29938.5" y="-4395.75"/>
         </scene>
         <!--Devices Controller-->
         <scene sceneID="EqD-X6-Siw">
@@ -446,7 +472,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmt-9v-KT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-22794" y="-5044.5"/>
+            <point key="canvasLocation" x="-26874" y="-5158.5"/>
         </scene>
         <!--WIFI配置-->
         <scene sceneID="Gij-Z6-YAJ">
@@ -467,7 +493,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ze-zd-vKO">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                    <state key="normal" title="设置-&gt;WIFI">
+                                                    <state key="normal" title="连接到WIFI设备">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -666,7 +692,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4T-ES-Y7r">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                    <state key="normal" title="配置当前WIFI">
+                                                    <state key="normal" title="存储到WIFI设备">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -698,46 +724,6 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zAW-y4-Ct8">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zAW-y4-Ct8" id="vog-5h-sNe">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VQ-EH-a37">
-                                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                    <state key="normal" title="服务器配置">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="configServer:" destination="e28-MB-TSe" eventType="touchUpInside" id="mMr-Wn-yJ4"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="8VQ-EH-a37" firstAttribute="centerX" secondItem="vog-5h-sNe" secondAttribute="centerX" id="OVd-l5-711"/>
-                                                <constraint firstItem="8VQ-EH-a37" firstAttribute="top" secondItem="vog-5h-sNe" secondAttribute="topMargin" constant="-1" id="dHH-NJ-Prd"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="subviews">
-                                                    <exclude reference="8VQ-EH-a37"/>
-                                                </mask>
-                                                <mask key="constraints">
-                                                    <exclude reference="OVd-l5-711"/>
-                                                    <exclude reference="dHH-NJ-Prd"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="heightClass=regular-widthClass=compact">
-                                                <mask key="subviews">
-                                                    <include reference="8VQ-EH-a37"/>
-                                                </mask>
-                                                <mask key="constraints">
-                                                    <include reference="OVd-l5-711"/>
-                                                    <include reference="dHH-NJ-Prd"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -754,7 +740,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m4c-1a-jc5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-21426" y="-5061"/>
+            <point key="canvasLocation" x="-25767" y="-5417.25"/>
         </scene>
         <!--Device Detail Controller-->
         <scene sceneID="Ns4-pa-sch">
@@ -784,27 +770,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BFD-oD-rvG">
-                        <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="EWn-Wv-NUf">
-                            <rect key="frame" x="-61" y="-14" width="123" height="29"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="First"/>
-                                <segment title="Second"/>
-                            </segments>
+                        <barButtonItem key="rightBarButtonItem" title="设置" id="qLh-wN-QWE">
                             <connections>
-                                <action selector="segmentChange:" destination="z5b-C4-ReM" eventType="valueChanged" id="jgz-rO-JXM"/>
+                                <segue destination="ZGB-53-lfe" kind="show" id="YSn-DJ-6kC"/>
                             </connections>
-                        </segmentedControl>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="segmentControl" destination="EWn-Wv-NUf" id="8a3-w5-zxd"/>
                         <outlet property="webView" destination="Kei-tz-fs6" id="55J-jA-Sll"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ao-IA-xVI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-21507" y="-4369.5"/>
+            <point key="canvasLocation" x="-27372" y="-4283.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pt2-v5-eFw">
@@ -820,7 +798,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llJ-lV-NUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28498.5" y="-4987.5"/>
+            <point key="canvasLocation" x="-29770.5" y="-5131.5"/>
         </scene>
         <!--Device Manager Controller-->
         <scene sceneID="prE-Ac-PNn">
@@ -867,7 +845,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTC-0o-bcT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-22474.5" y="-4192.5"/>
+            <point key="canvasLocation" x="-29578.5" y="-3580.5"/>
         </scene>
     </scenes>
 </document>

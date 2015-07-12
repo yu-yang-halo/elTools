@@ -133,11 +133,7 @@ static NSString *kloginPassword=@"keyLoginPassword";
     // Dispose of any resources that can be recreated.
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    UIViewController *send=segue.destinationViewController;
-    
-    if([send respondsToSelector:@selector(setData:)]){
-        [send performSelector:@selector(setData:) withObject:@"news"];
-    }
+    //UIViewController *send=segue.destinationViewController;
 }
 
 #pragma mark delegate

@@ -7,4 +7,4 @@ pod 'FDFullscreenPopGesture', '~> 1.0'
 pod 'JSONKit', '~> 1.5pre'
 pod 'EGOTableViewPullRefresh', '~> 0.1.0'
 pod 'SDWebImage', '~> 3.7.2'
-
+pod 'SIAlertView', '~> 1.3'

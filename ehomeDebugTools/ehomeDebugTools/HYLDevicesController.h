@@ -10,6 +10,4 @@
 #import "EGORefreshTableHeaderView.h"
 @interface HYLDevicesController : UIViewController<UIWebViewDelegate,EGORefreshTableHeaderDelegate,UIScrollViewDelegate>
 
-@property(nonatomic,retain) NSString *data;
-
 @end

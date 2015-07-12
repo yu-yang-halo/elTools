@@ -14,15 +14,15 @@
 #import "HYLContextLibary.h"
 #import "HYLRoutes.h"
 #import "UIView+Toast.h"
-
+#import "HYLDeviceConfigController.h"
+#import "HYLCache.h"
 @interface HYLDeviceDetailController (){
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
 }
 
-@property (strong, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
-- (IBAction)segmentChange:(id)sender;
+
 
 @end
 
@@ -31,11 +31,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [_segmentControl setTitle:self.device.name forSegmentAtIndex:0];
-    [_segmentControl setTitle:@"设置" forSegmentAtIndex:1];
-
+    self.title=self.device.name;
     
-    self.keyboardDelegate=self;
     
     [self.webView.scrollView setShowsHorizontalScrollIndicator:YES];
     [self.webView.scrollView setShowsVerticalScrollIndicator:NO];
@@ -65,61 +62,24 @@
     [HYLContextLibary loadHylCmd:HYLCMDTYPE_SETFIELD_VALUE toContext:context handler:^(BOOL finished, NSArray *args) {
         
     }];
-    [HYLContextLibary loadHylCmd:HYLCMDTYPE_UPDATE_DEVICE_NAME toContext:context handler:^(BOOL finished,NSArray *args) {
-       
-        if(finished){
-            ELDeviceObject *device=(ELDeviceObject *)args[0];
-            
-            [_segmentControl setTitle:device.name forSegmentAtIndex:0];
-            
-            [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"loadDeviceInfoToHtml(%@,%@)",[[HYLClassUtils canConvertJSONDataFromObjectInstance:device] JSONString],[HYLClassUtils classListData]]];
-        }
-        
-    }];
     
-    context[@"mobile_requestDeviceInfo"]=^(){
-      
-        [self callJSMethodUpdateUI:_device];
-        
-    };
+//    context[@"mobile_requestDeviceInfo"]=^(){
+//      
+//        [self callJSMethodUpdateUI:_device];
+//        
+//    };
 }
-
-
-
-- (IBAction)segmentChange:(id)sender {
-    UISegmentedControl *segmentedControl=(UISegmentedControl *)sender;
-    NSUInteger index=[segmentedControl selectedSegmentIndex];
-    NSLog(@"segmentSelectedIndex:%d",index);
-    
-    [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"segmentToSelectedIndex(%d)",index]];
-    
-}
-
-
-
 
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
--(void)keyBoardShow{
-   // NSLog(@"keyBoardShow...");
-
-}
-/*
- webview 中界面内容上移，最优的解决方案是使用webview调用html中的dom来解决
- 
- stringByEvaluatingJavaScriptFromString(document.body.scrollTop=0);
- 
- 
- */
--(void)keyBoardHide{
-     NSLog(@"keyBoardHide...");
-     [_webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.body.scrollTop=%d",0]];
+    UIViewController *desVC=[segue destinationViewController];
     
+    if([desVC isKindOfClass:[HYLDeviceConfigController class]]){
+         NSLog(@"data: %@ ,viewController %@",sender,desVC);
+        
+        [(HYLDeviceConfigController *)desVC setDevice:_device];
+    }
 }
 
 
@@ -146,7 +106,7 @@
 
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [_segmentControl setTitle:eldevice.name forSegmentAtIndex:0];
+         self.title=self.device.name;
          [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"loadDeviceInfoToHtml(%@,%@)",[deviceMap JSONString],[HYLClassUtils classListData]]];
         
         _reloading=NO;
@@ -164,11 +124,15 @@
        
        if(eldevice!=nil){
             self.device=eldevice;
-           
+           [[HYLCache shareHylCache] setCurrentELDevice:eldevice];
            [self callJSMethodUpdateUI:eldevice];
        }
       
    });
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self loadWebViewData];
 }
 
 #pragma mark EGORefreshTableHeaderDelegate

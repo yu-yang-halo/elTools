@@ -87,51 +87,6 @@ span{
 }
 
 
-
-
-.page2{
-    width:100%;
-    height:100%;
-    position:absolute;
-    left:0;
-    top:0;
-}
-.configHeader{
-    width: 100%;
-    height: 10%;
-    background-color: #7DB72F;
-    display:table;
-}
-.configHeader label{
-    color: #FFFFFF;
-    font-size: 15px;
-}
-
-.configBody{
-    width: 100%;
-    height: 50%;
-}
-.configRow{
-    width: 100%;
-    height: 50px;
-    text-align: center;
-    line-height: 50px;
-}
-
-.configRow label{
-    width: 20%;
-    height: 50px;
-    display: inline-block;
-}
-.configRow input{
-    height:30px;
-    width:180px;
-}
-.configRow button{
-    height:45px;
-    width:120px;
-}
-
 .topshow{
     width: 100%;
     display:table;

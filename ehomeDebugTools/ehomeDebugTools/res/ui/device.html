@@ -36,19 +36,6 @@
                     <span></span>
                 </div>
             </div>
-            <div class="page2" style="display:none;" >
-                <div class="configHeader">
-                    <span><label>基本信息配置</label><span>
-                </div>
-                <div class="configBody">
-                    
-                    
-                    
-                    
-                </div>
-                
-                
-            </div>
         </div>
         
         
@@ -58,21 +45,6 @@
                           hyl_requestDeviceInfo();
                           })
                           
-                          function segmentToSelectedIndex(selectedIndex){
-                              
-                              switch(selectedIndex){
-                                  case 0:
-                                        $(".page1").show();
-                                        $(".page2").hide();
-
-                                        break;
-                                  case 1:
-                                        $(".page2").show();
-                                        $(".page1").hide();
-                                        break;
-                              }
-                              
-                          }
                           
                           
                           function autoBuildHtml(device,clazz){
@@ -129,12 +101,13 @@
                                        $(".centershow span").append(htmlString);
 
                                              break;
+                                             /*
                                        case 3://表配置存储，input框，放在第二界面
                                        configHtml+="<div class='configRow'><label>"+field.displayName
                                        +"</label><input value='"+defaultVal+"' fieldId="+key+"></input> </div>";
                                       
 
-                                             break;
+                                             break;*/
                                        case 4://是显示标签 表状态
                                        var htmlString="<div class='drow'><div class='dcell'>"+field.displayName+"</div><div class='dcell'>"+(defaultVal==""?"---":defaultVal)+"</div></div>";
                                        
@@ -149,14 +122,12 @@
                                   
                                   
                               }
-                              return configHtml;
                           }
     
     function loadDeviceInfoToHtml(device,clazz){
         
         
         
-        $(".configBody").empty();
         
         $(".topshow").empty();
         $(".centershow span").empty();
@@ -171,32 +142,11 @@
             $(".onlineImg").attr("src","img/icon_online.png");
             $(".onlineText").html("在线");
         }
-        var configHtml=autoBuildHtml(device,clazz);
+        
+        autoBuildHtml(device,clazz);
         
         
-        $(".configBody").append("<div class='configRow'><label>名称</label><input value='"+device.name+"'></input> </div>");
-        $(".configBody").append("<div class='configRow'><label>序列号</label><input value='"+device.clientSn+"' disabled='disabled'></input> </div>");
-        
-        $(".configBody").append(configHtml);
-        
-        $(".configBody").append(" <div class='configRow'><button class='button blue'  id='configBtn' objectid="+device.objectId+">保存</button></div>");
-        
-        $("#configBtn").click(function(){
-                              var objectId=$(this).attr('objectid');
-                              
-                              $(".configRow input").each(function(){
-    if($(this).attr("fieldId")==undefined&&$(this).attr('disabled')==undefined){
-                                                         hyl_updateDeviceName($(this).val(),objectId);
-                                                         }else if($(this).attr('disabled')==undefined){
-                                                         hyl_setFieldCmd($(this).val(),$(this).attr("fieldId"),objectId);
-                                                         }
-                                                         
-                                                         
-                                                         });
-                              
-                              });
-                              
-                              $(".bottomshow button").each(function(){
+        $(".bottomshow button").each(function(){
                                                            $(this).click(function(){
                                                                          
  

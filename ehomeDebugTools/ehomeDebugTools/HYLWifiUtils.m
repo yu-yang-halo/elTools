@@ -9,6 +9,7 @@
 #import "HYLWifiUtils.h"
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <UIView+Toast.h>
+#import <SIAlertView/SIAlertView.h>
 @implementation HYLWifiUtils
 +(id)fetchSSIDInfo{
     NSArray *ifs=(__bridge_transfer id)CNCopySupportedInterfaces();
@@ -81,13 +82,24 @@
         if(data){
             NSString *dataStr=[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSLog(@"data  ### %@ ###\n",dataStr);
-            NSString *message=nil;
             if([[dataStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@""]){
-                message=@"执行成功";
+               // message=@"执行成功";
+                SIAlertView *alertView=[[SIAlertView alloc] initWithTitle:@"配置成功" andMessage:@"您现在的网络已断开，是否重新联网？"];
+                
+                [alertView addButtonWithTitle:@"否" type:SIAlertViewButtonTypeCancel handler:^(SIAlertView *alertView) {
+                    
+                }];
+                [alertView addButtonWithTitle:@"是" type:SIAlertViewButtonTypeDestructive handler:^(SIAlertView *alertView) {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=WIFI"]];
+                }];
+                alertView.transitionStyle=SIAlertViewTransitionStyleFade;
+                
+                [alertView show];
+
             }else{
-                message=dataStr;
+                [[[UIApplication sharedApplication] keyWindow] makeToast:dataStr];
             }
-            [[[UIApplication sharedApplication] keyWindow] makeToast:message];
+            
             
         }else{
             NSLog(@"error ### %@ ###\n",connectionError);
