@@ -9,6 +9,7 @@
 #import "HYLContextLibary.h"
 #import <ELNetworkService/ELNetworkService.h>
 #import "HYLCache.h"
+#import <JDStatusBarNotification/JDStatusBarNotification.h>
 @implementation HYLContextLibary
 +(void)loadHylCmd:(HYLCMDTYPE) cmdType toContext:(JSContext *)context handler:(HYLCallBackHandler)_handler{
     switch (cmdType) {
@@ -23,12 +24,18 @@
                 
                 NSLog(@"end....%@",thiz);
                 
+                
+               
+                
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     
                     BOOL isOK=[[ElApiService shareElApiService] setFieldValue:[args[0] toString] forFieldId:[args[1] toInt32] toDevice:[args[2] toInt32] withYN:YES];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         
                         _handler(isOK,args);
+                        if(isOK){
+                            [JDStatusBarNotification showWithStatus:@"执行成功" dismissAfter:2 styleName:JDStatusBarStyleDark];
+                        }
                         
                     });
                     
@@ -63,14 +70,10 @@
                     }
                     BOOL isOK=[[ElApiService shareElApiService] updateObject:elDevice];
                     
-                    if(isOK){
-                        elDevice=[[ElApiService shareElApiService] getObjectValue:elDevice.objectId];
-                        
-                    }
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                        
-                         _handler(isOK,[NSArray arrayWithObject:elDevice]);
+                         _handler(isOK,nil);
                         
                     });
                 });

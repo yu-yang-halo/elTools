@@ -61,6 +61,8 @@
     
     [HYLContextLibary loadHylCmd:HYLCMDTYPE_SETFIELD_VALUE toContext:context handler:^(BOOL finished, NSArray *args) {
         
+        [self loadWebViewData];
+        
     }];
     
 //    context[@"mobile_requestDeviceInfo"]=^(){

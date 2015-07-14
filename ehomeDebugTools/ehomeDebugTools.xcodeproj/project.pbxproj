@@ -10,11 +10,10 @@
 		5D162196B3A798A01678C2C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FBA32A01B45956F39F6449 /* libPods.a */; };
 		8407F7131B3D47330008C36F /* HYLDeviceManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F7121B3D47330008C36F /* HYLDeviceManagerController.m */; };
 		842B3D2A1B4635BD00F219EF /* ui in Resources */ = {isa = PBXBuildFile; fileRef = 842B3D271B4635BD00F219EF /* ui */; };
+		84444F801B549E9200600337 /* ELNetworkService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C14B3E1AF7318800B11B46 /* ELNetworkService.framework */; };
 		8449B7481B3259F100B764D7 /* UINavigationController+barTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 8449B7471B3259F100B764D7 /* UINavigationController+barTheme.m */; };
 		844BF66D1B51FA6B00E81630 /* HYLDeviceConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844BF66C1B51FA6B00E81630 /* HYLDeviceConfigController.m */; };
 		8465B1AA1B50E64400D22290 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8465B1A91B50E64400D22290 /* LaunchScreen.xib */; };
-		8465F9E01B2E993E00DC29CA /* ELNetworkService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C14B3E1AF7318800B11B46 /* ELNetworkService.framework */; };
-		8465F9E11B2E993E00DC29CA /* ELNetworkService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84C14B3E1AF7318800B11B46 /* ELNetworkService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		846AE2121B2A8A6B004F3106 /* HYLDevicesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846AE2111B2A8A6B004F3106 /* HYLDevicesController.m */; };
 		846AE2171B2AA125004F3106 /* HYLResourceUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 846AE2161B2AA125004F3106 /* HYLResourceUtil.m */; };
 		8473AE0B1B43EE750079578F /* HYLRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8473AE0A1B43EE750079578F /* HYLRoutes.m */; };
@@ -49,20 +48,6 @@
 			remoteInfo = ehomeDebugTools;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		8465F9E21B2E993F00DC29CA /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				8465F9E11B2E993E00DC29CA /* ELNetworkService.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		72FBA32A01B45956F39F6449 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,8 +113,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84444F801B549E9200600337 /* ELNetworkService.framework in Frameworks */,
 				84C01D2E1AF73E2700FD74A6 /* JavaScriptCore.framework in Frameworks */,
-				8465F9E01B2E993E00DC29CA /* ELNetworkService.framework in Frameworks */,
 				5D162196B3A798A01678C2C9 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,7 +323,6 @@
 				84C14B091AF70AA300B11B46 /* Frameworks */,
 				84C14B0A1AF70AA300B11B46 /* Resources */,
 				92B44A218EBE5FD83F3B2488 /* Copy Pods Resources */,
-				8465F9E21B2E993F00DC29CA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -611,11 +595,50 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = EhomeDebugPrefix.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/EGOTableViewPullRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/FDFullscreenPopGesture\"",
+					"\"${PODS_ROOT}/Headers/Public/JSONKit\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SIAlertView\"",
+					"\"${PODS_ROOT}/Headers/Public/Toast\"",
+					"\"${PODS_ROOT}/Headers/Public/ZipArchive\"",
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = ehomeDebugTools/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_NO_PIE = NO;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Pods-EGOTableViewPullRefresh\"",
+					"-l\"Pods-FDFullscreenPopGesture\"",
+					"-l\"Pods-JSONKit\"",
+					"-l\"Pods-MBProgressHUD\"",
+					"-l\"Pods-Reachability\"",
+					"-l\"Pods-SDWebImage\"",
+					"-l\"Pods-SIAlertView\"",
+					"-l\"Pods-Toast\"",
+					"-l\"Pods-ZipArchive\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-lxml2",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -633,11 +656,50 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = EhomeDebugPrefix.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/EGOTableViewPullRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/FDFullscreenPopGesture\"",
+					"\"${PODS_ROOT}/Headers/Public/JSONKit\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SIAlertView\"",
+					"\"${PODS_ROOT}/Headers/Public/Toast\"",
+					"\"${PODS_ROOT}/Headers/Public/ZipArchive\"",
+					/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = ehomeDebugTools/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_NO_PIE = NO;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"Pods-EGOTableViewPullRefresh\"",
+					"-l\"Pods-FDFullscreenPopGesture\"",
+					"-l\"Pods-JSONKit\"",
+					"-l\"Pods-MBProgressHUD\"",
+					"-l\"Pods-Reachability\"",
+					"-l\"Pods-SDWebImage\"",
+					"-l\"Pods-SIAlertView\"",
+					"-l\"Pods-Toast\"",
+					"-l\"Pods-ZipArchive\"",
+					"-l\"z\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-lxml2",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

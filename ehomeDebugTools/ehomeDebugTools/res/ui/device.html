@@ -8,6 +8,7 @@
             <title>设备列表</title>
             <link rel="stylesheet" href="css/button.css" type="text/css" charset="utf-8"/>
             <link rel="stylesheet" href="css/device.css" type="text/css" charset="utf-8"/>
+            <link rel="stylesheet" href="css/input.css" type="text/css" charset="utf-8"/>
              <link rel="stylesheet" href="config/config.css" type="text/css" charset="utf-8"/>
             <title></title>
             <style type="text/css">
@@ -30,10 +31,10 @@
                     
                 </div>
                 <div class="centershow" style="display: none;">
-                    <span></span>
+                    
                 </div>
                 <div class="bottomshow" style="display: none;">
-                    <span></span>
+                    
                 </div>
             </div>
         </div>
@@ -66,39 +67,38 @@
                                   
                                   switch(field.widget){
                                        case 1://是按钮，发送命令，不表状态
-                                       var htmlString="<button class='button blue'   value='"+defaultVal+"' fieldId="+key+" objectid="+device.objectId+">"+field.displayName+"</button>";
-                                       
-                                       
-                                       if(field.icon!=undefined){
-                                           htmlString="<button class='button blue'   value='"+defaultVal+"' fieldId="+key+" objectid="+device.objectId+"  style='background-image:url(../field/"+field.icon+")'>"+field.displayName+"</button>";
-                                       }
+                                    
+                                       var htmlString="<div class='bomrow'><div class='bomcell'><div class='dtitle'>"+field.displayName+"</div></div><div class='bomcell'><input value='"+defaultVal+"'></input></div><div class='bomcell'><button class='button blue' fieldId='"+field.fieldId+"' objectId='"+device.objectId+"' >发送</button></div> </div>";
                                        
                                        
                                        
                                        $(".bottomshow").show();
-                                       $(".bottomshow span").append(htmlString);
+                                       $(".bottomshow").append(htmlString);
                                        
 
                                              break;
                                        case 2://是button，发送命令且表状态
                                        var htmlString="<input type='image' class='cmdStateBtn'  ";
+                                       
+                                       
+                                       
+                                       
+                                       htmlString="<div class='cencell'><input type='image' class='cmdStateBtn' ";
                                        if(defaultVal==0){
                                            htmlString+=" src='img/bg_switch_off.png' ";
                                        }else{
                                            htmlString+=" src='img/bg_switch_on.png' ";
                                        }
-                                       
-                                       
                                        htmlString+=" value='"+(defaultVal)
                                        +"' fieldId="+key+" objectId="
-                                       +device.objectId+"></input>";
+                                       +device.objectId+"></input><div>"+field.displayName+"</div></div>";
                                        
                                        
                                        
                                        
                                        
                                        $(".centershow").show();
-                                       $(".centershow span").append(htmlString);
+                                       $(".centershow").append(htmlString);
 
                                              break;
                                              /*
@@ -130,8 +130,8 @@
         
         
         $(".topshow").empty();
-        $(".centershow span").empty();
-        $(".bottomshow span").empty();
+        $(".centershow").empty();
+        $(".bottomshow").empty();
         
         
         //基本信息显示
@@ -146,11 +146,12 @@
         autoBuildHtml(device,clazz);
         
         
-        $(".bottomshow button").each(function(){
-                                                           $(this).click(function(){
-                                                                         
- 
-        hyl_setFieldCmd($(this).attr("value"),$(this).attr("fieldId"),$(this).attr("objectId"));
+        $(".bottomshow .bomrow").each(function(){
+                                     
+                    var valueElement=$(this).find("input");
+                    $(this).find("button").click(function(){
+                                                                        
+        hyl_setFieldCmd(valueElement.val(),$(this).attr("fieldId"),$(this).attr("objectId"));
                                                                          
                                                                          });
                                                            

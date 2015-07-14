@@ -57,16 +57,18 @@
 
 .centershow{
     width: 100%;
-    height: 40%;
-    display:table;
     text-align:center;
 }
 
-.bottomshow{
-    width: 100%;
-    height:20%;
-    display:table;
+.cencell{
     text-align:center;
+    word-break:break-all;
+    display:inline-block;
+    
+}
+.cencell input{
+    width:70px;
+    height:70px;
 }
 
 
@@ -76,15 +78,51 @@ span{
     display:table-cell;
     vertical-align:middle;
 }
-.centershow .cmdStateBtn{
-    
+
+
+
+
+
+
+.bottomshow{
+    width: 100%;
+    display:table;
+    text-align:center;
+}
+.bomrow{
+    display:table-row;
+    height:60px;
+    line-height:60px;
+}
+
+.bomcell{
+    display:table-cell;
+    word-break:break-all;
+    overflow:auto;
+
+
+}
+.dtitle{
+    white-space:nowrap;
+    width:120px;
+    height:50px;
+    text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    overflow:hidden;
+    text-align:right;
+}
+.bomcell input{
+    width:50px;
+    height:15px;
+    text-align:center;
 }
 
 
 
-.bottomshow button{
-    
+.bomcell button{
+    font-size:14px;
 }
+
 
 
 .topshow{

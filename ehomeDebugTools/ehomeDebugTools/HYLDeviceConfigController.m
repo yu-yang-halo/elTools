@@ -63,12 +63,7 @@
     [HYLContextLibary loadHylCmd:HYLCMDTYPE_UPDATE_DEVICE_NAME toContext:context handler:^(BOOL finished,NSArray *args) {
         
         if(finished){
-            ELDeviceObject *device=(ELDeviceObject *)args[0];
-            
-            self.navigationController.navigationBar.backItem.title=device.name;
-            
-            
-            [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"loadDeviceInfoToHtml(%@,%@)",[[HYLClassUtils canConvertJSONDataFromObjectInstance:device] JSONString],[HYLClassUtils classListData]]];
+            [self loadWebViewData];
         }
         
     }];
@@ -81,7 +76,9 @@
 }
 
 
-
+-(void)viewDidAppear:(BOOL)animated{
+    //[self loadWebViewData];
+}
 
 
 

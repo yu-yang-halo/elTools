@@ -27,8 +27,7 @@ static NSString *kloginPassword=@"keyLoginPassword";
 @implementation ViewController
 
 -(void)viewWillAppear:(BOOL)animated{
-    self.title=[[[HYLCache shareHylCache].configJSON valueForKey:@"title"] valueForKey:@"login"];
-   
+    self.title=[[[HYLCache shareHylCache].configJSON valueForKey:@"title"] valueForKey:@"login"];   
 }
 -(void)viewDidAppear:(BOOL)animated{
     

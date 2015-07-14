@@ -42,7 +42,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      self.title=[[[HYLCache shareHylCache].configJSON valueForKey:@"title"] valueForKey:@"devices"];
-
     
     [self.webVIew.scrollView setShowsHorizontalScrollIndicator:NO];
     [self.webVIew.scrollView setShowsVerticalScrollIndicator:NO];
@@ -97,7 +96,7 @@
         
     }];
     
-    
+    static int count=0;
     context[@"mobile_requestDevices"]=^(){
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -118,7 +117,7 @@
                if(classObj.icon!=nil){
                   
                }
-               [classIcon setValue:classObj.icon forKey:[NSString stringWithFormat:@"%ld",classObj.classId]];
+               [classIcon setValue:classObj.icon forKey:[NSString stringWithFormat:@"%ld",(long)classObj.classId]];
                
                
                NSMutableDictionary *objectMap=[HYLClassUtils canConvertJSONDataFromObjectInstance:obj];
@@ -154,7 +153,9 @@
                     [self.view makeToast:@"当前没有可用的网络~"];
                 }else{
                     
-                    [self.webVIew stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_loadDevicesData(%@,%@,%@)",[allDeviceObj JSONString],[allClassObjs JSONString],[classIcon JSONString]]];
+                    if(_deviceDic!=nil&&[_deviceDic count]>0){
+                        [self.webVIew stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_loadDevicesData(%@,%@,%@)",[allDeviceObj JSONString],[allClassObjs JSONString],[classIcon JSONString]]];
+                    }
                    
                 }
                 _reloading=NO;
