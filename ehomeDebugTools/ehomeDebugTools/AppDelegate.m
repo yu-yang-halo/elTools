@@ -14,6 +14,7 @@
 #import "HYLWIFITableViewController.h"
 #import "UIImageView+WebCache.h"
 #import "HYLSysConfigViewController.h"
+#import "HYLWifiUtils.h"
 
 @interface AppDelegate ()
 @property (strong, nonatomic) UIView *lunchView;
@@ -29,6 +30,13 @@
     [self.window makeKeyAndVisible];
     
     [HYLReachabilityUtils startNetChecking];
+    
+    
+    
+    
+    
+    //[HYLWifiUtils reqConfigWifiSSID:@"lztech-host" password:@"cell7894"];
+    
     
     NSString *store_IPAddress=[[NSUserDefaults standardUserDefaults] objectForKey:key_storeIPAddress];
     

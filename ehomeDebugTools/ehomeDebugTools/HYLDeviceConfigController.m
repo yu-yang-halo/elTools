@@ -63,6 +63,7 @@
     [HYLContextLibary loadHylCmd:HYLCMDTYPE_UPDATE_DEVICE_NAME toContext:context handler:^(BOOL finished,NSArray *args) {
         
         if(finished){
+             _reloading=YES;
             [self loadWebViewData];
         }
         

@@ -10,8 +10,10 @@
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <UIView+Toast.h>
 #import <SIAlertView/SIAlertView.h>
+#import "curl.h"
 @implementation HYLWifiUtils
 +(id)fetchSSIDInfo{
+    
     NSArray *ifs=(__bridge_transfer id)CNCopySupportedInterfaces();
     NSLog(@"%s:support interfaces :%@",__func__,ifs);
     id info=nil;
@@ -33,15 +35,51 @@
 }
 +(void)reqConfigWifiSSID:(NSString *)ssid password:(NSString *)pass{
   //JSON 数据 {Request:{Station:{Connect_Station:{ssid:'lztech-host',password:'cell7894'}}}}
+  
   //http://192.168.4.1/config?command=wifi
+  //[self requestAddr:commandAddr jsonParam:[jsonDataStr dataUsingEncoding:NSUTF8StringEncoding]];
     
     NSString *jsonDataStr=[NSString stringWithFormat:@"{\"Request\":{\"Station\":{\"Connect_Station\":{\"ssid\":\"%@\",\"password\":\"%@\"}}}}",ssid,pass];
-    NSLog(@"%@",jsonDataStr);
+    NSLog(@"curl 发送 %@",jsonDataStr);
     
     NSString *commandAddr=@"http://192.168.4.1/config?command=wifi";
     
-    [self requestAddr:commandAddr jsonParam:[jsonDataStr dataUsingEncoding:NSUTF8StringEncoding]];
     
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        CURL *curl=curl_easy_init();
+        curl_easy_setopt(curl,CURLOPT_URL,[commandAddr UTF8String]);
+        curl_easy_setopt(curl,CURLOPT_POSTFIELDS,[jsonDataStr UTF8String]);
+        curl_easy_setopt(curl,CURLOPT_POST,1);
+        CURLcode res=curl_easy_perform(curl);
+        BOOL isSettingYN=NO;
+        
+        if(res==CURLE_OK){
+            isSettingYN=YES;
+        }
+        curl_easy_cleanup(curl);
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(isSettingYN){
+                SIAlertView *alertView=[[SIAlertView alloc] initWithTitle:@"配置成功" andMessage:@"您现在的网络已断开，是否重新联网？"];
+                
+                [alertView addButtonWithTitle:@"否" type:SIAlertViewButtonTypeCancel handler:^(SIAlertView *alertView) {
+                    
+                }];
+                [alertView addButtonWithTitle:@"是" type:SIAlertViewButtonTypeDestructive handler:^(SIAlertView *alertView) {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=WIFI"]];
+                }];
+                alertView.transitionStyle=SIAlertViewTransitionStyleFade;
+                
+                [alertView show];
+            }else{
+                [[[UIApplication sharedApplication] keyWindow] makeToast:@"配置失败，请重新尝试"];
+            }
+        });
+    });
+   
+    
+    
+
     
 }
 
@@ -73,6 +111,7 @@
         [request setHTTPMethod:@"GET"];
     }else{
         [request setHTTPMethod:@"POST"];
+        //[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [request setHTTPBody:jsonData];
     }
     

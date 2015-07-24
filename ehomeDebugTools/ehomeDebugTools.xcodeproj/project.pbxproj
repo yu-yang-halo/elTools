@@ -21,6 +21,7 @@
 		84AF6B161B4B6E3F004C86E6 /* HYLWifiUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF6B151B4B6E3F004C86E6 /* HYLWifiUtils.m */; };
 		84AF6B191B4CBE5F004C86E6 /* HYLWIFITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF6B181B4CBE5F004C86E6 /* HYLWIFITableViewController.m */; };
 		84AF6B1C1B4CFAE6004C86E6 /* HYLReachabilityUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF6B1B1B4CFAE6004C86E6 /* HYLReachabilityUtils.m */; };
+		84B30D681B62208C00AE51FA /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B30D671B62208C00AE51FA /* libcurl.a */; };
 		84B3F9B71B301DD700486D21 /* HYLClassUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B3F9B61B301DD700486D21 /* HYLClassUtils.m */; };
 		84B3F9BA1B315CC400486D21 /* HYLDeviceDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B3F9B91B315CC400486D21 /* HYLDeviceDetailController.m */; };
 		84C01D2E1AF73E2700FD74A6 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C01D2D1AF73E2700FD74A6 /* JavaScriptCore.framework */; };
@@ -73,6 +74,17 @@
 		84AF6B181B4CBE5F004C86E6 /* HYLWIFITableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLWIFITableViewController.m; sourceTree = "<group>"; };
 		84AF6B1A1B4CFAE6004C86E6 /* HYLReachabilityUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLReachabilityUtils.h; sourceTree = "<group>"; };
 		84AF6B1B1B4CFAE6004C86E6 /* HYLReachabilityUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLReachabilityUtils.m; sourceTree = "<group>"; };
+		84B30D651B6218AF00AE51FA /* libcurses.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurses.dylib; path = usr/lib/libcurses.dylib; sourceTree = SDKROOT; };
+		84B30D671B62208C00AE51FA /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcurl.a; sourceTree = "<group>"; };
+		84B30D6B1B6220BB00AE51FA /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = curl.h; path = curl/curl.h; sourceTree = "<group>"; };
+		84B30D6C1B6220BB00AE51FA /* curlbuild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = curlbuild.h; path = curl/curlbuild.h; sourceTree = "<group>"; };
+		84B30D6D1B6220BB00AE51FA /* curlrules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = curlrules.h; path = curl/curlrules.h; sourceTree = "<group>"; };
+		84B30D6E1B6220BB00AE51FA /* curlver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = curlver.h; path = curl/curlver.h; sourceTree = "<group>"; };
+		84B30D6F1B6220BB00AE51FA /* easy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = easy.h; path = curl/easy.h; sourceTree = "<group>"; };
+		84B30D701B6220BB00AE51FA /* mprintf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mprintf.h; path = curl/mprintf.h; sourceTree = "<group>"; };
+		84B30D711B6220BB00AE51FA /* multi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = multi.h; path = curl/multi.h; sourceTree = "<group>"; };
+		84B30D721B6220BB00AE51FA /* stdcheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stdcheaders.h; path = curl/stdcheaders.h; sourceTree = "<group>"; };
+		84B30D731B6220BB00AE51FA /* typecheck-gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "typecheck-gcc.h"; path = "curl/typecheck-gcc.h"; sourceTree = "<group>"; };
 		84B3F9B51B301DD700486D21 /* HYLClassUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLClassUtils.h; sourceTree = "<group>"; };
 		84B3F9B61B301DD700486D21 /* HYLClassUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLClassUtils.m; sourceTree = "<group>"; };
 		84B3F9B81B315CC400486D21 /* HYLDeviceDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLDeviceDetailController.h; sourceTree = "<group>"; };
@@ -114,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84444F801B549E9200600337 /* ELNetworkService.framework in Frameworks */,
+				84B30D681B62208C00AE51FA /* libcurl.a in Frameworks */,
 				84C01D2E1AF73E2700FD74A6 /* JavaScriptCore.framework in Frameworks */,
 				5D162196B3A798A01678C2C9 /* libPods.a in Frameworks */,
 			);
@@ -141,6 +154,7 @@
 		76F45E752E94E4BC9A0D4483 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84B30D651B6218AF00AE51FA /* libcurses.dylib */,
 				72FBA32A01B45956F39F6449 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -195,6 +209,22 @@
 			name = wifi;
 			sourceTree = "<group>";
 		};
+		84B30D691B6220BB00AE51FA /* curl */ = {
+			isa = PBXGroup;
+			children = (
+				84B30D6B1B6220BB00AE51FA /* curl.h */,
+				84B30D6C1B6220BB00AE51FA /* curlbuild.h */,
+				84B30D6D1B6220BB00AE51FA /* curlrules.h */,
+				84B30D6E1B6220BB00AE51FA /* curlver.h */,
+				84B30D6F1B6220BB00AE51FA /* easy.h */,
+				84B30D701B6220BB00AE51FA /* mprintf.h */,
+				84B30D711B6220BB00AE51FA /* multi.h */,
+				84B30D721B6220BB00AE51FA /* stdcheaders.h */,
+				84B30D731B6220BB00AE51FA /* typecheck-gcc.h */,
+			);
+			path = curl;
+			sourceTree = "<group>";
+		};
 		84B3F9B41B301DA800486D21 /* classutils */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +253,7 @@
 		84C14B031AF70AA300B11B46 = {
 			isa = PBXGroup;
 			children = (
+				84B30D671B62208C00AE51FA /* libcurl.a */,
 				84BD656F1B1C1EDF00F3CC67 /* EhomeDebugPrefix.pch */,
 				84C01D2D1AF73E2700FD74A6 /* JavaScriptCore.framework */,
 				84C14B3E1AF7318800B11B46 /* ELNetworkService.framework */,
@@ -246,6 +277,7 @@
 		84C14B0E1AF70AA300B11B46 /* ehomeDebugTools */ = {
 			isa = PBXGroup;
 			children = (
+				84B30D691B6220BB00AE51FA /* curl */,
 				84AF6B131B4B6DFA004C86E6 /* wifi */,
 				8407F7051B3D04CD0008C36F /* view */,
 				84CEC5201B3A3A4D0015C348 /* categary */,
@@ -616,6 +648,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_NO_PIE = NO;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -677,6 +713,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_NO_PIE = NO;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
