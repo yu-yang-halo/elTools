@@ -70,7 +70,10 @@
     width:70px;
     height:70px;
 }
-
+.blab{
+    font-size:12px;
+    color:gray;
+}
 
 
 
@@ -112,8 +115,8 @@ span{
     text-align:right;
 }
 .bomcell input{
-    width:50px;
-    height:15px;
+    width:70px;
+    height:25px;
     text-align:center;
 }
 

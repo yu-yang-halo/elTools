@@ -115,9 +115,9 @@
                ELClassObject *classObj=[HYLClassUtils classObjectFromCache:obj.classId];
                
                if(classObj.icon!=nil){
-                  
+                  [classIcon setValue:classObj.icon forKey:[NSString stringWithFormat:@"%ld",(long)classObj.classId]];
                }
-               [classIcon setValue:classObj.icon forKey:[NSString stringWithFormat:@"%ld",(long)classObj.classId]];
+               
                
                
                NSMutableDictionary *objectMap=[HYLClassUtils canConvertJSONDataFromObjectInstance:obj];
