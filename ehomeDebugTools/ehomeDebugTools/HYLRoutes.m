@@ -111,6 +111,7 @@ static BOOL systemResYN=YES;
 +(void)loadUserConfig{
     NSLog(@"加载配置文件~~~");
     [HYLResourceUtil loadConfigResource:[HYLRoutes uiResourcePath]];
+    [HYLResourceUtil loadFieldConfigResource:[HYLRoutes uiResourcePath]];
 }
 
 @end

@@ -17,6 +17,7 @@
 @property(nonatomic,retain) ELDeviceObject *currentELDevice;
 
 @property(nonatomic,retain) NSDictionary *configJSON;
+@property(nonatomic,retain) NSArray      *fieldList;
 @property(nonatomic,retain) NSString *availableWIFISSID;
 
 @end

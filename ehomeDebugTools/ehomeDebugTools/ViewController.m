@@ -21,8 +21,8 @@
     MBProgressHUD *hud;
 }
 @end
-NSString *kloginUserName=@"keyLoginUserName";
-static NSString *kloginPassword=@"keyLoginPassword";
+const NSString *kloginUserName=@"keyLoginUserName";
+static const NSString *kloginPassword=@"keyLoginPassword";
 
 @implementation ViewController
 

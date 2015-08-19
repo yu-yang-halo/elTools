@@ -9,6 +9,7 @@
 #import "HYLClassUtils.h"
 #import <objc/runtime.h>
 #import <ELNetworkService/ELNetworkService.h>
+#import "HYLCache.h"
 
 static NSString *kCacheListDataKey=@"KEY_CACHELISTDATA";
 
@@ -23,7 +24,9 @@ static NSString *kCacheListDataKey=@"KEY_CACHELISTDATA";
         objc_property_t prop=*(props+i);
         NSString *propertyName=[[NSString alloc] initWithCString:property_getName(prop) encoding:NSUTF8StringEncoding];
         id propertyValue=[objInstance valueForKey:propertyName];
-     
+        NSLog(@"----propertyName %@ propertyValue :%@",propertyName,propertyValue);
+        
+        
         [canConvertJSONInstance setValue:propertyValue forKey:propertyName];
     }
     free(props);
@@ -39,16 +42,46 @@ static NSString *kCacheListDataKey=@"KEY_CACHELISTDATA";
     
     if(binaryclassObj==nil){
         classObj=[[ElApiService shareElApiService] getClassById:classId];
+        
+        [self addFieldDisableYNProperties:classObj];
+        
+        
+        
         binaryclassObj=[NSKeyedArchiver archivedDataWithRootObject:classObj];
         [[NSUserDefaults standardUserDefaults] setObject:binaryclassObj forKey:classIdKey];
         
         
     }else{
-       classObj=[NSKeyedUnarchiver unarchiveObjectWithData:binaryclassObj];
+         classObj=[NSKeyedUnarchiver unarchiveObjectWithData:binaryclassObj];
         NSLog(@"缓存数据 %@",classObj);
     }
     return classObj;
 }
+
++(void)addFieldDisableYNProperties:(ELClassObject *)classObj{
+    if([HYLCache shareHylCache].fieldList==nil||[[HYLCache shareHylCache].fieldList count]==0){
+        return;
+    }
+    for (ELClassField *clsField in classObj.classFields) {
+        for (NSDictionary *fieldDic in [HYLCache shareHylCache].fieldList) {
+            
+            if([[fieldDic valueForKey:@"fieldId"] isEqualToNumber:[NSNumber numberWithLong:clsField.fieldId]]){
+                BOOL disableYN=NO;
+                
+                if([[NSString stringWithFormat:@"%@",[fieldDic valueForKey:@"disableYN"]] isEqualToString:@"0"]){
+                    disableYN=YES;
+                }
+                [clsField setValue:[NSNumber numberWithBool:disableYN] forKey:@"disableYN"];
+                
+            }
+            
+            
+        }
+
+    }
+    
+}
+
 
 +(void)cacheClasslistData:(id)classlistData{
    

@@ -95,7 +95,7 @@ NSString *uiPathName=@"ui";
                     
                     [self movefile:[unzipSaveFilePath stringByAppendingPathComponent:@"config.json"] toTarget:[unzipUIPathFile stringByAppendingPathComponent:@"config/config.json"]];
                     [self movefile:[unzipSaveFilePath stringByAppendingPathComponent:@"launchLogo.png"] toTarget:[unzipUIPathFile stringByAppendingPathComponent:@"img/launchLogo.png"]];
-                    
+                    [self movefile:[unzipSaveFilePath stringByAppendingPathComponent:@"field.json"] toTarget:[unzipUIPathFile stringByAppendingPathComponent:@"config/field.json"]];
                     
                 }else{
                     NSLog(@"%@解压失败",uiPathZipFile);
@@ -149,6 +149,18 @@ NSString *uiPathName=@"ui";
     return documentPath;
 }
 
++(void)loadFieldConfigResource:(NSString *)configResPath{
+    NSString *configJSONResPath=[configResPath stringByAppendingPathComponent:@"config/field.json"];
+    NSData *configData=[[NSData alloc] initWithContentsOfFile:configJSONResPath];
+    if(configData!=nil){
+        NSMutableDictionary *fieldConfigDic=[[NSJSONSerialization JSONObjectWithData:configData options:NSJSONReadingAllowFragments error:nil] mutableCopy];
+        NSArray *fieldList=[fieldConfigDic valueForKey:@"fileList"];
+        [[HYLCache shareHylCache] setFieldList:fieldList];
+    }else{
+        [[HYLCache shareHylCache] setFieldList:nil];
+    }
+}
+
 +(void)loadConfigResource:(NSString *)configResPath{
    /*
     ','多余的逗号讲无法解析
@@ -173,7 +185,7 @@ NSString *uiPathName=@"ui";
     NSMutableDictionary *configDic=[[NSJSONSerialization JSONObjectWithData:configData options:NSJSONReadingAllowFragments error:nil] mutableCopy];
     
     if (configDic==nil) {
-       NSString* configDefaultJSONResPath=[configResPath stringByAppendingPathComponent:@"config/configdefault.json"];
+        NSString* configDefaultJSONResPath=[configResPath stringByAppendingPathComponent:@"config/configdefault.json"];
         configData=[NSData dataWithContentsOfFile:configDefaultJSONResPath options:NSUTF8StringEncoding error:nil];
         configDic=[[NSJSONSerialization JSONObjectWithData:configData options:NSJSONReadingAllowFragments error:nil] mutableCopy];
     }

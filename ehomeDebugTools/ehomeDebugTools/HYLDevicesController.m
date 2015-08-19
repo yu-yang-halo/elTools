@@ -39,6 +39,8 @@
     NSLog(@"%s",__func__);
 }
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
      self.title=[[[HYLCache shareHylCache].configJSON valueForKey:@"title"] valueForKey:@"devices"];
@@ -114,6 +116,7 @@
                
                ELClassObject *classObj=[HYLClassUtils classObjectFromCache:obj.classId];
                
+               
                if(classObj.icon!=nil){
                   [classIcon setValue:classObj.icon forKey:[NSString stringWithFormat:@"%ld",(long)classObj.classId]];
                }
@@ -124,17 +127,28 @@
                
                
                
-               NSMutableArray *fields=[NSMutableArray new];
-               
-               for (ELClassField *classField in classObj.classFields){
-                   [fields addObject:[HYLClassUtils canConvertJSONDataFromObjectInstance:classField]];
+               if([allClassObjs valueForKey:[NSString stringWithFormat:@"%ld",(long)obj.classId]]==nil){
+                   NSMutableArray *fields=[NSMutableArray new];
                    
+                   for (ELClassField *classField in classObj.classFields){
+                       
+                       NSLog(@"++++++classFieldName %@ fieldid =%ld disableYN=%d",classField.displayName,classField.fieldId,classField.disableYN);
+                       
+                       
+                       
+                       
+                       [fields addObject:[HYLClassUtils canConvertJSONDataFromObjectInstance:classField]];
+                       
+                       
+                   }
                    
+                   [allClassObjs setValue:fields forKey:[NSString stringWithFormat:@"%ld",(long)obj.classId]];
+                   
+
                }
-              
-               [allClassObjs setValue:fields forKey:[NSString stringWithFormat:@"%ld",(long)obj.classId]];
-              
-              
+               
+               
+               
                
                [allDeviceObj addObject:objectMap];
                

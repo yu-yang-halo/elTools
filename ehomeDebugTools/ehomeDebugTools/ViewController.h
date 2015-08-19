@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-extern NSString *kloginUserName;
+extern const NSString *kloginUserName;
 @interface ViewController : UIViewController<UIWebViewDelegate>
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 

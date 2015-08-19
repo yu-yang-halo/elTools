@@ -91,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28264.5" y="-5139.75"/>
+            <point key="canvasLocation" x="-28030.5" y="-5247.75"/>
         </scene>
         <!--我的设置-->
         <scene sceneID="X9x-Wx-07A">
@@ -403,7 +403,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cX-vZ-mbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-29938.5" y="-4395.75"/>
+            <point key="canvasLocation" x="-29506.5" y="-4305.75"/>
         </scene>
         <!--Devices Controller-->
         <scene sceneID="EqD-X6-Siw">
@@ -421,9 +421,37 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uL-ah-Cob">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6e4-2o-7nQ"/>
+                                    <constraint firstAttribute="width" constant="46" id="dkB-93-pzB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" red="1" green="0.38351761045879329" blue="0.11241703579460383" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="6e4-2o-7nQ"/>
+                                        <exclude reference="dkB-93-pzB"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="6e4-2o-7nQ"/>
+                                        <include reference="dkB-93-pzB"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="uNf-Ly-X3y" kind="show" id="YlO-y1-FSY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cTX-7D-2Mx" firstAttribute="top" secondItem="2uL-ah-Cob" secondAttribute="bottom" constant="38" id="MeV-3m-CXG"/>
                             <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="FhQ-nm-2LV" secondAttribute="top" id="OEb-61-Qb8">
                                 <variation key="heightClass=regular-widthClass=compact" constant="64"/>
                             </constraint>
@@ -439,22 +467,33 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="O6W-CN-cbn" firstAttribute="leading" secondItem="FhQ-nm-2LV" secondAttribute="leading" id="nU2-JW-uen"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2uL-ah-Cob" secondAttribute="trailing" constant="11" id="pjg-CR-k4I"/>
                             <constraint firstItem="O6W-CN-cbn" firstAttribute="leading" secondItem="FhQ-nm-2LV" secondAttribute="leading" id="t06-HD-aIN"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="2uL-ah-Cob"/>
+                            </mask>
                             <mask key="constraints">
+                                <exclude reference="pjg-CR-k4I"/>
                                 <exclude reference="Wfi-NY-Aiv"/>
                                 <exclude reference="YIe-46-m3G"/>
                                 <exclude reference="dD9-cw-CBc"/>
                                 <exclude reference="nU2-JW-uen"/>
+                                <exclude reference="MeV-3m-CXG"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="2uL-ah-Cob"/>
+                            </mask>
                             <mask key="constraints">
+                                <include reference="pjg-CR-k4I"/>
                                 <include reference="Wfi-NY-Aiv"/>
                                 <include reference="YIe-46-m3G"/>
                                 <include reference="dD9-cw-CBc"/>
                                 <include reference="nU2-JW-uen"/>
+                                <include reference="MeV-3m-CXG"/>
                             </mask>
                         </variation>
                     </view>
@@ -812,18 +851,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Shg-xy-Lpt">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HTP-sJ-nHA">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Shg-xy-Lpt" firstAttribute="leading" secondItem="PXo-ee-Agp" secondAttribute="leading" id="51j-ba-w8Z"/>
-                            <constraint firstItem="Shg-xy-Lpt" firstAttribute="bottom" secondItem="NDg-56-Xsk" secondAttribute="top" id="Lhy-qL-NYP"/>
-                            <constraint firstItem="Shg-xy-Lpt" firstAttribute="top" secondItem="PXo-ee-Agp" secondAttribute="top" id="XGG-HS-eD4"/>
-                            <constraint firstAttribute="trailing" secondItem="Shg-xy-Lpt" secondAttribute="trailing" id="geH-7V-Ufm"/>
+                            <constraint firstItem="HTP-sJ-nHA" firstAttribute="leading" secondItem="PXo-ee-Agp" secondAttribute="leadingMargin" constant="-16" id="3tv-EW-UwY"/>
+                            <constraint firstItem="HTP-sJ-nHA" firstAttribute="top" secondItem="PXo-ee-Agp" secondAttribute="topMargin" constant="64" id="Aat-do-g1N"/>
+                            <constraint firstItem="NDg-56-Xsk" firstAttribute="top" secondItem="HTP-sJ-nHA" secondAttribute="bottom" id="AxD-dm-KpM"/>
+                            <constraint firstItem="NDg-56-Xsk" firstAttribute="top" secondItem="HTP-sJ-nHA" secondAttribute="bottom" id="Coe-Ad-Ffx"/>
+                            <constraint firstItem="HTP-sJ-nHA" firstAttribute="top" secondItem="PXo-ee-Agp" secondAttribute="topMargin" constant="64" id="R79-dg-Wc3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HTP-sJ-nHA" secondAttribute="trailing" constant="-16" id="ahY-W9-Y41"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="HTP-sJ-nHA"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="AxD-dm-KpM"/>
+                                <exclude reference="Coe-Ad-Ffx"/>
+                                <exclude reference="3tv-EW-UwY"/>
+                                <exclude reference="Aat-do-g1N"/>
+                                <exclude reference="R79-dg-Wc3"/>
+                                <exclude reference="ahY-W9-Y41"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="HTP-sJ-nHA"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="AxD-dm-KpM"/>
+                                <include reference="Coe-Ad-Ffx"/>
+                                <include reference="3tv-EW-UwY"/>
+                                <include reference="Aat-do-g1N"/>
+                                <include reference="R79-dg-Wc3"/>
+                                <include reference="ahY-W9-Y41"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="ud0-4O-dh9">
                         <nil key="title"/>
@@ -839,13 +906,10 @@
                             </connections>
                         </segmentedControl>
                     </navigationItem>
-                    <connections>
-                        <outlet property="webView" destination="Shg-xy-Lpt" id="dB2-E7-fGb"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTC-0o-bcT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-29578.5" y="-3580.5"/>
+            <point key="canvasLocation" x="-25897.5" y="-4794"/>
         </scene>
     </scenes>
 </document>
