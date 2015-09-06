@@ -33,12 +33,11 @@ var browser={
 
 
 //登录模块
-function hyl_login(username,password){
-
+function hyl_login(username,password,ischecked){
     if(browser.versions.android){
-       window.jna.mobile_login(username,password);
+       window.jna.mobile_login(username,password,ischecked);
     }else{
-       mobile_login(username,password);
+       mobile_login(username,password,ischecked);
     }
 }
 function hyl_setUsernamePassToView(username,password){
@@ -131,7 +130,7 @@ function hyl_loadDevicesData(devices,classTable,classIcon){
             
 			
 			trString+="<td class='content'><div>"+
-			"<label class='name'>"+obj.name+"</label>"
+			"<label class='name'>"+obj.name+"</label>";
             
             var tmp_online_icon="img/icon_online.png";
             var tmp_online_content="在线";
@@ -152,7 +151,7 @@ function hyl_loadDevicesData(devices,classTable,classIcon){
                 var key=field.fieldId;
                 var isExist=fieldIsExistInFieldMap(field,fieldValues);
                 if(isExist){
-                    if(field.deviceCmdYN==1&&field.deviceStateYN==1&&field.disableYN==0){
+                    if(field.deviceCmdYN==1&&field.deviceStateYN==1){
                         var pngString;
                         if(fieldValues[key]==0){
                             pngString="img/bg_switch_off.png";
@@ -259,8 +258,28 @@ function hyl_requestDeviceInfo(){
           mobile_requestDeviceInfo();
      }
 }
-
-
+function hyl_register(username,password,repassword,email,telephone,realname){
+       if(browser.versions.android){
+            window.jna.mobile_registerUserInfo(username,password,repassword,email,telephone,realname);
+        }else{
+            mobile_registerUserInfo(username,password,repassword,email,telephone,realname);
+        }
+}
+function hyl_requestNeedData(){
+            if(browser.versions.android){
+                window.jna.mobile_requestNeedData();
+            }else{
+                mobile_requestNeedData();
+            }
+}
+//设备删除
+function hyl_deleteDevice(objectId){
+             if(browser.versions.android){
+                   window.jna.mobile_deleteDevice(objectId);
+              }else{
+                   mobile_deleteDevice(objectId);
+              }
+}
 
 
 

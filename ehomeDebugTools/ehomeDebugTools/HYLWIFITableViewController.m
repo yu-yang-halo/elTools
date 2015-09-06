@@ -12,6 +12,7 @@
 #import "HYLReachabilityUtils.h"
 #import "RegUtil.h"
 #import <UIView+Toast.h>
+#import "EsptouchUtils.h"
 NSString *const kNotificationWIFIPageLogic=@"kNotificationWIFIPageLogic";
 @interface HYLWIFITableViewController ()
 - (IBAction)toSystemSetting:(id)sender;
@@ -35,7 +36,7 @@ NSString *const kNotificationWIFIPageLogic=@"kNotificationWIFIPageLogic";
     
     self.willConntectWifiSSID.text=[HYLCache shareHylCache].availableWIFISSID;
    
-    [self hideItemsYN:YES];
+    //[self hideItemsYN:YES];
     
 }
 -(void)wifiPageLogic{
@@ -74,8 +75,6 @@ NSString *const kNotificationWIFIPageLogic=@"kNotificationWIFIPageLogic";
     
 }
 - (IBAction)configWillConnectWifi:(id)sender {
-    //[HYLWifiUtils fetchSSIDInfo];
-    
     NSString *ssid=self.willConntectWifiSSID.text;
     NSString *password=self.willConnectWifiPassword.text;
     
@@ -84,7 +83,9 @@ NSString *const kNotificationWIFIPageLogic=@"kNotificationWIFIPageLogic";
         [[[UIApplication sharedApplication] keyWindow] makeToast:@"wifi名称与密码不能为空"];
         
     }else{
-       [HYLWifiUtils reqConfigWifiSSID:ssid password:password];
+       //[HYLWifiUtils reqConfigWifiSSID:ssid password:password];
+        
+        [EsptouchUtils configWifiSSID:ssid pass:password bssid:[HYLWifiUtils fetchBSSIDInfo]];
     }
 }
 

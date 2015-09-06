@@ -12,7 +12,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 @interface HYLWifiUtils : NSObject
-+(id)fetchSSIDInfo;
++(NSString *)fetchSSIDInfo;
+
++(NSString *)fetchBSSIDInfo;
 
 +(void)reqConfigWifiSSID:(NSString *)ssid password:(NSString *)pass;
 +(void)reqConfigServer;

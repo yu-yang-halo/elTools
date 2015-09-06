@@ -12,8 +12,13 @@
 #import <SIAlertView/SIAlertView.h>
 #import "curl.h"
 @implementation HYLWifiUtils
-+(id)fetchSSIDInfo{
-    
++(NSString *)fetchBSSIDInfo;{
+    NSDictionary *netInfo=[self fetchNetworkInfo];
+    NSString *bssid=[netInfo objectForKey:@"BSSID"];
+    return bssid;
+}
+
++(NSDictionary *)fetchNetworkInfo{
     NSArray *ifs=(__bridge_transfer id)CNCopySupportedInterfaces();
     NSLog(@"%s:support interfaces :%@",__func__,ifs);
     id info=nil;
@@ -24,14 +29,13 @@
         break;
         
     }
-    
-    NSString *ssid=[info objectForKey:@"SSID"];
-    
-    
-    
+    return info;
+}
+
++(NSString *)fetchSSIDInfo{
+    NSDictionary *netInfo=[self fetchNetworkInfo];
+    NSString *ssid=[netInfo objectForKey:@"SSID"];
     return ssid;
-    
-    
 }
 +(void)reqConfigWifiSSID:(NSString *)ssid password:(NSString *)pass{
   //JSON 数据 {Request:{Station:{Connect_Station:{ssid:'lztech-host',password:'cell7894'}}}}

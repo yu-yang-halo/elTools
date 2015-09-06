@@ -421,37 +421,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uL-ah-Cob">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="6e4-2o-7nQ"/>
-                                    <constraint firstAttribute="width" constant="46" id="dkB-93-pzB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                                <state key="normal" title="+">
-                                    <color key="titleColor" red="1" green="0.38351761045879329" blue="0.11241703579460383" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="6e4-2o-7nQ"/>
-                                        <exclude reference="dkB-93-pzB"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="6e4-2o-7nQ"/>
-                                        <include reference="dkB-93-pzB"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <segue destination="uNf-Ly-X3y" kind="show" id="YlO-y1-FSY"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cTX-7D-2Mx" firstAttribute="top" secondItem="2uL-ah-Cob" secondAttribute="bottom" constant="38" id="MeV-3m-CXG"/>
                             <constraint firstItem="O6W-CN-cbn" firstAttribute="top" secondItem="FhQ-nm-2LV" secondAttribute="top" id="OEb-61-Qb8">
                                 <variation key="heightClass=regular-widthClass=compact" constant="64"/>
                             </constraint>
@@ -467,33 +439,22 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="O6W-CN-cbn" firstAttribute="leading" secondItem="FhQ-nm-2LV" secondAttribute="leading" id="nU2-JW-uen"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="2uL-ah-Cob" secondAttribute="trailing" constant="11" id="pjg-CR-k4I"/>
                             <constraint firstItem="O6W-CN-cbn" firstAttribute="leading" secondItem="FhQ-nm-2LV" secondAttribute="leading" id="t06-HD-aIN"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="2uL-ah-Cob"/>
-                            </mask>
                             <mask key="constraints">
-                                <exclude reference="pjg-CR-k4I"/>
                                 <exclude reference="Wfi-NY-Aiv"/>
                                 <exclude reference="YIe-46-m3G"/>
                                 <exclude reference="dD9-cw-CBc"/>
                                 <exclude reference="nU2-JW-uen"/>
-                                <exclude reference="MeV-3m-CXG"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="2uL-ah-Cob"/>
-                            </mask>
                             <mask key="constraints">
-                                <include reference="pjg-CR-k4I"/>
                                 <include reference="Wfi-NY-Aiv"/>
                                 <include reference="YIe-46-m3G"/>
                                 <include reference="dD9-cw-CBc"/>
                                 <include reference="nU2-JW-uen"/>
-                                <include reference="MeV-3m-CXG"/>
                             </mask>
                         </variation>
                     </view>

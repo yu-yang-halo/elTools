@@ -21,16 +21,16 @@
     MBProgressHUD *hud;
 }
 @end
-const NSString *kloginUserName=@"keyLoginUserName";
-static const NSString *kloginPassword=@"keyLoginPassword";
-
+const  NSString *kloginUserName=@"keyLoginUserName";
+const  NSString *kloginPassword=@"keyLoginPassword";
 @implementation ViewController
 
 -(void)viewWillAppear:(BOOL)animated{
-    self.title=[[[HYLCache shareHylCache].configJSON valueForKey:@"title"] valueForKey:@"login"];   
+    self.title=[[[HYLCache shareHylCache].configJSON valueForKey:@"title"] valueForKey:@"login"];
+    
 }
 -(void)viewDidAppear:(BOOL)animated{
-    
+    [self initHtmlUserInfo];
 }
 
 - (void)viewDidLoad {
@@ -43,6 +43,24 @@ static const NSString *kloginPassword=@"keyLoginPassword";
     [backButton setTitle:@"返回"];
     self.navigationItem.backBarButtonItem=backButton;
     
+}
+
+
+-(void)initHtmlUserInfo{
+    
+    NSString *username=[[NSUserDefaults standardUserDefaults] objectForKey:kloginUserName];
+    
+    NSString *password=[[NSUserDefaults standardUserDefaults] objectForKey:kloginPassword];
+    
+    if(username!=nil&&password!=nil){
+        [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_setUsernamePassToView('%@','%@')",username,password]];
+        [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"initCheckBox(%@)",@"true"]];
+    }else{
+        [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_setUsernamePassToView('%@','%@')",@"",@""]];
+        
+        [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"initCheckBox(%@)",@"false"]];
+    }
+
 }
 
 -(void)requestIndexHtml{
@@ -66,15 +84,7 @@ static const NSString *kloginPassword=@"keyLoginPassword";
     
     JSContext *context=[self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     context[@"mobile_loadDefaultUsernamePass"]=^(){
-    
-       NSString *username=[[NSUserDefaults standardUserDefaults] objectForKey:kloginUserName];
         
-       NSString *password=[[NSUserDefaults standardUserDefaults] objectForKey:kloginPassword];
-        
-       if(username!=nil&&password!=nil){
-           [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"hyl_setUsernamePassToView('%@','%@')",username,password]];
-        }
-       
         
     };
     
@@ -94,32 +104,43 @@ static const NSString *kloginPassword=@"keyLoginPassword";
         if(![HYLReachabilityUtils networkIsAvailable]){
             [self.view makeToast:@"当前没有可用的网络~"];
         }else{
-            [self asynlogin:[args[0] toString] withPass:[args[1] toString]];
+            [self asynlogin:[args[0] toString] withPass:[args[1] toString] isRemember:[args[2] toBool]];
         }
     };
 }
--(void)asynlogin:(NSString *)name withPass:(NSString *)pass{
+
+-(void)saveUsername:(NSString *)name AndPassword:(NSString *)pass{
+    [[NSUserDefaults standardUserDefaults] setObject:name forKey:kloginUserName];
+    [[NSUserDefaults standardUserDefaults] setObject:pass forKey:kloginPassword];
+}
+-(void)clearUsernameAndPassword{
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kloginUserName];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kloginPassword];
+    
+}
+
+
+-(void)asynlogin:(NSString *)name withPass:(NSString *)pass isRemember:(BOOL)isRem{
     hud=[MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText=@"登录中...";
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         BOOL isOK=[[ElApiService shareElApiService] loginByUsername:name andPassword:pass];
         dispatch_async(dispatch_get_main_queue(), ^{
             [hud hide:YES];
-             NSString *message=nil;
             if(isOK){
-                // message=@"登录成功！";
                 
-                [HYLClassUtils removeAllClassDataCaches];
+                 if(isRem){
+                    [self saveUsername:name AndPassword:pass];
+                 }else{
+                    [self clearUsernameAndPassword];
+                 }
+                 [HYLClassUtils removeAllClassDataCaches];
                 
-                [[NSUserDefaults standardUserDefaults] setObject:name forKey:kloginUserName];
-                [[NSUserDefaults standardUserDefaults] setObject:pass forKey:kloginPassword];
-                
+               
                  [self performSegueWithIdentifier:@"deviceList" sender:self];
                 
-                //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-            }else{
-                 //message=@"用户名或密码错误！";
-                
+                 //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
             }
             
             
@@ -145,6 +166,7 @@ static const NSString *kloginPassword=@"keyLoginPassword";
     [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
     [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
     
+    [self initHtmlUserInfo];
     
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
