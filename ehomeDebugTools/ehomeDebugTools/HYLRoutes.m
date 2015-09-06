@@ -63,6 +63,18 @@ static BOOL systemResYN=YES;
     
 
 }
++(void)downloadAppTagJSON{
+    NSString *filePath=[NSString stringWithFormat:@"http://%@/public_cloud/upload/appTag.json",[ElApiService currentIPAddress]];
+    [HYLResourceUtil downloadAppTagJson:filePath block:^(BOOL isfinished, id data) {
+       
+        if(isfinished){
+            [[[UIApplication sharedApplication] keyWindow] makeToast:@"appTag配置文件下载成功"];
+        }else{
+            [[[UIApplication sharedApplication] keyWindow] makeToast:@"appTag配置文件下载失败"];
+        }
+        
+    }];
+}
 
 +(void)downloadUserResources:(NSString *)fileName{
     NSLog(@"开始下载用户资源 %@.zip ~~~",fileName);

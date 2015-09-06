@@ -19,6 +19,7 @@ typedef void(^HYLResourceUtilBlock)(BOOL isfinished,id data);
 @interface HYLResourceUtil : NSObject
 
 
++(void)downloadAppTagJson:(NSString *)webPath block:(HYLResourceUtilBlock)_block;
 
 +(void)downloadWebResource:(NSString *)webPath block:(HYLResourceUtilBlock)_block;
 

@@ -18,6 +18,7 @@
 
 @property(nonatomic,retain) NSDictionary *configJSON;
 @property(nonatomic,retain) NSArray      *fieldList;
+@property(nonatomic,retain) NSArray      *tagList;
 @property(nonatomic,retain) NSString *availableWIFISSID;
 
 @end

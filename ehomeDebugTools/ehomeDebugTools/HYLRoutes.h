@@ -16,7 +16,7 @@
 
 
 +(void)downloadUserResources:(NSString *)fileName;
-
++(void)downloadAppTagJSON;
 
 //用户资源根路径      /username     /cls
 //                                /field

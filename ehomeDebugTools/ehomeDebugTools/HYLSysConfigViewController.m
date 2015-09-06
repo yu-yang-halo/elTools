@@ -11,9 +11,10 @@
 #import "RegUtil.h"
 #import <UIView+Toast.h>
 #import "HYLRoutes.h"
+#import "HYLCache.h"
 #import "UINavigationController+barTheme.h"
 #import "HYLVersionInfoUtils.h"
-
+#import <SIAlertView/SIAlertView.h>
 NSString *const key_storeIPAddress=@"ip_address_store_key";
 
 @interface HYLSysConfigViewController ()
@@ -64,7 +65,27 @@ NSString *const key_storeIPAddress=@"ip_address_store_key";
 
 
 - (IBAction)manualUpdateMineResource:(id)sender {
-    [HYLRoutes enableDownload];
+    
+    NSArray *tagList=[[HYLCache shareHylCache] tagList];
+    
+    SIAlertView *alertView=[[SIAlertView alloc] initWithTitle:@"应用类型" andMessage:@""];
+    
+   
+    
+    for (NSDictionary *tag in tagList) {
+        
+        [alertView addButtonWithTitle:[tag objectForKey:@"appTag"] type:SIAlertViewButtonTypeDefault handler:^(SIAlertView *alertView) {
+            
+        }];
+        
+        
+    }
+//    [alertView addButtonWithTitle:@"取消" type:SIAlertViewButtonTypeCancel handler:^(SIAlertView *alertView) {
+//        
+//    }];
+    [alertView show];
+    
+    //[HYLRoutes enableDownload];
 }
 
 - (IBAction)reset:(id)sender {

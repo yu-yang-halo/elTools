@@ -405,6 +405,31 @@ static SIAlertView *__si_alert_current_view;
 	[self.items addObject:item];
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+   
+    
+    UITouch *touch=[touches anyObject];
+    
+    CGPoint point=[touch locationInView:[[UIApplication sharedApplication] keyWindow]];
+    
+    if(!CGRectContainsPoint(self.containerView.bounds, point)){
+    
+        [self dismissAnimated:YES];
+        
+    }
+    
+    
+}
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+}
+-(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+}
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+}
+
 - (void)show
 {
     if (self.isVisible) {
@@ -790,7 +815,7 @@ static SIAlertView *__si_alert_current_view;
         if (y > CONTENT_PADDING_TOP) {
             y += GAP;
         }
-        if (self.items.count == 2 && self.buttonsListStyle == SIAlertViewButtonsListStyleNormal) {
+        if (self.items.count == 0 && self.buttonsListStyle == SIAlertViewButtonsListStyleNormal) {
             CGFloat width = (self.containerView.bounds.size.width - CONTENT_PADDING_LEFT * 2 - GAP) * 0.5;
             UIButton *button = self.buttons[0];
             button.frame = CGRectMake(CONTENT_PADDING_LEFT, y, width, BUTTON_HEIGHT);
@@ -829,11 +854,11 @@ static SIAlertView *__si_alert_current_view;
         if (height > CONTENT_PADDING_TOP) {
             height += GAP;
         }
-        if (self.items.count <= 2 && self.buttonsListStyle == SIAlertViewButtonsListStyleNormal) {
+        if (self.items.count <= 0 && self.buttonsListStyle == SIAlertViewButtonsListStyleNormal) {
             height += BUTTON_HEIGHT;
         } else {
             height += (BUTTON_HEIGHT + GAP) * self.items.count - GAP;
-            if (self.buttons.count > 2 && ((SIAlertItem *)[self.items lastObject]).type == SIAlertViewButtonTypeCancel) {
+            if (self.buttons.count > 0 && ((SIAlertItem *)[self.items lastObject]).type == SIAlertViewButtonTypeCancel) {
                 height += CANCEL_BUTTON_PADDING_TOP;
             }
         }

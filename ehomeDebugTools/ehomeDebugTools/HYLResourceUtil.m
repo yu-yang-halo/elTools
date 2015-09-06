@@ -42,6 +42,35 @@ NSString *uiPathName=@"ui";
     [self downloadWebResource:webPath tofile:webPath.lastPathComponent block:_block];
     
 }
++(void)downloadAppTagJson:(NSString *)webPath block:(HYLResourceUtilBlock)_block{
+    
+     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+         
+         NSURL *url=[NSURL URLWithString:webPath];
+         NSData *data=[NSData dataWithContentsOfURL:url];
+         NSMutableDictionary *configDic=[[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil] mutableCopy];
+         
+         BOOL isCompleteSuc=NO;
+         
+         if(configDic!=nil){
+             
+             NSArray *tagList=[configDic valueForKey:@"tagList"];
+             if(tagList!=nil&&[tagList count]>0){
+                 isCompleteSuc=YES;
+                 [[HYLCache shareHylCache] setTagList:tagList];
+             }
+         }
+         
+         
+         dispatch_async(dispatch_get_main_queue(), ^{
+            
+             _block(isCompleteSuc,nil);
+             
+         });
+         
+     });
+}
+
 
 +(void)downloadWebResource:(NSString *)webPath tofile:(NSString *)fileName block:(HYLResourceUtilBlock)_block{
     
