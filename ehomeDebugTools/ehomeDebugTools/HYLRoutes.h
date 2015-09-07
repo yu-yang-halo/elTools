@@ -12,6 +12,7 @@
  负责ui资源下载读取任务
  
  */
+extern NSString *keyDirName;
 @interface HYLRoutes : NSObject
 
 
@@ -45,7 +46,7 @@
 @interface HYLRoutes (downloadlock)
 
 +(BOOL)isAllowDownload;
-+(void)enableDownload;
++(void)enableDownload:(NSString *)fileName;
 +(void)disableDownload;
 
 @end

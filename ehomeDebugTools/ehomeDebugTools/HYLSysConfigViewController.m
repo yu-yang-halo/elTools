@@ -52,15 +52,30 @@ NSString *const key_storeIPAddress=@"ip_address_store_key";
     
 }
 -(void)updateInfo{
+    
     if([HYLRoutes isSystemResouces]){
         _systemResouceStatusLabel.text=@"正在使用";
         _mineResourceStatusLabel.text=@"未使用";
         [_resetBtn setEnabled:NO];
     }else{
         _systemResouceStatusLabel.text=@"未使用";
-        _mineResourceStatusLabel.text=@"正在使用";
+        _mineResourceStatusLabel.text=[self currentAppTagName];
         [_resetBtn setEnabled:YES];
     }
+}
+
+-(NSString *)currentAppTagName{
+    NSArray *tagList=[[HYLCache shareHylCache] tagList];
+    NSString *dirName=[[NSUserDefaults standardUserDefaults] objectForKey:keyDirName];
+    NSString *appTagName=nil;
+    
+    for (NSDictionary *tag in tagList) {
+        if([[tag objectForKey:@"userName"] isEqual:dirName]){
+            appTagName=[tag objectForKey:@"appTag"];
+            break;
+        }
+    }
+    return appTagName;
 }
 
 
@@ -68,24 +83,27 @@ NSString *const key_storeIPAddress=@"ip_address_store_key";
     
     NSArray *tagList=[[HYLCache shareHylCache] tagList];
     
-    SIAlertView *alertView=[[SIAlertView alloc] initWithTitle:@"应用类型" andMessage:@""];
-    
-   
-    
-    for (NSDictionary *tag in tagList) {
+    if(tagList!=nil&&[tagList count]>0){
         
-        [alertView addButtonWithTitle:[tag objectForKey:@"appTag"] type:SIAlertViewButtonTypeDefault handler:^(SIAlertView *alertView) {
+        SIAlertView *alertView=[[SIAlertView alloc] initWithTitle:@"" andMessage:@"应用类型"];
+        
+        
+        
+        for (NSDictionary *tag in tagList) {
             
-        }];
-        
-        
+            [alertView addButtonWithTitle:[tag objectForKey:@"appTag"] type:SIAlertViewButtonTypeDefault handler:^(SIAlertView *alertView) {
+                [alertView dismissAnimated:YES];
+                [HYLRoutes enableDownload:[tag objectForKey:@"userName"]];
+            }];
+            
+        }
+        [alertView show];
+ 
+    }else{
+        [[[UIApplication sharedApplication] keyWindow] makeToast:@"暂时还没有发布的应用"];
     }
-//    [alertView addButtonWithTitle:@"取消" type:SIAlertViewButtonTypeCancel handler:^(SIAlertView *alertView) {
-//        
-//    }];
-    [alertView show];
     
-    //[HYLRoutes enableDownload];
+    
 }
 
 - (IBAction)reset:(id)sender {

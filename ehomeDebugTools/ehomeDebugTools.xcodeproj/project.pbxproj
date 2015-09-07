@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5D162196B3A798A01678C2C9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FBA32A01B45956F39F6449 /* libPods.a */; };
 		8407F7131B3D47330008C36F /* HYLDeviceManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F7121B3D47330008C36F /* HYLDeviceManagerController.m */; };
+		842723871B9C367E0042EB15 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842723861B9C367E0042EB15 /* RegisterViewController.m */; };
 		842B3D2A1B4635BD00F219EF /* ui in Resources */ = {isa = PBXBuildFile; fileRef = 842B3D271B4635BD00F219EF /* ui */; };
 		84444F801B549E9200600337 /* ELNetworkService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C14B3E1AF7318800B11B46 /* ELNetworkService.framework */; };
 		8449B7481B3259F100B764D7 /* UINavigationController+barTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 8449B7471B3259F100B764D7 /* UINavigationController+barTheme.m */; };
@@ -57,6 +58,8 @@
 		7CEA3C076871EC35663F8CA6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8407F7111B3D47330008C36F /* HYLDeviceManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLDeviceManagerController.h; sourceTree = "<group>"; };
 		8407F7121B3D47330008C36F /* HYLDeviceManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYLDeviceManagerController.m; sourceTree = "<group>"; };
+		842723851B9C367D0042EB15 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		842723861B9C367E0042EB15 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		842B3D271B4635BD00F219EF /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
 		8449B7461B3259F100B764D7 /* UINavigationController+barTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+barTheme.h"; sourceTree = "<group>"; };
 		8449B7471B3259F100B764D7 /* UINavigationController+barTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+barTheme.m"; sourceTree = "<group>"; };
@@ -189,6 +192,8 @@
 				8465B1A91B50E64400D22290 /* LaunchScreen.xib */,
 				844BF66B1B51FA6B00E81630 /* HYLDeviceConfigController.h */,
 				844BF66C1B51FA6B00E81630 /* HYLDeviceConfigController.m */,
+				842723851B9C367D0042EB15 /* RegisterViewController.h */,
+				842723861B9C367E0042EB15 /* RegisterViewController.m */,
 			);
 			name = viewController;
 			sourceTree = "<group>";
@@ -510,6 +515,7 @@
 				846AE2121B2A8A6B004F3106 /* HYLDevicesController.m in Sources */,
 				84DD21AD1B4E6730008C461B /* HYLSysConfigViewController.m in Sources */,
 				846AE2171B2AA125004F3106 /* HYLResourceUtil.m in Sources */,
+				842723871B9C367E0042EB15 /* RegisterViewController.m in Sources */,
 				84B3F9BA1B315CC400486D21 /* HYLDeviceDetailController.m in Sources */,
 				84AF6B191B4CBE5F004C86E6 /* HYLWIFITableViewController.m in Sources */,
 				84CEC5231B3A3B130015C348 /* UIViewController+Notification.m in Sources */,

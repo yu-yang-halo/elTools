@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface HYLDeviceManagerController : UIViewController<UIScrollViewDelegate>
+#import "EGORefreshTableHeaderView.h"
+@interface HYLDeviceManagerController : UIViewController<UIScrollViewDelegate,UIWebViewDelegate,EGORefreshTableHeaderDelegate>
 
 @end

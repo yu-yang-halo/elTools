@@ -16,6 +16,7 @@
 #import "UINavigationController+barTheme.h"
 #import "HYLReachabilityUtils.h"
 static NSString *keyfilePath=@"key_file_path";
+const NSString *keyDirName=@"key_dir_name";
 static BOOL systemResYN=YES;
 
 @interface HYLRoutes()
@@ -24,10 +25,7 @@ static BOOL systemResYN=YES;
 
 @implementation HYLRoutes
 +(void)startDownload:(NSString *)fileName{
-    if(fileName==nil||[fileName isEqualToString:@""]){
-        [[[UIApplication sharedApplication] keyWindow] makeToast:@"系统无法找到资源，请先登录"];
-    }else{
-        
+    
         if([self isAllowDownload]&&[HYLReachabilityUtils networkIsAvailable]){
             NSString *filePath=[NSString stringWithFormat:@"http://%@/public_cloud/upload/%@.zip",[ElApiService currentIPAddress],fileName];
             NSLog(@"资源下载地址：%@",filePath);
@@ -41,6 +39,7 @@ static BOOL systemResYN=YES;
                 if(isfinished){
                     NSLog(@"本地沙盒路径存储：：%@",data);
                     [[NSUserDefaults standardUserDefaults] setObject:data forKey:keyfilePath];
+                    [[NSUserDefaults standardUserDefaults] setObject:fileName forKey:keyDirName];
                     
                     [self disableDownload];
                     [[[UIApplication sharedApplication] keyWindow] makeToast:@"更新完成"];
@@ -55,9 +54,7 @@ static BOOL systemResYN=YES;
         }else{
             [[[UIApplication sharedApplication] keyWindow] makeToast:@"文件无法下载，请检查网络"];
         }
-
-    
-    }
+ 
     
     
     
@@ -68,9 +65,9 @@ static BOOL systemResYN=YES;
     [HYLResourceUtil downloadAppTagJson:filePath block:^(BOOL isfinished, id data) {
        
         if(isfinished){
-            [[[UIApplication sharedApplication] keyWindow] makeToast:@"appTag配置文件下载成功"];
+            //[[[UIApplication sharedApplication] keyWindow] makeToast:@"appTag配置文件下载成功"];
         }else{
-            [[[UIApplication sharedApplication] keyWindow] makeToast:@"appTag配置文件下载失败"];
+            //[[[UIApplication sharedApplication] keyWindow] makeToast:@"appTag配置文件下载失败"];
         }
         
     }];
@@ -86,9 +83,11 @@ static BOOL systemResYN=YES;
     
     NSString *filePath=[[NSUserDefaults standardUserDefaults] objectForKey:keyfilePath];
     if(filePath==nil||[filePath isEqualToString:@""]){
-         systemResYN=YES;
+        systemResYN=YES;
+        NSLog(@"系统资源路径");
         return [[NSBundle mainBundle] bundlePath];
     }else{
+        NSLog(@"用户自定义资源路径");
          systemResYN=NO;
 
         return [[HYLResourceUtil documentPath] stringByAppendingPathComponent:filePath];
@@ -101,7 +100,8 @@ static BOOL systemResYN=YES;
     return systemResYN;
 }
 +(void)resetToSystemResource{
-     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:keyfilePath];
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:keyfilePath];
     
 }
 
@@ -112,10 +112,11 @@ static BOOL systemResYN=YES;
     
     
     if(arr!=nil&&[arr count]>0){
-       NSLog(@"用户自定义的ui路径 %@",uifilePath);
+      
+        //NSLog(@"UI 资源路径 %@",uifilePath);
        
     }else{
-        NSLog(@"没有用户自定义的ui，切换到bundle ui");
+        //NSLog(@"bundle ui资源路径 %@",uifilePath);
         uifilePath=[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:uiPathName];
     }
     return uifilePath;
@@ -137,13 +138,13 @@ static NSString * kAllowDownload=@"key_allow_download";
         return YES;
     }
 }
-+(void)enableDownload{
++(void)enableDownload:(NSString *)fileName{
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kAllowDownload];
     
-    NSString *loginName=[[NSUserDefaults standardUserDefaults] objectForKey:kloginUserName];
-    NSLog(@"enable 下载.... :%@.zip ",loginName);
+   // NSString *loginName=[[NSUserDefaults standardUserDefaults] objectForKey:kloginUserName];
+    NSLog(@"enable 下载.... :%@.zip ",fileName);
     
-    [self startDownload:loginName];
+    [self startDownload:fileName];
 }
 +(void)disableDownload{
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kAllowDownload];
