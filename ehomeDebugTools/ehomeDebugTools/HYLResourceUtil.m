@@ -208,10 +208,11 @@ NSString *uiPathName=@"ui";
     
     
     NSData *configData=[[NSData alloc] initWithContentsOfFile:configJSONResPath];
+    NSMutableDictionary *configDic=nil;
     
-    
-    
-    NSMutableDictionary *configDic=[[NSJSONSerialization JSONObjectWithData:configData options:NSJSONReadingAllowFragments error:nil] mutableCopy];
+    if(configData!=nil){
+        configDic=[[NSJSONSerialization JSONObjectWithData:configData options:NSJSONReadingAllowFragments error:nil] mutableCopy];
+    }
     
     if (configDic==nil) {
         NSString* configDefaultJSONResPath=[configResPath stringByAppendingPathComponent:@"config/configdefault.json"];
